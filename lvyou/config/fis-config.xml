@@ -5,16 +5,16 @@
             <get param="tn" match="/[a-zA-Z0-9]+/"/>
         </urlmap>
         <urlmap match="/^\/lvyou\/index$/" 
-            rewrite="data/index.json" 
+            rewrite="static/data/index.json" 
             header="Content-Type:text/javascript; charset=UTF-8"/>
         <urlmap match="/^\/lvyou\/index_list$/" 
-            rewrite="data/index_list.json" 
+            rewrite="static/data/index_list.json" 
             header="Content-Type:text/javascript; charset=UTF-8"/>
         <urlmap match="/^\/lvyou\/articles\/get_article.php$/" 
-            rewrite="data/get_article.php" 
+            rewrite="static/data/get_article.php" 
             header="Content-Type:text/javascript; charset=UTF-8"/>
         <urlmap match="/^\/lvyou\/place$/" 
-            rewrite="data/place.php" 
+            rewrite="static/data/place.php" 
             header="Content-Type:text/javascript; charset=UTF-8"/>
     </request>
     
@@ -30,7 +30,7 @@
     <merge>
         <app>
             <!-- app -->
-            <import>/js/*.js</import>
+            <import>/static/js/*.js</import>
 
             <!-- page -->
             <import>/page/*.js</import>
