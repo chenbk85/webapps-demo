@@ -1,0 +1,812 @@
+<script type="text/template" id="template_allview_content">
+    <div class="allview-page-content-list">
+        
+        
+        <div class="panel-container">
+    		<div class="base-nav">
+				<div id="j-back">
+					<a href="#place/1" class="base-back" style="display: block;">
+						返回
+					</a>
+				</div>
+				<span class="bn-title">
+					热门景点
+				</span>
+				<a href="javascript:;" class="base-navBtn" style="display: none;">
+				</a>
+				<div class="base-navPane" style="display: none; opacity: 0;">
+					<a href="/" class="bn-home">
+						首页
+					</a>
+					<a href="/#local" class="bn-local">
+						我的附近
+					</a>
+					<a href="/user/webapp?fr=lvRegion&amp;pu=sz@1320_2001&amp;from=&amp;uid=&amp;ssid=&amp;bd_page_type=1&amp;device_os_id=1"
+					class="bn-user">
+						个人中心
+					</a>
+					<a href="javascript:;" class="add-to-plan" id="j-add-to-plan">
+						添加计划
+					</a>
+				</div>
+				<div class="showImg" style="display: -webkit-box;">
+					<div class="si-img on">
+						<span>
+							列表
+						</span>
+					</div>
+					<div class="si-text">
+						<span>
+							地图
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="panels" style="min-height: 369px;">
+				<div class="main panel" style="display: none;">
+					<div id="pictop">
+						<a href="http://itunes.apple.com/cn/app/id467046753?mt=8" data-type="4002">
+							<img style="width: 100%;display: block;" src="http://hiphotos.baidu.com/baidu/pic/item/fd039245d688d43f948c1fe17c1ed21b0ef43bff.png"
+							alt="下载百度旅游APP，离线攻略随时查看">
+						</a>
+					</div>
+					<div class="slide" id="slideWrap">
+						<div class="dots-container">
+							<div class="dots">
+								<div class="dot">
+								</div>
+								<div class="dot select">
+								</div>
+								<div class="dot">
+								</div>
+								<div class="dot">
+								</div>
+								<div class="dot">
+								</div>
+							</div>
+						</div>
+						<div class="slidepanel">
+							<div class="slide-items" style="-webkit-transition: 300ms linear; -webkit-transform: translate3d(-100%, 0px, 0px);">
+								<div class="item ia" style="-webkit-transform: translate3d(0%, 0px, 0px);">
+									<div class="scene">
+										<img src="http://g.hiphotos.baidu.com/lvpics/wh%3D480%2C161/sign=88a0617f3d6d55fbc5937e225512637b/e7cd7b899e510fb3a1137a36d933c895d1430c0c.jpg">
+										<div class="scene-info">
+											亚龙湾，无敌海景
+										</div>
+									</div>
+								</div>
+								<div class="item ib" style="-webkit-transform: translate3d(100%, 0px, 0px);">
+									<div class="scene">
+										<img src="http://e.hiphotos.baidu.com/lvpics/wh%3D480%2C161/sign=a1f4e959a786c91708565a3df10d5cfe/0dd7912397dda144990a6113b2b7d0a20cf4860b.jpg">
+										<div class="scene-info">
+											一起飞到天涯海角
+										</div>
+									</div>
+								</div>
+								<div class="item ic" style="-webkit-transform: translate3d(200%, 0px, 0px);">
+									<div class="scene">
+										<img src="http://e.hiphotos.baidu.com/lvpics/wh%3D480%2C161/sign=b5e8917d8a13632715b8ca37a9bf8cdd/80cb39dbb6fd5266742131b5ab18972bd407360c.jpg">
+										<div class="scene-info">
+											渔排，吃地道海鲜
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="nav-list region">
+						<ul class="li-wr">
+							<li>
+								<a href="#allview" class="li-it">
+									<span class="li-ic i-allview">
+									</span>
+									热门景点
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#region_map" class="li-it">
+									<span class="li-ic i-region_map">
+									</span>
+									景点地图
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#notes" class="li-it">
+									<span class="li-ic i-notes">
+									</span>
+									精彩游记
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#new_line" class="li-it">
+									<span class="li-ic i-new_line">
+									</span>
+									推荐路线
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#abstract" class="li-it">
+									<span class="li-ic i-abstract">
+									</span>
+									城市简介
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+						</ul>
+						<h2>
+							交通
+						</h2>
+						<ul class="li-wr">
+							<li>
+								<a href="#airline" class="li-it">
+									<span class="li-ic i-airline">
+									</span>
+									特价机票查询
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#train" class="li-it">
+									<span class="li-ic i-train">
+									</span>
+									火车票
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#traffic" class="li-it">
+									<span class="li-ic i-traffic">
+									</span>
+									交通信息
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+						</ul>
+						<h2>
+							美食
+						</h2>
+						<ul class="li-wr">
+							<li>
+								<a href="#dining" class="li-it">
+									<span class="li-ic i-dining">
+									</span>
+									美食攻略
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a id="s-cg" href="/local/webapp/lbs?type=2&amp;sid=052a5d285f52dec9c3f9f1f7&amp;pn=0&amp;rn=20&amp;fr=city"
+								class="li-it">
+									<span class="li-ic s-cg">
+									</span>
+									餐馆查询
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+						</ul>
+						<h2>
+							住宿
+						</h2>
+						<ul class="li-wr">
+							<li>
+								<a href="#accommodation" class="li-it">
+									<span class="li-ic i-accommodation">
+									</span>
+									住宿攻略
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a id="s-zs" href="/local/webapp/lbs?type=3&amp;sid=052a5d285f52dec9c3f9f1f7&amp;pn=0&amp;rn=20&amp;fr=city"
+								class="li-it">
+									<span class="li-ic s-jd">
+									</span>
+									酒店查询
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+						</ul>
+						<h2>
+							休闲娱乐
+						</h2>
+						<ul class="li-wr">
+							<li>
+								<a href="#shopping" class="li-it">
+									<span class="li-ic i-shopping">
+									</span>
+									购物攻略
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#entertainment" class="li-it">
+									<span class="li-ic i-entertainment">
+									</span>
+									活动攻略
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a id="s-xx" href="/local/webapp/lbs?type=4&amp;sid=052a5d285f52dec9c3f9f1f7&amp;pn=0&amp;rn=20&amp;fr=city"
+								class="li-it">
+									<span class="li-ic s-xx">
+									</span>
+									休闲场所查询
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+						</ul>
+						<h2>
+							攻略信息
+						</h2>
+						<ul class="li-wr">
+							<li>
+								<a href="#new_geography_history" class="li-it">
+									<span class="li-ic i-new_geography_history">
+									</span>
+									文化地理
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#attention" class="li-it">
+									<span class="li-ic i-attention">
+									</span>
+									注意事项
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#best_visit_time" class="li-it">
+									<span class="li-ic i-best_visit_time">
+									</span>
+									最佳旅游时间
+									<span class="li-arr">
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="picAlbum panel">
+					<div class="photoAlbum" id="albumWrap">
+					</div>
+					<div class="photoDesc">
+					</div>
+				</div>
+				<div class="routeAlbum panel">
+					<div class="photoAlbum" id="routeAlbumWrap">
+					</div>
+					<div class="photoDesc">
+					</div>
+				</div>
+				<div class="allview panel" style="display: block;">
+					<dl style="" id="viewList">
+						<dd class="l-first">
+							<a href="/yalongwan/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<span class="ticket-tip">
+									</span>
+									<span class="tinfo">
+										优惠
+									</span>
+									<img src="http://e.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=9c6dde1bfbf2b211e47b8d4dfcb0490a/6391e9031dda2db408fa938b.jpg">
+									<div class="l-name">
+										<span class="l-num">
+											1
+										</span>
+										<p>
+											亚龙湾
+										</p>
+										<div class="travel-info">
+											<span class="like">
+												210人
+											</span>
+										</div>
+										<div class="l-intro">
+											天下第一湾亚龙湾位于中国最南端的热带滨海旅游城市——三亚市东南28公里...
+										</div>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/tianyahaijiao/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<span class="ticket-tip">
+									</span>
+									<span class="tinfo">
+										优惠
+									</span>
+									<img src="http://e.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=dcd7fd4dafc379317d3d8e2addf49b77/810a19d8bc3eb13597dd88f0a61ea8d3fd1f4466.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											2
+										</span>
+										天涯海角
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										天涯海角位于三亚市区西南23公里处，这里有美丽迷人的热带海滨自然风光，...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											258人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/daxiaodongtian/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<span class="ticket-tip">
+									</span>
+									<span class="tinfo">
+										优惠
+									</span>
+									<img src="http://b.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=bd66d1cdd688d43ff0fc99f14b2efe29/37d12f2eb9389b500ea796ea8535e5dde7116e29.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											3
+										</span>
+										大小洞天
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										三亚大小洞天是我国最南端的道家文化旅游胜地，是海南省历史最悠久的风景名...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											58人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/yanuoda/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<img src="http://h.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=ea439d8f912397ddd62c90076fb29e85/58af236dda8023a342169471.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											4
+										</span>
+										呀诺达
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										呀诺达雨林景区位于海南省三亚市，距三亚市区仅35公里，距凤凰机场52公...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											66人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/sanyawan/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<span class="ticket-tip">
+									</span>
+									<span class="tinfo">
+										优惠
+									</span>
+									<img src="http://g.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=619e733dd933c895a62b9078e7235fc2/35a85edf8db1cb1327ee38b9dd54564e93584b90.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											5
+										</span>
+										三亚湾
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										紧临三亚凤凰机场，绵延22公里，有著名的二十里椰梦长廊。由于生活污水，...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											77人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/nanshanhaishangguanyin/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<img src="http://b.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=7d5a171cebf81a4c2667e4cae11a4c6b/a0ca99d656160e7706088b67.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											6
+										</span>
+										南山海上观音
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										南山海上观音圣像敬造工程，由国务院宗教事务局和海南省政府批准，集十方善...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											45人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/dadonghai/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<img src="http://h.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=2a9b72a2af51f3dec3e7b167a2dedc2d/3792cb39018db5ab3b87ce43.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											7
+										</span>
+										大东海
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										大东海位于三亚市的榆林港和鹿回头之间。海湾成月牙形的，海面辽阔，晶莹如...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											36人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/yalongwanredaisenlingongyuan/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<img src="http://e.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=cda220efd0a20cf446c5f6dc40396704/4e0b3ea4d2039baf9052eede.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											8
+										</span>
+										亚龙湾热带天堂森林公园
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										一流的海滨观光度假森林公园 ，分东园和西园，犹如伸展的双臂环抱着“天下...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											28人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/sanyananshansi/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<span class="ticket-tip">
+									</span>
+									<span class="tinfo">
+										优惠
+									</span>
+									<img src="http://b.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=9b619873be096b63814c56533a03ab76/dbf554edbf54e1b8b31cb1b1.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											9
+										</span>
+										南山寺
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										南山寺是一座仿古盛唐风格居山面海的大型寺院，整个气势恢宏，为中国50年...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											28人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+						<dd>
+							<a href="/luhuitou/?fr=lvAllView" class="l-list">
+								<div class="l-img bg-lv">
+									<span class="ticket-tip">
+									</span>
+									<span class="tinfo">
+										优惠
+									</span>
+									<img src="http://b.hiphotos.baidu.com/lvpics/wh%3D360%2C240/sign=2e13b0fc462309f7e73aa511443e20c1/4bd1e80312d4392f3912bb97.jpg">
+									<p class="l-name">
+										<span class="l-num">
+											10
+										</span>
+										鹿回头
+									</p>
+								</div>
+								<div class="l-view">
+									<div class="l-intro">
+										鹿回头有一个海南黎族美丽的爱情传说：古代一位英俊的黎族青年猎手，头束红...
+									</div>
+									<div class="travel-info">
+										<span class="like">
+											15人
+										</span>
+									</div>
+								</div>
+							</a>
+						</dd>
+					</dl>
+					<div class="list-more" id="loadBtn" style="">
+						<span class="pre" style="display:none;">
+						</span>
+						<i id="page-num">
+							第1页
+						</i>
+						<span class="next">
+						</span>
+					</div>
+					<div class="base-loading" style="display: none;">
+						<div>
+						</div>
+						<p class="base-loading-text">
+							页面正在载入,请稍候...
+						</p>
+					</div>
+				</div>
+				<div class="map_view panel" style="display: none;">
+					<div class="map-container" id="map2" style="height: 652px; overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
+						<div style="overflow: visible; position: absolute; z-index: 0; left: -276px; top: -80px; cursor: url(http://api.map.baidu.com/images/openhand.cur) 8 8, default; -webkit-backface-visibility: hidden;">
+							<div class="BMap_mask" style="position: absolute; left: 276px; top: 80px; z-index: 9; overflow: hidden; -webkit-user-select: none; width: 0px; height: 0px;">
+							</div>
+							<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;">
+								</div>
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;">
+									<span class="BMap_Marker BMap_noprint" unselectable="on" "=" " style="position:
+									absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image:
+									url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px;
+									left: 586px; top: 521px; z-index: -3642752; background-position: initial
+									initial; background-repeat: initial initial; " title="
+									"></span><span class="BMap_Marker BMap_noprint " unselectable="on " "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image: url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px; left: 41px; top: 365px; z-index: -3659908; background-position: initial initial; background-repeat: initial initial;"
+									title="">
+									</span>
+									<span class="BMap_Marker BMap_noprint" unselectable="on" "=" " style="position:
+									absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image:
+									url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px;
+									left: -302px; top: 345px; z-index: -3662080; background-position: initial
+									initial; background-repeat: initial initial; " title="
+									"></span><span class="BMap_Marker BMap_noprint " unselectable="on " "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image: url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px; left: 607px; top: 109px; z-index: -3688030; background-position: initial initial; background-repeat: initial initial;"
+									title="">
+									</span>
+									<span class="BMap_Marker BMap_noprint" unselectable="on" "=" " style="position:
+									absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image:
+									url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px;
+									left: 86px; top: 373px; z-index: -3658984; background-position: initial
+									initial; background-repeat: initial initial; " title="
+									"></span><span class="BMap_Marker BMap_noprint " unselectable="on " "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image: url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px; left: -1px; top: 366px; z-index: -3659782; background-position: initial initial; background-repeat: initial initial;"
+									title="">
+									</span>
+									<span class="BMap_Marker BMap_noprint" unselectable="on" "=" " style="position:
+									absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image:
+									url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px;
+									left: 342px; top: 492px; z-index: -3645906; background-position: initial
+									initial; background-repeat: initial initial; " title="
+									"></span><span class="BMap_Marker BMap_noprint " unselectable="on " "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image: url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px; left: 516px; top: 447px; z-index: -3650950; background-position: initial initial; background-repeat: initial initial;"
+									title="">
+									</span>
+									<span class="BMap_Marker BMap_noprint" unselectable="on" "=" " style="position:
+									absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image:
+									url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px;
+									left: -245px; top: 365px; z-index: -3659874; background-position: initial
+									initial; background-repeat: initial initial; " title="
+									"></span><span class="BMap_Marker BMap_noprint " unselectable="on " "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background-image: url(http://api.map.baidu.com/images/blank.gif); width: 21px; height: 30px; left: 309px; top: 498px; z-index: -3645316; background-position: initial initial; background-repeat: initial initial;"
+									title="">
+									</span>
+								</div>
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;">
+								</div>
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;">
+								</div>
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;">
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 586px; top: 521px; z-index: -3642752;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers0.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 41px; top: 365px; z-index: -3659908;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers1.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: -302px; top: 345px; z-index: -3662080;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers2.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 607px; top: 109px; z-index: -3688030;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers3.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 86px; top: 373px; z-index: -3658984;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers4.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: -1px; top: 366px; z-index: -3659782;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers5.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 342px; top: 492px; z-index: -3645906;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers6.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 516px; top: 447px; z-index: -3650950;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers7.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: -245px; top: 365px; z-index: -3659874;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers8.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+									<span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 309px; top: 498px; z-index: -3645316;">
+										<div style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 30px; overflow: hidden;">
+											<img src="/static/wap/img/markers9.png" style="border:none;left:0px; top:0px; position:absolute;">
+										</div>
+									</span>
+								</div>
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;">
+								</div>
+								<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
+								</div>
+							</div>
+							<div style="position: absolute; top: 0px; left: 0px; z-index: 1; -webkit-backface-visibility: hidden;">
+								<div style="position: absolute; z-index: -100; left: 276px; top: 80px;">
+									<img style="position: absolute; border: none; width: 256px; height: 256px; left: -233px; top: -39px; opacity: 1;"
+									src="http://q6.baidu.com/it/u=x=743;y=126;z=12;v=015;type=web&amp;fm=44">
+								</div>
+							</div>
+							<div style="position: absolute; top: 0px; left: 0px; z-index: 2;">
+							</div>
+						</div>
+						<div class="map-zoom BMap_noprint anchorTL" style="position: absolute; z-index: 10; -webkit-text-size-adjust: none; bottom: auto; right: auto; top: 30px; left: 10px;">
+							<div class="map-plus">
+							</div>
+							<div class="map-minus">
+							</div>
+						</div>
+						<div style="height: 25px; position: absolute; z-index: 10; -webkit-text-size-adjust: none; bottom: 0px; right: auto; top: auto; left: 1px; display: none;"
+						class=" anchorBL">
+							<a title="到百度地图查看此区域" target="_blank" href="#" style="outline: none;">
+								<img style="border:none;width:68px;height:25px" src="http://api.map.baidu.com/images/copyright_logo_s.png">
+							</a>
+						</div>
+						<div unselectable="on" class=" BMap_cpyCtrl anchorBL" style="cursor: default; white-space: nowrap; color: black; background-image: none; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 4px; position: absolute; z-index: 10; -webkit-text-size-adjust: none; background-position: initial initial; background-repeat: initial initial;">
+							<span _cid="1" style="display: inline;">
+								<span style="font-size:11px">
+									© 2013 Baidu&nbsp;- Data ©
+									<a target="_blank" href="http://www.navinfo.com/">
+										NavInfo
+									</a>
+									&amp;
+									<a target="_blank" href="http://www.cennavi.com.cn/">
+										CenNavi
+									</a>
+									&amp;
+									<a target="_blank" href="http://www.365ditu.com/">
+										道道通
+									</a>
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="geoBtn" style="">
+					</div>
+					<div class="map-info">
+					</div>
+				</div>
+				<div class="notes panel">
+				</div>
+				<div class="abstract panel">
+				</div>
+				<div class="new_line panel">
+				</div>
+				<div class="best_visit_time panel">
+				</div>
+				<div class="new_geography_history panel">
+				</div>
+				<div class="traffic panel">
+				</div>
+				<div class="airline panel">
+				</div>
+				<div class="train panel">
+				</div>
+				<div class="dining panel">
+				</div>
+				<div class="accommodation panel">
+				</div>
+				<div class="shopping panel">
+				</div>
+				<div class="entertainment panel">
+				</div>
+				<div class="attention panel">
+				</div>
+				<div class="leave_info panel">
+				</div>
+				<div class="useful panel">
+				</div>
+				<div id="loading" class="base-loading" style="display: none;">
+					<div>
+					</div>
+					<p class="base-loading-text">
+						页面正在载入,请稍候...
+					</p>
+				</div>
+				<div class="filterPanel" style="top: -86.13187408447266px;">
+					<div class="filterList">
+						<a href="javascript:;" class="on" data-id="0">
+							全部
+						</a>
+						<a href="javascript:;" data-id="501">
+							古镇乡村
+						</a>
+						<a href="javascript:;" data-id="502">
+							海岛
+						</a>
+						<a href="javascript:;" data-id="503">
+							自然景观
+						</a>
+						<a href="javascript:;" data-id="504">
+							人文景观
+						</a>
+						<a href="javascript:;" data-id="505">
+							展馆
+						</a>
+						<a href="javascript:;" data-id="507">
+							休闲度假
+						</a>
+						<a href="javascript:;" data-id="508">
+							其他
+						</a>
+					</div>
+					<div class="filterBtn">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+        
+    </div>
+</script>

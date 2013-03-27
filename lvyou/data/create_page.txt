@@ -1,0 +1,4 @@
+1. 按规范创建目录结构和空文件
+2. 按规范填充文件内容：html，css，js，tpl等
+3. 加入项目包含文件中：修改app.css, app.html
+4. 添加路由配置：routes，pageOrder， pageTransition，action entrypoint

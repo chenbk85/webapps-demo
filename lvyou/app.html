@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>百度旅游</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <link rel="apple-touch-icon-precomposed" href="http://m.baidu.com/static/news/webapp_114.png" />
+    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+    <link id="statLink" rel="stylesheet" />
+</head>
+<body>
+<div style="display:block" class="ui-header">
+    <div>
+		<div class="nav">
+			<a href="#" class="log"></a>
+			<a href="http://m.baidu.com?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1" class="tab">网页</a>
+			<a href="http://wapiknow.baidu.com?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1" class="tab">知道</a>
+			<a href="javascript:void(0)" class="tab on">旅游</a>
+			<a href="http://wapbaike.baidu.com?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1" class="tab">百科</a>
+			<a href="javascript:void(0)" class="more">
+				更多
+				<span></span>
+			</a>
+		</div>
+		<div class="more-pane">
+			<div class="more-links">
+				<a href="http://news.baidu.com/i?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">新闻</a>
+                <a href="http://wap.baidu.com/xs?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">小说</a> 
+                <a href="http://wapp.baidu.com/?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">贴吧</a> 
+                <a href="http://m.baidu.com/img?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">图片</a> 
+                <a href="http://m.baidu.com/app?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">应用</a> 
+            </div>
+            <div class="more-links">
+				<a href="http://map.baidu.com/mobile/?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">地图</a>
+                <a href="http://i.hi.baidu.com?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">空间</a> 
+                <a href="http://mp3.baidu.com/mobile.html?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">音乐</a> 
+                <a href="http://m.baidu.com/video?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">视频</a> 
+                <a href="http://wk.baidu.com?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1">文库</a> 
+            </div>
+		</div>
+	</div>
+	<div class="sug">
+		<form onsubmit="return docheck();" id="headForm" method="get" action="">
+			<div class="ipt-wrap">
+				<div class="ipt">
+					<input type="text" value="" placeholder="请输入目的地,景点" autocorrect="off" autocapitalize="off" autocomplete="off" id="word">
+					<div class="ipt-close">
+					</div>
+				</div>
+				<div class="btn">
+					搜景点
+				</div>
+			</div>
+        </form>
+        <div class="pane">
+            <div class="pane-inner">
+                <ul class="data-list">
+                </ul>
+                <div class="toolBar">
+                	<a href="javascript:void(0)" class="clear">清除搜索记录</a>
+                    <a class="flex"></a>
+                    <a href="javascript:void(0)" class="close">关闭</a>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+        
+        
+        
+    <div id="wrapper" class="news">
+<!--html snippets-->
+/*{fis-inline file="./tpl/globalloading.tpl.html"}*/ 
+/*{fis-inline file="./tpl/pageloading.tpl.html"}*/ 
+
+<!--page view-->
+/*{fis-inline file="./page/index/html/index.html"}*/ 
+
+/*{fis-inline file="./page/place/html/place.html"}*/
+
+/*{fis-inline file="./page/allview/html/allview.html"}*/
+
+    </div>
+
+    <script>
+        F.load(['common_lib', 'common_app', 'lvyou_app'], function(){
+            app.init();
+        }); 
+    </script>
+
+<!--front template-->
+/*{fis-inline file="./page/index/tpl/index.tpl.html"}*/ 
+/*{fis-inline file="./page/place/tpl/place.tpl.html"}*/ 
+/*{fis-inline file="./page/allview/tpl/allview.tpl.html"}*/ 
+
+
+
+    <div class="mainfoot">
+        <p class="device">
+            <span>移动版</span>
+            <span><a href="#">桌面版</a></span>
+            <span><a class="mf-dl" href="#">客户端</a></span>
+        </p>
+        <p class="copyright">&copy;2013 Baidu 京ICP证030173号</p>
+    </div>
+</body>
+</html>

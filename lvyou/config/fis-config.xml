@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project basedir=".." modulename="lvyou" framework="webapp-1.3.7.3">
+    <request>
+        <urlmap match="/^\/news$/" rewrite="data/news.php">
+            <get param="tn" match="/[a-zA-Z0-9]+/"/>
+        </urlmap>
+        <urlmap match="/^\/lvyou\/index$/" 
+            rewrite="data/index.json" 
+            header="Content-Type:text/javascript; charset=UTF-8"/>
+        <urlmap match="/^\/lvyou\/index_list$/" 
+            rewrite="data/index_list.json" 
+            header="Content-Type:text/javascript; charset=UTF-8"/>
+        <urlmap match="/^\/lvyou\/articles\/get_article.php$/" 
+            rewrite="data/get_article.php" 
+            header="Content-Type:text/javascript; charset=UTF-8"/>
+        <urlmap match="/^\/lvyou\/place$/" 
+            rewrite="data/place.php" 
+            header="Content-Type:text/javascript; charset=UTF-8"/>
+    </request>
+    
+    <setting>
+		<smarty left_delimiter="{@" right_delimiter="@}"/>
+        <!--** 修改baidu template的界定符 **-->
+        <TplSyntax frontld="&lt;%" frontrd="%&gt;"/>
+
+
+    </setting>
+        
+    
+    <merge>
+        <app>
+            <!-- app -->
+            <import>/js/*.js</import>
+
+            <!-- page -->
+            <import>/page/*.js</import>
+            <import>/page/*.css</import>
+        </app>
+
+    </merge>
+
+    <task name="refresh_manifest">
+        <delete dir="./output"/>
+        <manifestDateStamp/>
+    </task>
+
+    <build name="build" outputdir="./output" depends="refresh_manifest" />
+
+
+</project>

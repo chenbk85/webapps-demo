@@ -1,0 +1,100 @@
+<script type="text/template" id="template_index_content">
+    <div class="panel-nav">
+        <div>
+            <a class="main selected" href="javascript:;">
+                <span class="m-space big">推荐</span>
+            </a>
+        </div>
+        <div>
+            <a class="local" href="javascript:;">
+                我的附近
+            </a>
+        </div>
+        <div>
+            <a bkd="-44" class="login" id="j-person-center" href="/user/webapp#home?pu=sz@1320_2001&amp;st=&amp;from=844b&amp;uid=1FBF9C7ECFB3C3A7881C6E403AF3486E&amp;ssid=0&amp;bd_page_type=1"></a>
+        </div>
+    </div>
+    <div id="slideWrap" class="slide">
+        <a class="l-arr" href="javascript:;"></a>
+        <a class="r-arr" href="javascript:;"></a>
+        <div class="slidepanel">
+            <div class="slide-items">
+                <div class="item ia">
+                    <div class="page">
+                        <a href="/notes/2bb6cb0140b47b713c0aa22f/?fr=lvMainNote">
+                            <img src="http://hiphotos.baidu.com/baidu/pic/item/77c6a7efce1b9d16ec25d36af2deb48f8d5464de.jpg" class="pg-im">
+                            <div class="pg-info">
+                                <div class="pg-name">
+                                    <img src="http://hiphotos.baidu.com/lvpics/pic/item/a6aed01b732e76a2af5133b6.jpg">
+                                </div>
+                                <div class="pg-con">
+                                    <p class="pg-des">穿越大不列颠</p>
+                                    <p class="pg-usr">冰心游子</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item ib">
+                    <div class="page">
+                        <a href="/notes/9a35a5c4e983c6d80ff5b57b/?fr=lvMainNote">
+                            <img src="http://hiphotos.baidu.com/baidu/pic/item/d4628535e5dde711ee907cfba6efce1b9d166178.jpg" class="pg-im">
+                            <div class="pg-info">
+                                <div class="pg-name">
+                                    <img src="http://hiphotos.baidu.com/lvpics/pic/item/eac4b74543a98226c220ef358b82b9014a90eb3b.jpg">
+                                </div>
+                                <div class="pg-con">
+                                    <p class="pg-des">漠河攻略</p>
+                                    <p class="pg-usr">顺儿妞_secret</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item ic">
+                    <div class="page">
+                        <a href="/notes/551c79a0fee8bab4b0343e75/?fr=lvMainNote">
+                            <img src="http://hiphotos.baidu.com/baidu/pic/item/a6efce1b9d16fdfa2ab8fae3b58f8c5495ee7be2.jpg" class="pg-im">
+                            <div class="pg-info">
+                                <div class="pg-name">
+                                    <img src="http://hiphotos.baidu.com/lvpics/pic/item/30adcbef76094b362de5ddc2a2cc7cd98d109dae.jpg">
+                                </div>
+                                <div class="pg-con">
+                                    <p class="pg-des">樱花季去日本</p>
+                                    <p class="pg-usr">牛皮嘴</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dots">
+            <div class="dot"></div>
+            <div class="dot select"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <div class="title-wrap"><span class="base-title">当季目的地推荐</span></div>
+    <div class="rcm-wrap">
+        <div class="index-page-content-list">
+        <% _.each(content, function(item, index){ %>
+            <div class="rcm-item">
+                <a href="<%= item.url %>">
+                <div class="bg-lv pic">
+                    <img src="<%= item.pic %>" style="opacity: 1;"> 
+                </div>
+                <div class="info">
+                    <span><%= item.title %></span>
+                    <div class="pic-info"><%= item.desc %></div>
+                    <div class="travel-info"><span class="like"><%= item.like %>人</span><span class="travel"><%= item.travel %>次</span></div>
+                </div>
+                </a>
+            </div>
+        <% }); %>
+        </div>
+    </div>
+</script>
