@@ -1,3 +1,22 @@
 <script type="text/template" id="template_musichot_content">
-hello
+    <section class="content">
+        <ul class="list">
+        <% _.each(musichot, function(item, index){ %>
+             <li class="song url log" songid="<%= item.song_id %>">
+                <div class="left">
+                    <div class="rank equal"><%= item.rank %></div>
+                    <div class="info">
+                        <b><a href="#play/<%= item.song_id %>"><%= item.title %></a></b>
+                        <br/>
+                        <span class="txt"><%= item.author %></span>
+                    </div>
+                </div>
+                <div class="download need-active">下载</div>
+            </li>
+        <% }); %>
+        <li class="load-more need-active">
+            查看更多...
+        </li>
+        </ul>
+    </section>
 </script>

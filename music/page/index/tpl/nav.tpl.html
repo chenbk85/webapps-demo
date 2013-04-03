@@ -1,56 +1,30 @@
 <script type="text/template" id="template_index_nav">
-			<div class="navs swipe" style="overflow: hidden;">
-				<ul style="list-style: none; margin: 0px; width: 1282px; -webkit-transition: 0ms; -webkit-transform: translate3d(0px, 0, 0);">
-					<li class="swipe-item-on" style="width: 641px; display: table-cell; vertical-align: top;">
-						<ul class="nav">
-							<li class="new url log" data-url="#/songs/new/" data-title="新歌榜" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;newsong&quot;}">
-								新歌榜
-							</li>
-							<li class="hot url log" data-url="#/songs/hot/" data-title="热歌榜" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;hotsong&quot;}">
-								热歌榜
-							</li>
-							<li class="artist url log" data-url="#/artists" data-title="歌手" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;artist&quot;}">
-								歌手
-							</li>
-							<li class="tag url log" data-url="#/tags" data-title="音乐分类" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;tag&quot;}">
-								音乐分类
-							</li>
-						</ul>
-					</li>
-					<li class="swipe-item" style="width: 641px; display: table-cell; vertical-align: top;">
-						<ul class="nav">
-							<li class="topic url log" data-url="#/topics" data-title="专题" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;topic&quot;}">
-								专题
-							</li>
-							<a class="fm log ref" target="_blank" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;radio&quot;}"
-							href="http://fm.baidu.com">
-								<li>
-									随心听
-								</li>
-							</a>
-							<a class="app ref log" target="_blank" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;hotapp&quot;}"
-							href="http://music.baidu.com/cms/webapp/app/ios.html">
-								<li>
-									热门应用
-								</li>
-							</a>
-							<li class="feedback url log" data-url="#/feedback" data-title="意见反馈" data-log="{&quot;page&quot;:&quot;home&quot;,&quot;pos&quot;:&quot;entrance&quot;,&quot;sub&quot;:&quot;feedback&quot;}">
-								意见反馈
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="navs-opts">
-				<span class="prev">
-				</span>
-				<ol class="identify">
-					<li class="on">
-					</li>
-					<li>
-					</li>
-				</ol>
-				<span class="next">
-				</span>
-			</div>
+    <div class="navs swipe" style="overflow: hidden;">
+        <ul style="list-style: none; margin: 0px; width: 1282px; -webkit-transition: 0ms; -webkit-transform: translate3d(0px, 0, 0);">
+            <li class="swipe-item-on" style="width: 641px; display: table-cell; vertical-align: top;">
+                <ul class="nav">
+                    <li class="new url log"><a href="#musicnew">新歌榜</a></li>
+                    <li class="hot url log"><a href="#musichot">热歌榜</a></li>
+                    <li class="artist url log"><a href="#singer">歌手</a></li>
+                    <li class="tag url log"><a href="#category">音乐分类</a></li>
+                </ul>
+            </li>
+            <li class="swipe-item" style="width: 641px; display: table-cell; vertical-align: top;">
+                <ul class="nav">
+                    <li class="topic url log"><a href="#topic">专题</a></li>
+                    <li><a class="fm log ref" target="_blank" href="http://fm.baidu.com">随心听</a></li>
+                    <li><a class="app ref log" target="_blank" href="#app">热门应用</a></li>
+                    <li class="feedback url log"><a class="app ref log" href="#feedback">意见反馈</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="navs-opts">
+        <span class="prev"></span>
+        <ol class="identify">
+            <li class="on"></li>
+            <li></li>
+        </ol>
+        <span class="next"></span>
+    </div>
 </script>

@@ -7,11 +7,11 @@ app.collection.musichot_music = app.collection.extend({
     }
 
     ,url: function(){
-        return '/music/music.php?' + (new Date()).getTime();
+        return '/music/musichot.php?' + (new Date()).getTime();
     }
 
     ,parse: function(resp, xhr){
-        return resp.content;
+        return resp.song_list;
     }
 
 });

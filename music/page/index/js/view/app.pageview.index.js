@@ -8,7 +8,7 @@ app.pageview.index = app.pageview.extend({
 
     ,init: function(options){
         var me = this;
-        me.MAX_SUBPAGES = 8;
+        me.MAX_SUBPAGES = 9;
         // 创建toolbar
         me.setup(new app.subview.toolbar({
               title  : "百度音乐"
@@ -24,6 +24,7 @@ app.pageview.index = app.pageview.extend({
         me.setup(new app.subview.index_category(options, me));
         me.setup(new app.subview.index_singerhot(options, me));
         me.setup(new app.subview.index_musichot(options, me));
+        me.setup(new app.subview.index_bottom(options, me));
     }
 
 });

@@ -8,12 +8,17 @@ app.pageview.musichot = app.pageview.extend({
 
     ,init: function(options){
         var me = this;
+        
+        me.setup(new app.subview.toolbar({
+              title  : "热歌榜"
+            , action : 'musichot'
+        }, me));
 
-        // 创建header子视图
-        me.setup(new app.subview.musichot_header(options, me));
 
         // 创建content子视图
         me.setup(new app.subview.musichot_content(options, me));
+        
+        me.setup(new app.subview.shortcut({action:'musichot'}, me));
     }
 
 });

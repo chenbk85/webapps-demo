@@ -1,3 +1,35 @@
 <script type="text/template" id="template_topicdetail_content">
-hello
+    <section class="content">
+        <div class="topic">
+            <div class="mod">
+                <div class="pic">
+                    <img alt="<%= topicdetail.name %>" src="<%= topicdetail.pic %>">
+                </div>
+                <div class="info">
+                    <p data-desc="<%= topicdetail.desc %>"><%= topicdetail.desc %>...<a class="expand">展开</a></p>
+                    <time class="txt" datetime="2013-04-03">创建时间：<%= topicdetail.createTime %></time>
+                </div>
+            </div>
+            <% _.each(topicdetail.list,function(item,index){ %>
+            <ul class="list withbar">
+                <li class="hd"><%= item.name %></li>
+                <ul class="list">
+                    <% _.each(item.songList,function(sitem,sindex){ %>
+                    <li class="song url log song-<%= sitem.song_id %>">
+                        <div class="left">
+                            <div class="rank"><%= sindex %></div>
+                            <div class="info">
+                                <b><a href="#play/<%= sitem.song_id %>"><%= sitem.title %></a></b>
+                                <br><span class="txt"><%= sitem.author %></span>
+
+                            </div>
+                        </div>
+                        <div class="download need-active">下载</div>
+                    </li>
+                    <% }); %>
+                </ul>
+            </ul>
+            <% }); %>
+        </div>
+    </section>
 </script>

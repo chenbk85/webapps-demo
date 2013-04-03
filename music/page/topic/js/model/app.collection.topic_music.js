@@ -11,7 +11,7 @@ app.collection.topic_music = app.collection.extend({
     }
 
     ,parse: function(resp, xhr){
-        return resp.content;
+        return resp.albumList;
     }
 
 });

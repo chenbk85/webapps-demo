@@ -1,3 +1,9 @@
 <script type="text/template" id="template_category_content">
-hello
+    <section class="content">
+        <ul class="list">
+            <% _.each(category, function(item, index){ %>
+            <li class="tag log url arrow"><a href="#categorydetail/<%= item.label %>"><%= item.label %></a></li>
+            <% }); %>
+        </ul>
+    </section>
 </script>

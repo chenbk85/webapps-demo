@@ -3,7 +3,7 @@
         <div>
             <div class="hd log url  need-active">
                 <h2>热歌榜</h2>
-                <div>更多</div>
+                <div><a href="#musichot">更多</a></div>
             </div>
             <ul class="list">
                 <% _.each(musichot, function(item, index){ %>
@@ -11,7 +11,7 @@
                     <div class="left">
                         <div class="rank equal"><%= item.rank %></div>
                         <div class="info">
-                            <b><%= item.title %></b>
+                            <b><a href="#play/<%= item.id %>"><%= item.title %></a></b>
                             <span class="txt"><%= item.singer %></span>
                         </div>
                     </div>

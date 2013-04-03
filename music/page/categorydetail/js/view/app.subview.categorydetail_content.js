@@ -30,10 +30,10 @@ app.subview.categorydetail_content = app.subview.extend({
         var me = this;
 
         // 使用append，避免将loading冲掉
-       
+        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                categorydetail: me.collection.toJSON()[0]
             })
         );
 

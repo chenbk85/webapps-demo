@@ -33,7 +33,7 @@ app.subview.play_content = app.subview.extend({
        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                sing_info: me.collection.toJSON()[0]
             })
         );
 

@@ -33,7 +33,7 @@ app.subview.topicdetail_content = app.subview.extend({
        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                topicdetail: me.collection.toJSON()[0]
             })
         );
 

@@ -3,11 +3,11 @@
  */
 (function($) {
 
-app.subview.index_musichot = app.subview.extend({
-    el: "#index_page_musichot"
+app.subview.index_bottom = app.subview.extend({
+    el: "#index_page_bottom"
 
     ,template: _.template(
-        $('#template_index_musichot').text()
+        $('#template_index_bottom').text()
     )
 
     ,events: {}
@@ -19,7 +19,7 @@ app.subview.index_musichot = app.subview.extend({
 
         // 创建collection数据对象
         
-        me.collection = new app.collection.musichot_music(null, options);
+        me.collection = new app.collection.index_music(null, options);
         
        
         // 展示loading
@@ -33,7 +33,7 @@ app.subview.index_musichot = app.subview.extend({
        
         me.$el.append(
             me.template({
-                musichot: me.collection.toJSON()
+                content: me.collection.toJSON()
             })
         );
 
@@ -47,12 +47,8 @@ app.subview.index_musichot = app.subview.extend({
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.collection.on('reset', me.render, me);
-        me.$el.find('.list li').on('click',me.click,me);
     }
-    ,click : function(e){
-        console.log($(e.target));
-    }
-    
+
     ,onpagebeforechange: function(params){
         var me = this, 
             from = params.from,
