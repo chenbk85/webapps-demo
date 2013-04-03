@@ -1,0 +1,18 @@
+<script type="text/template" id="t-toolbar">
+    <header id="header">
+        <div class="bar">
+            <div class="left">
+                <% if(options.action == 'index'){ %>
+                    <a class="btn-rect ref btn-baidu" target="_blank" href="http://m.baidu.com?from=music">°Ù¶È</a>
+                    <a href="#product"><span class="btn-rect btn-product"></span></a>
+                <% }else{ %>
+                    <a href="#<%= options.from %>"><span class="btn need-active btn-back"></span></a>
+                 <% } %>
+            </div>
+            <h1><%= options.title %></h1>
+            <div class="right">
+                <span class="btn need-active btn-search"></span>
+            </div>
+        </div>
+    </header>
+</script>

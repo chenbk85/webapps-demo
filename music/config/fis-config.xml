@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project basedir=".." modulename="music" framework="webapp-1.3.7.3">
+    <!--
+        ================================================
+        使用json为测试数据
+        ================================================
+    -->
+    <request>
+        <urlmap 
+            match="/^\/music\/ad\.json$/" 
+            rewrite="data/ad.json"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/catejory\.json$/" 
+            rewrite="data/catejory.json"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/singer\.php$/" 
+            rewrite="data/singer.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/music\.php$/" 
+            rewrite="data/music.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+    </request>
+    
+    <setting>
+        <!--静态文件压缩-->
+        <CompressSyntax enable="false"/>
+        <!--css压缩-->
+        <CssCompressSyntax enable="false" yui_version = "2.4.7"/>
+    </setting>
+        
+    
+    <merge>
+        <app>
+            <import>/js/App*.js</import>
+            <import>/js/subview/*.js</import>
+            <import>/page/*.js</import>
+            <import>/page/*.css</import>
+        </app>   
+    </merge>
+    <build name="build" outputdir="./output" />
+</project>

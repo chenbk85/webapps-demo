@@ -1,0 +1,24 @@
+<script type="text/template" id="template_index_musichot">
+    <div class="songs mod-2">
+        <div>
+            <div class="hd log url  need-active">
+                <h2>热歌榜</h2>
+                <div>更多</div>
+            </div>
+            <ul class="list">
+                <% _.each(musichot, function(item, index){ %>
+                <li class="song url log" songid="<%= item.id %>">
+                    <div class="left">
+                        <div class="rank equal"><%= item.rank %></div>
+                        <div class="info">
+                            <b><%= item.title %></b>
+                            <span class="txt"><%= item.singer %></span>
+                        </div>
+                    </div>
+                    <div class="download need-active">下载</div>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</script>
