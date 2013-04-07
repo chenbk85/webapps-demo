@@ -19,7 +19,7 @@ app.subview.index_category = app.subview.extend({
 
         // 创建collection数据对象
         
-        me.collection = new app.collection.index_music(null, options);
+        me.collection = new app.collection.category_music(null, options);
         
        
         // 展示loading
@@ -33,7 +33,7 @@ app.subview.index_category = app.subview.extend({
        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                category: me.collection.toJSON()
             })
         );
 

@@ -29,26 +29,28 @@ app.subview.index_nav = app.subview.extend({
     ,render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
         me.$el.append(
             me.template({
                 content: me.collection.toJSON()
             })
         );
-
-        // 隐藏loading
+        
+        me.resetWidth.call(me);
+        
         me.hideLoading();
 
         return me;
     }
-
+    
+    
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.collection.on('reset', me.render, me);
+        
+        
     }
-
+    
     ,onpagebeforechange: function(params){
         var me = this, 
             from = params.from,
@@ -65,6 +67,46 @@ app.subview.index_nav = app.subview.extend({
                 });
             }
         }
+    }
+    
+    ,resetWidth : function(){
+        var 
+            me = this,
+            width = $(window).width(),
+            outList = me.$el.find('.outList'),
+            outListItem = me.$el.find('.outListItem'),
+            identify = me.$el.find('.identify');
+        
+        outList.width( width * 2);
+        outListItem.width( width );
+        
+        me.$el.find('.navs-opts .prev').on('click',function(){
+            
+            var outListMarginleft = parseInt( outList.css('marginLeft') ? (outList.css('marginLeft').replace('px','')) : 0,10);
+            
+            if(outListMarginleft == 0){
+                
+                return;
+            }
+            outList.css('marginLeft',outListMarginleft + width);
+            
+            identify.find('li').removeClass('on');
+            identify.find('li.first').addClass('on');
+            
+        });
+        me.$el.find('.navs-opts .next').on('click',function(){
+            var outListMarginleft = parseInt( outList.css('marginLeft') ? (outList.css('marginLeft').replace('px','')) : 0,10);
+            
+            if(outListMarginleft == -width){
+                
+                return;
+            }
+            
+            outList.css('marginLeft',outListMarginleft - width);
+            identify.find('li').removeClass('on');
+            identify.find('li.second').addClass('on');
+        });
+        
     }
 
 });

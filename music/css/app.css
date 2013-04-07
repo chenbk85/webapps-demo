@@ -437,6 +437,9 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .route-home .songs .hd h2, .route-routeForAladin .songs .hd h2 {text-align: left;}
 .route-home .songs .song b, .route-routeForAladin .songs .song b {margin-right: 8px;}
 .route-home .songs .song .left .rank, .route-routeForAladin .songs .song .left .rank {width: 35px;}
+.route-home .songs .song .left .info a {color:#333;}
+.route-home .songs .hd a {color:#FFF;}
+.list li.song .info a {color:#333;}
 .route-home .songs .song .left .equal, .route-routeForAladin .songs .song .left .equal {background: url("//mu7.bdstatic.com/st/i/jkGSV56t.png") no-repeat -131px -2371px;background-size: 174px 2400px;}
 .route-home .songs .song .left .up, .route-routeForAladin .songs .song .left .up {background: url("//mu7.bdstatic.com/st/i/jkGSV56t.png") no-repeat -130px -2303px;background-size: 174px 2400px;}
 .route-home .songs .song .left .down, .route-routeForAladin .songs .song .left .down {background: url("//mu7.bdstatic.com/st/i/jkGSV56t.png") no-repeat -130px -2339px;background-size: 174px 2400px;}
@@ -445,17 +448,24 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .route-home .tags:before, .route-routeForAladin .tags:before, .route-home .tags:after, .route-routeForAladin .tags:after {display: table;content: "";line-height: 0;}
 .route-home .tags:after, .route-routeForAladin .tags:after {clear: both;}
 .route-home .tags .hd, .route-routeForAladin .tags .hd {width: 88px;height: 138px;display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: vertical;-moz-box-orient: vertical;box-orient: vertical;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: start;-moz-box-pack: start;box-pack: start;-webkit-box-align: center;-moz-box-align: center;box-align: center;background-color: rgb(153,108,179);margin-right: 8px;color: white;position: relative;}
+.route-home .tags .hd a, .route-routeForAladin .tags .hd a {color:#fff;}
 .route-home .tags .hd div, .route-routeForAladin .tags .hd div {margin-bottom: -40px;}
 .route-home .tags .hd.active:after, .route-routeForAladin .tags .hd.active:after {background-color: rgba(0,0,0,0.3) !important;width: 100%;height: 100%;content: "";position: absolute;top: 0;left: 0;}
 .route-home .tags ul, .route-routeForAladin .tags ul {-webkit-box-flex: 1;-moz-box-flex: 1;box-flex: 1;}
-.route-home .tags ul li, .route-routeForAladin .tags ul li {float: left;padding: 2px 5px;margin: 0 11px 11px 0;display: inline-block;background: rgb(255,255,255);border: 1px solid rgb(153,153,153);font-size: 13px;}
+.route-home .tags ul li, .route-routeForAladin .tags ul li {float: left;padding: 2px 5px;margin: 0 11px 16px 0;display: inline-block;background: rgb(255,255,255);border: 1px solid rgb(153,153,153);font-size: 13px;}
 .route-home .tags ul li.red, .route-routeForAladin .tags ul li.red {color: rgb(222,75,63);}
 .route-home .tags ul li.blue, .route-routeForAladin .tags ul li.blue {color: rgb(54,163,225);}
 .route-home .tags ul li.black, .route-routeForAladin .tags ul li.black {color: rgb(51,51,51);}
+
+.route-home .tags ul li.red a, .route-routeForAladin .tags ul li.red a {color: rgb(222,75,63);}
+.route-home .tags ul li.blue a, .route-routeForAladin .tags ul li.blue  a {color: rgb(54,163,225);}
+.route-home .tags ul li.black a, .route-routeForAladin .tags ul li.black a {color: rgb(51,51,51);}
+
+
 .route-home .tags ul li.active, .route-routeForAladin .tags ul li.active {background-color: rgba(0,0,0,0.1) !important;}
 .route-home .tags ul li:first-child, .route-routeForAladin .tags ul li:first-child {margin-left: 0;}
-.route-home .artists, .route-routeForAladin .artists {margin: 15px -12px 20px 15px;overflow: hidden;max-height: 146px;}
-.route-home .artists ul, .route-routeForAladin .artists ul {text-align: center;clear: both;width: 100%;height: 145px;overflow: hidden;}
+.route-home .artists, .route-routeForAladin .artists {margin: 15px -12px 20px 15px;overflow: hidden;max-height: 150px;}
+.route-home .artists ul, .route-routeForAladin .artists ul {text-align: center;clear: both;width: 100%;height: 150px;overflow: hidden;}
 .route-home .artists ul li, .route-routeForAladin .artists ul li {position: relative;border: 1px solid rgb(221,221,221);float: left;margin: 0 7px 12px 0;display: inline-block;}
 .route-home .artists ul li img, .route-routeForAladin .artists ul li img {width: 65px;height: 65px;}
 .route-home .artists ul li .title, .route-routeForAladin .artists ul li .title {width: 65px;height: 20px;position: absolute;display: block;bottom: 0;font-size: 12px;background: rgba(0,0,0,0.5);color: rgb(255,255,255);text-align: center;}

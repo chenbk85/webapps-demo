@@ -3,37 +3,43 @@
  */
 (function($) {
 
-app.subview.index_musichot = app.subview.extend({
-    el: "#index_page_musichot"
-
-    ,template: _.template(
-        $('#template_index_musichot').text()
+app.subview.categorydetail_content_detail = app.subview.extend({
+   
+    template: _.template(
+        $('#template_categorydetail_content').text()
     )
 
-    ,events: {}
+    ,className : 'categorydetail_content_detail'
 
     ,init: function(options){
+        
         var me = this;
 
         me.isFirstLoad = true;
 
         // 创建collection数据对象
-        options.size = 5;
-        me.collection = new app.collection.musichot_music(null, options);
+        
+        me.setup(new app.subview.toolbar({
+              title  : me.options.id
+            , action : 'categorydetail'
+        }, me));
+        
+        me.model = new app.model.categorydetail_music(null, options);
         
        
         // 展示loading
         me.showLoading(me.$el);
+        
     }
 
     ,render: function(){
         var me = this;
 
         // 使用append，避免将loading冲掉
-       
+        
         me.$el.append(
             me.template({
-                musichot: me.collection.toJSON()
+                categorydetail: me.model.toJSON()
             })
         );
 
@@ -45,15 +51,17 @@ app.subview.index_musichot = app.subview.extend({
 
     ,registerEvents: function(){
         var me = this, ec = me.ec;
-        ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
-        me.$el.find('.list li').on('click',me.click,me);
+        ec.on("subpagebeforechange", me.onsubpagebeforechange, me);
+        me.model.on('change', me.render, me);
     }
-    ,click : function(e){
-        console.log($(e.target));
+    ,unregisterEvents: function(){
+        var me = this, ec = me.ec;
+
+        ec.off('subpagebeforechange', me.onsubpagebeforechange, me);
+        me.model.off('change', me.render, me);
+
     }
-    
-    ,onpagebeforechange: function(params){
+    ,onsubpagebeforechange: function(params){
         var me = this, 
             from = params.from,
             to = params.to,
@@ -62,7 +70,7 @@ app.subview.index_musichot = app.subview.extend({
         if(to == me.ec) {
             me.$el.show();
             if(me.isFirstLoad){
-                me.collection.fetch({
+                me.model.fetch({
                     success: function(){
                         me.isFirstLoad = false;
                     }

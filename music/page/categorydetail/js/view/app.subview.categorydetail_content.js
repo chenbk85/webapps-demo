@@ -6,47 +6,29 @@
 app.subview.categorydetail_content = app.subview.extend({
     el: "#categorydetail_page_content"
 
-    ,template: _.template(
-        $('#template_categorydetail_content').text()
-    )
-
-    ,events: {}
+   
 
     ,init: function(options){
-        var me = this;
+        var me = this, 
+            id = options.id,
+            subView;
 
-        me.isFirstLoad = true;
+        me.MAX_SUBPAGES = 1;
 
-        // 创建collection数据对象
-        
-        me.collection = new app.collection.categorydetail_music(null, options);
-        
-       
-        // 展示loading
-        me.showLoading(me.$el);
-    }
-
-    ,render: function(){
-        var me = this;
-
-        // 使用append，避免将loading冲掉
-        
-        me.$el.append(
-            me.template({
-                categorydetail: me.collection.toJSON()[0]
-            })
+        subView = new app.subview.categorydetail_content_detail(
+            $.extend({}, options), 
+            me
         );
+        me.append(subView);
 
-        // 隐藏loading
-        me.hideLoading();
-
-        return me;
+        me.registerSubpage(id, subView);
     }
+
+
 
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
     }
 
     ,onpagebeforechange: function(params){
@@ -56,14 +38,19 @@ app.subview.categorydetail_content = app.subview.extend({
             param = params.params;
 
         if(to == me.ec) {
-            me.$el.show();
-            if(me.isFirstLoad){
-                me.collection.fetch({
-                    success: function(){
-                        me.isFirstLoad = false;
-                    }
-                });
+            if(!me.getSubpage(param.id)){
+                var subView = new app.subview.categorydetail_content_detail(
+                    $.extend({}, param), 
+                    me
+                );
+                me.append(subView);
+                me.registerSubpage(param.id, subView);
             }
+
+            me.setCurrentSubpage(me.getSubpage(param.id));
+            me.recycleSubpage();
+
+            me.$el.show();
         }
     }
 

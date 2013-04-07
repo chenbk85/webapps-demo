@@ -47,7 +47,7 @@ app.subview.toolbar = app.subview.extend({
         
 
         if(to == me.ec) {
-            me.$el.show();
+            me.$el && me.$el.show();
         }
     }
 

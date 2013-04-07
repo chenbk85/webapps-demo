@@ -12,7 +12,7 @@ app.pageview.play = app.pageview.extend({
         
         
         // 创建header子视图
-        me.setup(new app.subview.play_header(options, me));
+        //me.setup(new app.subview.play_header(options, me));
 
         // 创建content子视图
         me.setup(new app.subview.play_content(options, me));
