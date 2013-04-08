@@ -17,11 +17,10 @@ app.subview.topicdetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
+
         me.setup(new app.subview.toolbar({
               title  : me.options.id
-            , action : 'categorydetail'
+            , action : 'topicdetail'
         }, me));
         
         me.model = new app.model.topicdetail_music(null, options);
@@ -38,7 +37,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
        
         me.$el.append(
             me.template({
-                topicdetail: me.collection.toJSON()
+                topicdetail: me.model.toJSON()
             })
         );
 

@@ -1,6 +1,4 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.categorydetail_content = app.subview.extend({

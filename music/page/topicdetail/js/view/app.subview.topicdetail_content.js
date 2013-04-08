@@ -15,7 +15,7 @@ app.subview.topicdetail_content = app.subview.extend({
 
         me.MAX_SUBPAGES = 1;
 
-        subView = new app.subview.topicdetail_music_detail(
+        subView = new app.subview.topicdetail_content_detail(
             $.extend({}, options), 
             me
         );
@@ -39,7 +39,7 @@ app.subview.topicdetail_content = app.subview.extend({
 
         if(to == me.ec) {
             if(!me.getSubpage(param.id)){
-                var subView = new app.subview.topicdetail_music_detail(
+                var subView = new app.subview.topicdetail_content_detail(
                     $.extend({}, param), 
                     me
                 );

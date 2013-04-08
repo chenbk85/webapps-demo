@@ -17,8 +17,7 @@ app.subview.index_nav = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
+
         me.collection = new app.collection.index_music(null, options);
         
        
@@ -75,14 +74,21 @@ app.subview.index_nav = app.subview.extend({
             width = $(window).width(),
             outList = me.$el.find('.outList'),
             outListItem = me.$el.find('.outListItem'),
-            identify = me.$el.find('.identify');
+            identify = me.$el.find('.identify'),
+            identifyLI = identify.find('li'),
+            getOutListMarginLeft = null;
+        
+        getOutListMarginLeft = function(){
+            var mLeft = outList.css('marginLeft');
+            return parseInt( mLeft ? mLeft.replace('px','') : 0,10);
+        };
         
         outList.width( width * 2);
         outListItem.width( width );
         
         me.$el.find('.navs-opts .prev').on('click',function(){
             
-            var outListMarginleft = parseInt( outList.css('marginLeft') ? (outList.css('marginLeft').replace('px','')) : 0,10);
+            var outListMarginleft = getOutListMarginLeft();
             
             if(outListMarginleft == 0){
                 
@@ -90,12 +96,12 @@ app.subview.index_nav = app.subview.extend({
             }
             outList.css('marginLeft',outListMarginleft + width);
             
-            identify.find('li').removeClass('on');
-            identify.find('li.first').addClass('on');
+            identifyLI.removeClass('on');
+            identifyLI.eq(0).addClass('on');
             
         });
         me.$el.find('.navs-opts .next').on('click',function(){
-            var outListMarginleft = parseInt( outList.css('marginLeft') ? (outList.css('marginLeft').replace('px','')) : 0,10);
+            var outListMarginleft = getOutListMarginLeft();
             
             if(outListMarginleft == -width){
                 
@@ -103,8 +109,8 @@ app.subview.index_nav = app.subview.extend({
             }
             
             outList.css('marginLeft',outListMarginleft - width);
-            identify.find('li').removeClass('on');
-            identify.find('li.second').addClass('on');
+            identifyLI.removeClass('on');
+            identifyLI.eq(1).addClass('on');
         });
         
     }

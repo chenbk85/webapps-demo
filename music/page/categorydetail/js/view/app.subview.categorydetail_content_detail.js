@@ -17,17 +17,14 @@ app.subview.categorydetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
+
         me.setup(new app.subview.toolbar({
               title  : me.options.id
             , action : 'categorydetail'
         }, me));
         
         me.model = new app.model.categorydetail_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
         
     }
@@ -35,15 +32,13 @@ app.subview.categorydetail_content_detail = app.subview.extend({
     ,render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-        
+
         me.$el.append(
             me.template({
                 categorydetail: me.model.toJSON()
             })
         );
 
-        // 隐藏loading
         me.hideLoading();
 
         return me;
