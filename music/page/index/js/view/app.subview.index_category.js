@@ -2,7 +2,8 @@
 (function($) {
 
 app.subview.index_category = app.subview.extend({
-    el: "#index_page_category"
+
+     el: "#index_page_category"
 
     ,template: _.template(
         $('#template_index_category').text()
@@ -14,7 +15,6 @@ app.subview.index_category = app.subview.extend({
         var me = this;
 
         me.isFirstLoad = true;
-
 
         me.collection = new app.collection.category_music(null, options);
 

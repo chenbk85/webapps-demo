@@ -1,6 +1,4 @@
-/**
- * vs产品的Router类
- */
+
 (function($) {
 
 app.router.vs = app.router.extend({
@@ -19,7 +17,7 @@ app.router.vs = app.router.extend({
         , 'singerdetail/:id'   : 'singerdetail'
         , 'singerhot'          : 'singerhot'
         , 'topic'              : 'topic'
-        , 'topicdetail/:id'    : 'topicdetail'
+        , 'topicdetail/:id/:name'    : 'topicdetail'
 
        
     }
@@ -49,18 +47,14 @@ app.router.vs = app.router.extend({
 
     // 页面切换动画配置
     ,pageTransition: {
-        'index-feedback' :'slide'
-        ,'feedback-app'  : 'fade'
+          'index-feedback' :'slide'
+        , 'feedback-app'   : 'fade'
 
     }
 
     ,index: function(type) {
-        if(!type) {
-            type = 'focus';
-        }
-        this.doAction('index', {
-                type: decodeURIComponent(type)
-            },
+        
+        this.doAction('index', {},
             //禁止发送
             {disable: true}
         );
@@ -89,7 +83,7 @@ app.router.vs = app.router.extend({
     }
     ,categorydetail : function(id){
         id = id || 0;
-        this.doAction('categorydetail', {id:id},
+        this.doAction('categorydetail', {id:decodeURIComponent(id)},
             //禁止发送
             {disable: true}
         );
@@ -110,7 +104,7 @@ app.router.vs = app.router.extend({
     }
     ,play : function(id){
         id = id || 0;
-        this.doAction('play', {id:id},
+        this.doAction('play', {id:decodeURIComponent(id)},
             //禁止发送
             {disable: true}
         );
@@ -124,7 +118,7 @@ app.router.vs = app.router.extend({
     }
     ,singerdetail : function(id){
         id = id || 0;
-        this.doAction('singerdetail', {id:id},
+        this.doAction('singerdetail', {id:decodeURIComponent(id)},
             //禁止发送
             {disable: true}
         );
@@ -143,9 +137,10 @@ app.router.vs = app.router.extend({
             {disable: true}
         );
     }
-    ,topicdetail : function(id){
+    ,topicdetail : function(id,name){
         id = id || 0;
-        this.doAction('topicdetail', {id:id},
+        name = name || '';
+        this.doAction('topicdetail', {id:decodeURIComponent(id),name:decodeURIComponent(name)},
             //禁止发送
             {disable: true}
         );

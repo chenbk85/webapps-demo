@@ -12,7 +12,6 @@ app.pageview.feedback = app.pageview.extend({
         // 创建toolbar
         me.setup(new app.subview.toolbar({
               title  : "意见反馈"
-            , action : 'feedback'
         }, me));
 
 

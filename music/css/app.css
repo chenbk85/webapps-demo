@@ -3,7 +3,8 @@ audio, canvas, video {display: inline-block;}
 audio:not([controls]) {display: none;height: 0;}
 [hidden] {display: none;}
 html {font-family: sans-serif;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}
-body {margin: 0;}
+body {margin: 0;background:#f3f3f3;}
+
 a:focus {outline: thin dotted;}
 a:active, a:hover {outline: 0;}
 h1 {font-size: 2em;margin: 0.67em 0;}
@@ -125,10 +126,13 @@ a.expand.on:after {top: -9px;border-color: transparent transparent rgb(40,168,23
 #main {position: relative;}
 #main .bannerAD {width: 100%;height: 50px;display: block;background: url("//mu5.bdstatic.com/st/i/3YlOtVsJ.png") no-repeat center;background-size: cover;}
 #main .zsh {background-image: url("//mu7.bdstatic.com/st/i/5IywzITx.jpg");background-size: cover;}
-#footer {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: justify;-moz-box-pack: justify;box-pack: justify;-webkit-box-align: center;-moz-box-align: center;box-align: center;margin: 20px 10px 0;padding-bottom: 10px;}
-#footer .btn {-webkit-box-flex: 1;-moz-box-flex: 1;box-flex: 1;display: block;margin: 0 5px;}
-#footer .btn:first-child {margin-left: 0;}
-#footer .btn:last-child {margin-right: 0;}
+
+#footer,#footer-index {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: justify;-moz-box-pack: justify;box-pack: justify;-webkit-box-align: center;-moz-box-align: center;box-align: center;margin: 20px 10px 0;padding-bottom: 10px;}
+#footer .btn,#footer-index .btn  {-webkit-box-flex: 1;-moz-box-flex: 1;box-flex: 1;display: block;margin: 0 5px;}
+#footer .btn:first-child,#footer-index .btn:first-child {margin-left: 0;}
+#footer .btn:last-child,#footer-index .btn:last-child {margin-right: 0;}
+#footer,#footer-index {background:#f3f3f3;}
+
 body.route-search #header .search {visibility: visible;}
 body.route-search #header .search.show-input {height: 45px;overflow: hidden;}
 body.route-search #header .bar .btn-search {display: none;}
@@ -513,13 +517,12 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 @import url("./vs-toolbar.css")
 @import url("./ui-refresh.css")
 
+.global-loading {
+    background:#f3f3f3;
+}
 #wrapper {
     width:100%;
-    position:absolute;
-    top:40px;
-    left:0;
-    right:0;
-    bottom:0;
+    margin-top:43px;
 
 }
 

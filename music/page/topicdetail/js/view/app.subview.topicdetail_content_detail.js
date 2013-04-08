@@ -18,10 +18,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
         me.isFirstLoad = true;
 
 
-        me.setup(new app.subview.toolbar({
-              title  : me.options.id
-            , action : 'topicdetail'
-        }, me));
+       
         
         me.model = new app.model.topicdetail_music(null, options);
         
@@ -74,6 +71,10 @@ app.subview.topicdetail_content_detail = app.subview.extend({
                     }
                 });
             }
+            
+            new app.subview.toolbar({
+                  title  : me.options.name
+            }, me);
         }
     }
 

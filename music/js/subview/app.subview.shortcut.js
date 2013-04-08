@@ -1,11 +1,9 @@
-/**
- * Ê×Ò³ContentViewÀà
- */
+
 (function($) {
 
 app.subview.shortcut = app.subview.extend({
 
-    el: "#shortcut"
+    el: "#footer"
 
     ,template: _.template(
         $('#t-shortcut').text()
@@ -15,21 +13,17 @@ app.subview.shortcut = app.subview.extend({
 
     ,init: function(options){
         var me = this;
-        me.el = '#' + me.options.action + '_page_shortcut';
         me.render.call(me);
     }
 
     ,render: function(){
         var me = this;
 
-        $(me.el).html(
+        me.$el.html(
             me.template({
                 options: me.options
             })
         );
-
-        
-
         return me;
     }
 
@@ -48,6 +42,8 @@ app.subview.shortcut = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+            $('#footer-index').hide();
+            
         }
     }
 

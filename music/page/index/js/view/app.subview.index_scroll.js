@@ -1,6 +1,4 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.index_scroll = app.subview.extend({
@@ -57,9 +55,7 @@ app.subview.index_scroll = app.subview.extend({
             count          = swipeLI.length,
             intervalHandle = null,
             intervalFun    = null,
-            cur            = 0
-            
-            ;
+            cur            = 0;
         
         swipeLI.css('width',screenWidth);
         swipeUL.css('width',screenWidth * count);

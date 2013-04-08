@@ -17,11 +17,6 @@ app.subview.categorydetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-
-        me.setup(new app.subview.toolbar({
-              title  : me.options.id
-            , action : 'categorydetail'
-        }, me));
         
         me.model = new app.model.categorydetail_music(null, options);
 
@@ -71,6 +66,10 @@ app.subview.categorydetail_content_detail = app.subview.extend({
                     }
                 });
             }
+            
+            new app.subview.toolbar({
+                  title  : me.options.id
+            }, me);
         }
     }
 

@@ -1,6 +1,4 @@
-/**
- * Ê×Ò³ContentViewÀà
- */
+
 (function($) {
 
 app.subview.toolbar = app.subview.extend({
@@ -15,7 +13,6 @@ app.subview.toolbar = app.subview.extend({
 
     ,init: function(options){
         var me = this;
-
         me.render.call(me);
     }
 

@@ -1,6 +1,4 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.index_cover = app.subview.extend({

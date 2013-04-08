@@ -11,8 +11,9 @@ app.pageview.categorydetail = app.pageview.extend({
 
         me.setup(new app.subview.categorydetail_content(options, me));
         
-        me.setup(new app.subview.shortcut({action:'categorydetail'}, me));
+        me.setup(new app.subview.shortcut({}, me));
     }
+    
 
 });
 
