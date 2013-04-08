@@ -3,15 +3,19 @@
 app.collection.play_music = app.collection.extend({
 
     initialize: function(models, options){
+        
         var me = this;
+        me.options = options;
     }
 
     ,url: function(){
-        return '/music/ad.json?' + (new Date()).getTime();
+        var me = this;
+        
+        return '/music/play.php?id='+ me.options.id +'&' + (new Date()).getTime();
     }
 
     ,parse: function(resp, xhr){
-        return resp.content;
+        return resp.songinfo;
     }
 
 });

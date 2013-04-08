@@ -17,8 +17,7 @@ app.subview.index_nav = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
+
         me.collection = new app.collection.index_music(null, options);
         
        
@@ -29,26 +28,28 @@ app.subview.index_nav = app.subview.extend({
     ,render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
         me.$el.append(
             me.template({
                 content: me.collection.toJSON()
             })
         );
-
-        // 隐藏loading
+        
+        me.resetWidth.call(me);
+        
         me.hideLoading();
 
         return me;
     }
-
+    
+    
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.collection.on('reset', me.render, me);
+        
+        
     }
-
+    
     ,onpagebeforechange: function(params){
         var me = this, 
             from = params.from,
@@ -65,6 +66,53 @@ app.subview.index_nav = app.subview.extend({
                 });
             }
         }
+    }
+    
+    ,resetWidth : function(){
+        var 
+            me = this,
+            width = $(window).width(),
+            outList = me.$el.find('.outList'),
+            outListItem = me.$el.find('.outListItem'),
+            identify = me.$el.find('.identify'),
+            identifyLI = identify.find('li'),
+            getOutListMarginLeft = null;
+        
+        getOutListMarginLeft = function(){
+            var mLeft = outList.css('marginLeft');
+            return parseInt( mLeft ? mLeft.replace('px','') : 0,10);
+        };
+        
+        outList.width( width * 2);
+        outListItem.width( width );
+        
+        me.$el.find('.navs-opts .prev').on('click',function(){
+            
+            var outListMarginleft = getOutListMarginLeft();
+            
+            if(outListMarginleft == 0){
+                
+                return;
+            }
+            outList.css('marginLeft',outListMarginleft + width);
+            
+            identifyLI.removeClass('on');
+            identifyLI.eq(0).addClass('on');
+            
+        });
+        me.$el.find('.navs-opts .next').on('click',function(){
+            var outListMarginleft = getOutListMarginLeft();
+            
+            if(outListMarginleft == -width){
+                
+                return;
+            }
+            
+            outList.css('marginLeft',outListMarginleft - width);
+            identifyLI.removeClass('on');
+            identifyLI.eq(1).addClass('on');
+        });
+        
     }
 
 });

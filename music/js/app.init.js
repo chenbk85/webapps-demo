@@ -2,7 +2,26 @@
 
 $.extend(app, {
     init: function() {
-        // loading object
+        /*
+        $('body').css({ 
+            height : document.documentElement.clientHeight,
+            width  : $(window).width()
+        });
+        
+       
+        
+        
+        window.setTimeout(function(){
+             $('#index_page').css({ 
+                height : 10000
+            });
+            new iScroll('index_page',{
+                hScroll : false,
+                hScrollbar : false,
+                vScrollbar : false
+            });
+        },10*1000);
+        */
         app.$globalLoading = $('#wrapper .global-loading');
         app.$pageLoading = $('#wrapper .page-loading');
 

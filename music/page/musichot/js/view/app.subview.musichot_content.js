@@ -33,7 +33,7 @@ app.subview.musichot_content = app.subview.extend({
        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                musichot: me.collection.toJSON()
             })
         );
 

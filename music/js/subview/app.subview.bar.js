@@ -5,7 +5,7 @@
 
 app.subview.toolbar = app.subview.extend({
 
-    el: "#toolbar"
+    el: "#header"
 
     ,template: _.template(
         $('#t-toolbar').text()
@@ -15,20 +15,16 @@ app.subview.toolbar = app.subview.extend({
 
     ,init: function(options){
         var me = this;
-        me.el = '#' + me.options.action + '_page_header';
+
         me.render.call(me);
     }
 
     ,render: function(){
         var me = this;
-
-        $(me.el).html(
-            me.template({
-                options: me.options
-            })
-        );
-
         
+        me.$el.html(me.template({
+            options: me.options
+        }));
 
         return me;
     }
@@ -47,7 +43,7 @@ app.subview.toolbar = app.subview.extend({
         
 
         if(to == me.ec) {
-            me.$el.show();
+            me.$el && me.$el.show();
         }
     }
 

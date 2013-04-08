@@ -4,6 +4,8 @@ app.collection.index_music = app.collection.extend({
 
     initialize: function(models, options){
         var me = this;
+        
+        me.options = options;
     }
 
     ,url: function(){

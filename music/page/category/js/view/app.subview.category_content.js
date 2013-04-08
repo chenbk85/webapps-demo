@@ -17,27 +17,23 @@ app.subview.category_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
+
         me.collection = new app.collection.category_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
     }
 
     ,render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
+
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                category: me.collection.toJSON()
             })
         );
 
-        // 隐藏loading
+
         me.hideLoading();
 
         return me;

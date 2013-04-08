@@ -12,8 +12,8 @@
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap 
-            match="/^\/music\/catejory\.json$/" 
-            rewrite="data/catejory.json"
+            match="/^\/music\/category\.json$/" 
+            rewrite="data/category.json"
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap 
@@ -24,6 +24,36 @@
         <urlmap 
             match="/^\/music\/music\.php$/" 
             rewrite="data/music.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/musicnew\.php$/" 
+            rewrite="data/musicnew.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/musichot\.php$/" 
+            rewrite="data/musichot.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/topic\.php$/" 
+            rewrite="data/topic.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/topicdetail\.php$/" 
+            rewrite="data/topicdetail.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/play\.php$/" 
+            rewrite="data/play.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
+            match="/^\/music\/categorydetail\.php$/" 
+            rewrite="data/categorydetail.php"
             header="Content-Type:text/javascript; charset=UTF-8"
         />
     </request>
