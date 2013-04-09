@@ -11,7 +11,7 @@ app.collection.singer_music = app.collection.extend({
     }
 
     ,parse: function(resp, xhr){
-        return resp.content;
+        return resp.artist;
     }
 
 });

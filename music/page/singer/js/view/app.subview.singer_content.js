@@ -33,7 +33,7 @@ app.subview.singer_content = app.subview.extend({
        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                'singer': me.collection.toJSON()
             })
         );
 

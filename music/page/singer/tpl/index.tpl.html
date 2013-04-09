@@ -1,3 +1,15 @@
 <script type="text/template" id="template_singer_content">
-hello
+    <section class="content">
+        <ul class="list">
+            <% _.each(singer, function(item, index){ %>
+            <li class="artist left url arrow log">
+                <img class="pic" alt="<%= item.name %>"
+                     org_src="<%= item.avatar_middle %>"
+                     src="<%= item.avatar_middle %>">
+                <div class="info"><%= item.name %></div>
+            </li>
+            <% }); %>
+            <li class="load-more need-active">查看更多...</li>
+        </ul>
+    </section>
 </script>
