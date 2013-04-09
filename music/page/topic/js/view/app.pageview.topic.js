@@ -28,7 +28,8 @@ app.pageview.topic = app.pageview.extend({
         
         if(to == me.ec){
             new app.subview.toolbar({
-                  title  : "专题"
+                  title  : "专题",
+                  action : 'topic'
             }, me);
         }    
         

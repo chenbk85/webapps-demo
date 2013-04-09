@@ -37,7 +37,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
                 topicdetail: me.model.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
 
@@ -75,7 +75,15 @@ app.subview.topicdetail_content_detail = app.subview.extend({
             new app.subview.toolbar({
                   title  : me.options.name
             }, me);
+            
+            me.refreshScrollerHeight();
         }
+    }
+    
+     ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

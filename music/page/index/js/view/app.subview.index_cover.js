@@ -31,8 +31,8 @@ app.subview.index_cover = app.subview.extend({
                 topic: me.collection.toJSON()
             })
         );
-
-
+        
+        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -52,6 +52,7 @@ app.subview.index_cover = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+
             if(me.isFirstLoad){
                 me.collection.fetch({
                     success: function(){
@@ -59,7 +60,15 @@ app.subview.index_cover = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

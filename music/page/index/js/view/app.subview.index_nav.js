@@ -25,7 +25,7 @@ app.subview.index_nav = app.subview.extend({
         me.$el.append(
             me.template({})
         ).show();
-        
+        me.refreshScrollerHeight();
         me.resetWidth.call(me);
 
         return me;
@@ -44,9 +44,15 @@ app.subview.index_nav = app.subview.extend({
             param = params.params;
         if(to == me.ec){
             me.$el.show();
+            me.refreshScrollerHeight();
+
         }
     }
-    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
+    }
     ,resetWidth : function(){
         var 
             me                   = this,
@@ -54,40 +60,29 @@ app.subview.index_nav = app.subview.extend({
             outList              = me.$el.find('.outList'),
             outListItem          = me.$el.find('.outListItem'),
             identify             = me.$el.find('.identify'),
-            identifyLI           = identify.find('li'),
-            getOutListMarginLeft = null;
+            identifyLI           = identify.find('li');
         
-        getOutListMarginLeft = function(){
-            var mLeft = outList.css('marginLeft');
-            return parseInt( mLeft ? mLeft.replace('px','') : 0,10);
-        };
+       
         
         outList.width( width * 2);
         outListItem.width( width );
         
         me.$el.find('.navs-opts .prev').on('click',function(){
-            
-            var outListMarginleft = getOutListMarginLeft();
-            
-            if(outListMarginleft == 0){
-                
-                return;
-            }
-            outList.css('marginLeft',outListMarginleft + width);
+
+            outList.css({
+                '-webkit-transform'  : 'translate3d(0, 0, 0)'
+            });
             
             identifyLI.removeClass('on');
             identifyLI.eq(0).addClass('on');
             
         });
         me.$el.find('.navs-opts .next').on('click',function(){
-            var outListMarginleft = getOutListMarginLeft();
+           
+            outList.css({
+                '-webkit-transform'  : 'translate3d(-'+ (width)+'px, 0, 0)'
+            });
             
-            if(outListMarginleft == -width){
-                
-                return;
-            }
-            
-            outList.css('marginLeft',outListMarginleft - width);
             identifyLI.removeClass('on');
             identifyLI.eq(1).addClass('on');
         });

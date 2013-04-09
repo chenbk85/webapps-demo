@@ -36,7 +36,7 @@ app.subview.topic_content = app.subview.extend({
                 topic: me.collection.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
 
@@ -64,7 +64,15 @@ app.subview.topic_content = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    
+     ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

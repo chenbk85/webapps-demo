@@ -31,8 +31,10 @@ app.pageview.category = app.pageview.extend({
         
         if(to == me.ec){
             new app.subview.toolbar({
-                  title  : "音乐分类"
+                  title  : "音乐分类",
+                  action : 'category'
             }, me);
+            window.setTimeout(function(){app.wrapperScroll.refresh();},200);
         }    
         
     }

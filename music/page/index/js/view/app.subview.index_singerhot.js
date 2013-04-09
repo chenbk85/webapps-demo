@@ -31,7 +31,7 @@ app.subview.index_singerhot = app.subview.extend({
             })
         );
 
-
+        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -51,6 +51,7 @@ app.subview.index_singerhot = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+
             if(me.isFirstLoad){
                 me.collection.fetch({
                     success: function(){
@@ -58,7 +59,15 @@ app.subview.index_singerhot = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

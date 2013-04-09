@@ -22,7 +22,9 @@ app.subview.toolbar = app.subview.extend({
         me.$el.html(me.template({
             options: me.options
         }));
-
+        
+        me.bindClickEvent.call(me);
+        me.bindSearchEvent.call(me);
         return me;
     }
 
@@ -42,6 +44,32 @@ app.subview.toolbar = app.subview.extend({
         if(to == me.ec) {
             me.$el && me.$el.show();
         }
+    }
+    
+    ,bindClickEvent : function(){
+        var me = this;
+        
+        me.$el.find('h1').click(function(){
+            var self = $(this);
+            $('.drop-menu').toggle();
+            
+            self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
+        });
+        
+        
+    }
+    
+    ,bindSearchEvent : function(){
+        var me = this;
+        
+        me.$el.find('.right .btn-search').click(function(){
+            var self = $(this),search = me.$el.find('.search');
+            search.hasClass('on') ? search.removeClass('on') : search.addClass('on');
+            
+            self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
+        });
+        
+        
     }
 
 });

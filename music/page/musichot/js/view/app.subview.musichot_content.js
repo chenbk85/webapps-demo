@@ -37,7 +37,7 @@ app.subview.musichot_content = app.subview.extend({
                 musichot: me.collection.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
         
@@ -60,6 +60,7 @@ app.subview.musichot_content = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+
             if(me.isFirstLoad){
                 me.collection.fetch({
                     success: function(){
@@ -67,9 +68,15 @@ app.subview.musichot_content = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
     }
-    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
+    }
     ,bindMoreEvent : function(){
         var me = this;
         

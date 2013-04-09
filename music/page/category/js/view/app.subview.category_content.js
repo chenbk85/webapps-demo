@@ -32,8 +32,9 @@ app.subview.category_content = app.subview.extend({
                 category: me.collection.toJSON()
             })
         );
+        
 
-
+        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -60,7 +61,17 @@ app.subview.category_content = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
+        }else{
+            me.$el.hide();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

@@ -68,7 +68,7 @@
     
     <merge>
         <app>
-            <import>/js/App*.js</import>
+            <import>/js/*.js</import>
             <import>/js/subview/*.js</import>
             <import>/page/*.js</import>
             <import>/page/*.css</import>

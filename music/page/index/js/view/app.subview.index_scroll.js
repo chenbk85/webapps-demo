@@ -22,7 +22,7 @@ app.subview.index_scroll = app.subview.extend({
         me.$el.append(
             me.template({})
         ).show();
-        
+        me.refreshScrollerHeight();
         me.initAnimation.call(me);
         
         return me;
@@ -41,7 +41,14 @@ app.subview.index_scroll = app.subview.extend({
 
         if(to == me.ec){
             me.$el.show();
+            me.refreshScrollerHeight();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
     
     ,initAnimation : function(){

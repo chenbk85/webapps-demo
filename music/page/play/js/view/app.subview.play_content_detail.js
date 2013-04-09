@@ -37,7 +37,7 @@ app.subview.play_content_detail = app.subview.extend({
                 sing_info: me.model.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         // Òþ²Øloading
         me.hideLoading();
 
@@ -71,7 +71,15 @@ app.subview.play_content_detail = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

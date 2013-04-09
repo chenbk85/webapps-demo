@@ -35,7 +35,7 @@ app.subview.musicnew_content = app.subview.extend({
                 musicnew: me.collection.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
 
@@ -63,7 +63,15 @@ app.subview.musicnew_content = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

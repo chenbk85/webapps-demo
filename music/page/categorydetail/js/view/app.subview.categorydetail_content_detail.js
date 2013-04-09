@@ -33,7 +33,7 @@ app.subview.categorydetail_content_detail = app.subview.extend({
                 categorydetail: me.model.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -65,12 +65,20 @@ app.subview.categorydetail_content_detail = app.subview.extend({
                         me.isFirstLoad = false;
                     }
                 });
+                
             }
-            
+            me.refreshScrollerHeight();
             new app.subview.toolbar({
                   title  : me.options.id
             }, me);
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        //me.$('.ui-refresh-wrapper').height($(window).height() - 40);        
+        app.refreshScroll();
     }
 
 });

@@ -27,7 +27,8 @@ app.pageview.musichot = app.pageview.extend({
         
         if(to == me.ec){
             new app.subview.toolbar({
-                  title  : "热歌榜"
+                  title  : "热歌榜",
+                  action : "musichot"
             }, me);
         }    
         

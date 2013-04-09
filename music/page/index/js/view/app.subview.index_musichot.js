@@ -31,8 +31,8 @@ app.subview.index_musichot = app.subview.extend({
                 musichot: me.collection.toJSON()
             })
         );
-
-
+        
+        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -45,7 +45,7 @@ app.subview.index_musichot = app.subview.extend({
         me.$el.find('.list li').on('click',me.click,me);
     }
     ,click : function(e){
-        console.log($(e.target));
+
     }
     
     ,onpagebeforechange: function(params){
@@ -56,6 +56,7 @@ app.subview.index_musichot = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+
             if(me.isFirstLoad){
                 me.collection.fetch({
                     success: function(){
@@ -63,7 +64,14 @@ app.subview.index_musichot = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });
