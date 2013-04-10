@@ -1,17 +1,18 @@
 (function($){
 
-app.collection.singer_music = app.collection.extend({
+app.model.singerdetail_info = app.collection.extend({
 
     initialize: function(models, options){
         var me = this;
+        me.id = options.id;
     }
 
     ,url: function(){
-        return '/music/singer.php?' + (new Date()).getTime();
+        return '/music/getInfo?id=' + this.id;
     }
 
     ,parse: function(resp, xhr){
-        return resp.artist;
+        return resp;
     }
 
 });

@@ -15,7 +15,7 @@ app.router.vs = app.router.extend({
         , 'play/:id'           : 'play'
         , 'singer'             : 'singer'
         , 'singerdetail/:id'   : 'singerdetail'
-        , 'singerhot'          : 'singerhot'
+        , 'singerhot'          : 'singer'
         , 'topic'              : 'topic'
         , 'topicdetail/:id/:name'    : 'topicdetail'
 

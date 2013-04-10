@@ -9,6 +9,11 @@ app.pageview.singer = app.pageview.extend({
     ,init: function(options){
         var me = this;
 
+        me.setup(new app.subview.toolbar({
+            title  : "歌手",
+            action : 'singer'
+        }, me));
+
         // 创建header子视图
         me.setup(new app.subview.singer_header(options, me));
 
