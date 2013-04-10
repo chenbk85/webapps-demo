@@ -56,6 +56,24 @@
             rewrite="data/categorydetail.php"
             header="Content-Type:text/javascript; charset=UTF-8"
         />
+        <urlmap
+            match="/^\/music\/getInfo?$/"
+            rewrite="data/getInfo.php"
+            header="Content-Type:text/javascript; charset=UTF-8">
+            <get param="id" match="/^\d+$/"/>
+        </urlmap>
+        <urlmap
+            match="/^\/music\/getSongList\.php?$/"
+            rewrite="data/getSongList.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+            >
+            <get param="tingguid" match="/^\d+$/"/>
+         </urlmap>
+        <urlmap
+            match="/^\/music\/getAlbumList\.php$/"
+            rewrite="data/getAlbumList.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+            />
     </request>
     
     <setting>
