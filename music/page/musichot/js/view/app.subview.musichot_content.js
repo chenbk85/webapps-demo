@@ -14,11 +14,12 @@ app.subview.musichot_content = app.subview.extend({
 
     ,init: function(options){
         var me = this;
-
+        
+        me.options = options;
+        
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
+
         me.collection = new app.collection.musichot_music(null, options);
         
        
@@ -36,9 +37,11 @@ app.subview.musichot_content = app.subview.extend({
                 musichot: me.collection.toJSON()
             })
         );
-
+        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
+        
+        me.bindMoreEvent.call(me);
 
         return me;
     }
@@ -57,6 +60,7 @@ app.subview.musichot_content = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+
             if(me.isFirstLoad){
                 me.collection.fetch({
                     success: function(){
@@ -64,7 +68,21 @@ app.subview.musichot_content = app.subview.extend({
                     }
                 });
             }
+            
+            me.refreshScrollerHeight();
         }
+    }
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
+    }
+    ,bindMoreEvent : function(){
+        var me = this;
+        
+        me.$el.find('.list .load-more').click(function(){
+            
+        });
     }
 
 });

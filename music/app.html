@@ -16,26 +16,33 @@
 
 <div id="main">
 	<header id="header"></header>
-    <div id="wrapper" class="music" style="">
-        <div id="toolbar"></div>
-        /*{fis-inline file="./tpl/globalloading.tpl.html"}*/ 
-        /*{fis-inline file="./tpl/pageloading.tpl.html"}*/
-        
-        /*{fis-inline file="./page/app/html/index.html"}*/
-        /*{fis-inline file="./page/category/html/index.html"}*/
-        /*{fis-inline file="./page/categorydetail/html/index.html"}*/
-        /*{fis-inline file="./page/index/html/index.html"}*/
-        /*{fis-inline file="./page/musichot/html/index.html"}*/
-        /*{fis-inline file="./page/musicnew/html/index.html"}*/
-        /*{fis-inline file="./page/play/html/index.html"}*/
-        /*{fis-inline file="./page/singer/html/index.html"}*/
-        /*{fis-inline file="./page/singerdetail/html/index.html"}*/
-        /*{fis-inline file="./page/singerhot/html/index.html"}*/
-        /*{fis-inline file="./page/feedback/html/index.html"}*/
-        /*{fis-inline file="./page/topic/html/index.html"}*/
-        /*{fis-inline file="./page/topicdetail/html/index.html"}*/
+    <div id="wrapper" class="music">
+        <div id="scroller">
+            /*{fis-inline file="./tpl/globalloading.tpl.html"}*/
+            /*{fis-inline file="./tpl/pageloading.tpl.html"}*/
+            
+            /*{fis-inline file="./page/app/html/index.html"}*/
+            /*{fis-inline file="./page/category/html/index.html"}*/
+            /*{fis-inline file="./page/categorydetail/html/index.html"}*/
+            /*{fis-inline file="./page/index/html/index.html"}*/
+            /*{fis-inline file="./page/musichot/html/index.html"}*/
+            /*{fis-inline file="./page/musicnew/html/index.html"}*/
+            /*{fis-inline file="./page/play/html/index.html"}*/
+            /*{fis-inline file="./page/singer/html/index.html"}*/
+            /*{fis-inline file="./page/singerdetail/html/index.html"}*/
+            /*{fis-inline file="./page/singerhot/html/index.html"}*/
+            /*{fis-inline file="./page/feedback/html/index.html"}*/
+            /*{fis-inline file="./page/topic/html/index.html"}*/
+            /*{fis-inline file="./page/topicdetail/html/index.html"}*/
+            <div id="footer"></div>
+            <div id="footer-index">
+                <a class="feedback log btn" href="#feedback">意见反馈</a>
+                <a class="gotop btn" href="javascript:scroll(0,0)">返回顶部</a>
+            </div>
+        </div>
     </div>
-
+    
+    
     <script>
         F.load(['common_lib', 'common_app', 'music_app'], function(){
             app.init();
@@ -54,7 +61,6 @@
     /*{fis-inline file="./page/index/tpl/category.tpl.html"}*/
     /*{fis-inline file="./page/index/tpl/singerhot.tpl.html"}*/
     /*{fis-inline file="./page/index/tpl/musichot.tpl.html"}*/
-    /*{fis-inline file="./page/index/tpl/bottom.tpl.html"}*/
     
     /*{fis-inline file="./page/musichot/tpl/index.tpl.html"}*/
     /*{fis-inline file="./page/musicnew/tpl/index.tpl.html"}*/
