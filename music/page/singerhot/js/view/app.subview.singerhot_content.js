@@ -19,11 +19,13 @@ app.subview.singerhot_content = app.subview.extend({
 
         // 创建collection数据对象
         
-        me.collection = new app.collection.singerhot_music(null, options);
+        me.model = new app.model.singerhot_music(null, options);
         
        
         // 展示loading
         me.showLoading(me.$el);
+        
+        
     }
 
     ,render: function(){
@@ -33,20 +35,20 @@ app.subview.singerhot_content = app.subview.extend({
        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                singerhot: me.model.toJSON()
             })
         );
 
         // 隐藏loading
         me.hideLoading();
-
+        me.refreshScrollerHeight();
         return me;
     }
 
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
+        me.model.on('change', me.render, me);
     }
 
     ,onpagebeforechange: function(params){
@@ -58,15 +60,20 @@ app.subview.singerhot_content = app.subview.extend({
         if(to == me.ec) {
             me.$el.show();
             if(me.isFirstLoad){
-                me.collection.fetch({
+                me.model.fetch({
                     success: function(){
                         me.isFirstLoad = false;
                     }
                 });
             }
+            me.refreshScrollerHeight();
         }
     }
-
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
+    }
 });
 
 })(Zepto);

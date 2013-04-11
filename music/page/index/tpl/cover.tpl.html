@@ -3,34 +3,28 @@
         <div class="col-5">
             <div class="bd">
                 <ul class="cover">
-                    <li class="first log url" data-url="#/album/38249307/">
-                        <!-- TODO: retina! -->
-                        <img alt="肋骨" org_src="http://d.hiphotos.baidu.com/ting/pic/item/c75c10385343fbf2d5886850b17eca8065388f19.jpg"
-                        src="http://d.hiphotos.baidu.com/ting/pic/item/c75c10385343fbf2d5886850b17eca8065388f19.jpg">
-                        <div class="info">
-                            <span class="title">
-                                肋骨
-                            </span>
-                            <span class="author">
-                                周笔畅
-                            </span>
-                        </div>
-                    </li>
+                    <% _.each(album_list.slice(0,1),function(item,index){%>
+                        <li class="first log url">
+                            <img alt="<%= item.title %>" src="<%= item.pic_radio %>">
+                            <div class="info">
+                                <span class="title"><%= item.title %></span>
+                                <span class="author"><%= item.author %></span>
+                            </div>
+                        </li>
+                    <% }); %>
                 </ul>
                 <ul class="items">
                     <li class="hd">
                         <h2>本周首发</h2>
                     </li>
-                    <% _.each(topic,function(item,index){%>
-                    <li class="log url">
-                        <img alt="我是歌手 第十一期" src="http://c.hiphotos.baidu.com/ting/pic/item/29381f30e924b899d068ee4b6f061d950a7bf669.jpg">
-                        <div class="info">
-                            <span class="title"><%= item.name %></span>
-                            <span class="author">
-                                我是歌手选手
-                            </span>
-                        </div>
-                    </li>
+                    <% _.each(album_list.slice(1),function(item,index){%>
+                        <li class="log url">
+                            <img alt="<%= item.title %>" src="<%= item.pic_small %>">
+                            <div class="info">
+                                <span class="title"><%= item.title %></span>
+                                <span class="author"><%= item.author %></span>
+                            </div>
+                        </li>
                     <% }); %>
                 </ul>
             </div>

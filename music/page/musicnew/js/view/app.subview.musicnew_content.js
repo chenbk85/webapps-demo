@@ -9,7 +9,11 @@ app.subview.musicnew_content = app.subview.extend({
     ,template: _.template(
         $('#template_musicnew_content').text()
     )
-
+    
+    ,template_item : _.template(
+        $('#template_musicnew_content_item').text()
+    )
+    
     ,events: {}
 
     ,init: function(options){
@@ -17,9 +21,8 @@ app.subview.musicnew_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
-        me.collection = new app.collection.musicnew_music(null, options);
+
+        me.model = new app.model.musicnew_music(null, options);
         
        
         // 展示loading
@@ -28,24 +31,32 @@ app.subview.musicnew_content = app.subview.extend({
 
     ,render: function(){
         var me = this;
+        if(me.model.get('loadCount') == 1){
+            me.$el.append(
+                me.template({
+                    item : me.template_item({
+                        musicnew : me.model.toJSON()
+                    })
+                })
+            );
+            me._bindMoreEvent.call(me);
+        }else{
+            $(me.template_item({
+                    musicnew: me.model.toJSON()
+             })).insertBefore(me.$el.find('.list li.load-more'));
 
-        // 使用append，避免将loading冲掉
-        me.$el.append(
-            me.template({
-                musicnew: me.collection.toJSON()
-            })
-        );
-        me.refreshScrollerHeight();
-        // 隐藏loading
+            
+        }
         me.hideLoading();
-
+        me.refreshScrollerHeight();
+        
         return me;
     }
 
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
+        me.model.on('change', me.render, me);
     }
 
     ,onpagebeforechange: function(params){
@@ -53,16 +64,20 @@ app.subview.musicnew_content = app.subview.extend({
             from = params.from,
             to = params.to,
             param = params.params;
-
+        
         if(to == me.ec) {
             me.$el.show();
             if(me.isFirstLoad){
-                me.collection.fetch({
+                me.model.fetch({
+                    data : {
+                        page:me.model.get('page')
+                    },
                     success: function(){
                         me.isFirstLoad = false;
+
                     }
                 });
-            }
+           }
             
             me.refreshScrollerHeight();
         }
@@ -73,6 +88,33 @@ app.subview.musicnew_content = app.subview.extend({
         window.scrollTo(0, 0);
         app.refreshScroll();
     }
+    
+    /**
+     * 绑定更多时的事件
+     *
+     */
+    , _bindMoreEvent : function(){
+        var me = this;
+        me.$el.find('.load-more').click(function(){
+            me.model.off('change');
+            me.model.set({
+                  page      : 1
+                , loadCount : me.model.get('loadCount') + 1
+            },{silent:true});
+            me.showLoading(me.$el);
+            me.model.fetch({
+                data : {
+                    page : me.model.get('page')
+                },
+                success: function(){
+                    
+                    me.render.call(me);
+                }
+            });
+        });
+    
+    }
+   
 
 });
 

@@ -444,6 +444,7 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .route-home .artists ul li.hdli .hd.active:after, .route-routeForAladin .artists ul li.hdli .hd.active:after {background-color: rgba(0,0,0,0.3) !important;width: 100%;height: 100%;content: "";position: absolute;top: 0;left: 0;}
 .route-home .artists ul li.hdli .hd h2, .route-routeForAladin .artists ul li.hdli .hd h2 {padding: 0 10px;}
 .route-home .artists ul li.hdli .hd div, .route-routeForAladin .artists ul li.hdli .hd div {margin-bottom: -10px;}
+.route-home .artists ul li.hdli a {color:#ffffff;}
 .route-home #footer, .route-routeForAladin #footer {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: start;-moz-box-pack: start;box-pack: start;-webkit-box-align: center;-moz-box-align: center;box-align: center;margin: 20px 15px 0;}
 .route-home #footer a, .route-routeForAladin #footer a {height: 27px;line-height: 27px;overflow: hidden;display: block;background: rgb(255,255,255);border: 1px solid rgb(153,153,153);color: rgb(51,51,51);font-size: 15px;text-align: center;}
 .route-home #footer a.feedback, .route-routeForAladin #footer a.feedback {-webkit-box-flex: 1;-moz-box-flex: 1;box-flex: 1;height: 32px;line-height: 32px;overflow: hidden;margin-right: 10px;}
@@ -507,11 +508,11 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .not-found .recommend .content, .errors .recommend .content {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: left;-moz-box-pack: left;box-pack: left;-webkit-box-align: center;-moz-box-align: center;box-align: center;}
 .not-found .recommend .content div:not(.title), .errors .recommend .content div:not(.title) {width: 65px;height: 20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: rgb(51,51,51);text-align: left;font-size: 14px;}
 .errors h2 {background: url("//mu7.bdstatic.com/st/i/jkGSV56t.png") no-repeat -3px 30px;background-size: 174px 2412px;line-height: 20px;font-size: 24px;color: rgb(102,102,102);width: 200px;margin: 50px auto;}
-.route-feedback .feedback {margin: 20px 15px;}
-.route-feedback .feedback textarea, .route-feedback .feedback input {display: block;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width: 100%;border: 1px solid rgb(153,153,153);font-weight: bold;}
-.route-feedback .feedback textarea.empty, .route-feedback .feedback input.empty {color: rgb(153,153,153);}
-.route-feedback .feedback textarea {height: 100px;padding: 10px;margin-bottom: 15px;resize: none;-webkit-appearance: textarea;}
-.route-feedback .feedback input {height: 30px;padding: 5px 10px;-webkit-appearance: textfield;}
+.feedbackForm {margin: 20px 15px;}
+.feedbackForm textarea,.feedbackForm input {display: block;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;width: 100%;border: 1px solid rgb(153,153,153);font-weight: bold;}
+.feedbackForm textarea.empty, .feedbackForm input.empty {color: rgb(153,153,153);}
+.feedbackForm textarea {height: 100px;padding: 10px;margin-bottom: 15px;resize: none;-webkit-appearance: textarea;}
+.feedbackForm input {height: 30px;padding: 5px 10px;-webkit-appearance: textfield;}
 
 @import url("./globalloading.css")
 @import url("./pageloading.css")

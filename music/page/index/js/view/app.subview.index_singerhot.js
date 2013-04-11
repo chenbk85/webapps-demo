@@ -16,7 +16,7 @@ app.subview.index_singerhot = app.subview.extend({
         me.isFirstLoad = true;
 
 
-        me.collection = new app.collection.index_music(null, options);
+        me.model = new app.model.singerhot_music(null, options);
 
         me.showLoading(me.$el);
     }
@@ -24,10 +24,11 @@ app.subview.index_singerhot = app.subview.extend({
     ,render: function(){
         var me = this;
 
-
+        
+        
         me.$el.append(
             me.template({
-                content: me.collection.toJSON()
+                singerhot: me.model.toJSON()
             })
         );
 
@@ -40,7 +41,7 @@ app.subview.index_singerhot = app.subview.extend({
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
+        me.model.on('change', me.render, me);
     }
 
     ,onpagebeforechange: function(params){
@@ -53,7 +54,7 @@ app.subview.index_singerhot = app.subview.extend({
             me.$el.show();
 
             if(me.isFirstLoad){
-                me.collection.fetch({
+                me.model.fetch({
                     success: function(){
                         me.isFirstLoad = false;
                     }

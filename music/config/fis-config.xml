@@ -22,6 +22,11 @@
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap 
+            match="/^\/music\/singerhot\.php$/" 
+            rewrite="data/singerhot.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+        />
+        <urlmap 
             match="/^\/music\/music\.php$/" 
             rewrite="data/music.php"
             header="Content-Type:text/javascript; charset=UTF-8"
@@ -72,6 +77,11 @@
         <urlmap
             match="/^\/music\/getAlbumList\.php$/"
             rewrite="data/getAlbumList.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+            />
+        <urlmap
+            match="/^\/music\/recommendalbum\.php$/"
+            rewrite="data/recommendalbum.php"
             header="Content-Type:text/javascript; charset=UTF-8"
             />
     </request>

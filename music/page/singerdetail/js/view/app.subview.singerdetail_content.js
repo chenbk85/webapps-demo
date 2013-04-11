@@ -3,11 +3,11 @@
  */
 (function($) {
 
-app.subview.app_content = app.subview.extend({
-    el: "#app_page_content"
+app.subview.singerdetail_content = app.subview.extend({
+    el: "#singerdetail_page_content"
 
     ,template: _.template(
-        $('#template_app_content').text()
+        $('#template_singerdetail_content').text()
     )
 
     ,events: {}
@@ -19,7 +19,7 @@ app.subview.app_content = app.subview.extend({
 
         // 创建collection数据对象
         
-        me.collection = new app.collection.app_music(null, options);
+        me.collection = new app.collection.singerdetail_music(null, options);
         
        
         // 展示loading
@@ -39,7 +39,7 @@ app.subview.app_content = app.subview.extend({
 
         // 隐藏loading
         me.hideLoading();
-        me.refreshScrollerHeight();
+
         return me;
     }
 
@@ -63,16 +63,8 @@ app.subview.app_content = app.subview.extend({
                         me.isFirstLoad = false;
                     }
                 });
-                
             }
-            me.refreshScrollerHeight();
         }
-    }
-    
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
     }
 
 });

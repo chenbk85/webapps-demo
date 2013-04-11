@@ -16,9 +16,15 @@
         <h1><%= options.title %></h1>
         <% } %>
         
+        
         <div class="right">
+            <% if(options.action == 'feedback'){ %>
+            <span class="btn-rect btn-submit">Ã·Ωª</span>
+            <% }else{ %>
             <span class="btn need-active btn-search"></span>
+            <% } %>
         </div>
+
     </div>
     <% if(_.indexOf(['musicnew', 'musichot', 'singer','category','topic'], options.action) >= 0){ %>
     <ul class="drop-menu on" style="display:none;">

@@ -36,10 +36,10 @@ app.subview.singer_content = app.subview.extend({
                 'singer': me.collection.toJSON()
             })
         );
-
+        
         // 隐藏loading
         me.hideLoading();
-
+        me.refreshScrollerHeight();
         return me;
     }
 
@@ -57,6 +57,7 @@ app.subview.singer_content = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
+            
             if(me.isFirstLoad){
                 me.collection.fetch({
                     success: function(){
@@ -64,7 +65,14 @@ app.subview.singer_content = app.subview.extend({
                     }
                 });
             }
+            me.refreshScrollerHeight();
         }
+    }
+    
+    ,refreshHeight: function(){
+        var me = this;
+        window.scrollTo(0, 0);
+        app.refreshScroll();
     }
 
 });

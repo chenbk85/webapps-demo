@@ -1,19 +1,19 @@
 (function($){
 
-app.model.categorydetail_music = app.model.extend({
+app.model.index_music_recommendalbum = app.model.extend({
 
     initialize: function(attributes, options){
         var me = this;
+        
         me.options = options;
     }
 
     ,url: function(){
-        var me = this;
-        return '/music/categorydetail.php?tag='+ me.options.id + '&' + (new Date()).getTime();
+        return '/music/recommendalbum.php?' + (new Date()).getTime();
     }
 
     ,parse: function(resp, xhr){
-        return resp.taginfo;
+        return resp.plaze_album_list.RM.album_list.list;
     }
 
 });

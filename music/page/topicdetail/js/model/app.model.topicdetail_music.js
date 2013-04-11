@@ -2,7 +2,7 @@
 
 app.model.topicdetail_music = app.model.extend({
 
-    initialize: function(models, options){
+    initialize: function(attributes, options){
         var me = this;
         me.options = options;
     }

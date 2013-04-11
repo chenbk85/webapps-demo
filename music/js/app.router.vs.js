@@ -5,18 +5,18 @@ app.router.vs = app.router.extend({
 
     // 路由配置
     routes: {
-          ''                   : 'index'
-        , 'feedback'           : 'feedback'
-        , 'app'                : 'app'
-        , 'category'           : 'category'
-        , 'categorydetail/:id' : 'categorydetail'
-        , 'musichot'           : 'musichot'
-        , 'musicnew'           : 'musicnew'
-        , 'play/:id'           : 'play'
-        , 'singer'             : 'singer'
-        , 'singerdetail/:id'   : 'singerdetail'
-        , 'singerhot'          : 'singer'
-        , 'topic'              : 'topic'
+          ''                         : 'index'
+        , 'feedback'                 : 'feedback'
+        , 'app'                      : 'app'
+        , 'category'                 : 'category'
+        , 'categorydetail/:id'       : 'categorydetail'
+        , 'musichot'                 : 'musichot'
+        , 'musicnew'                 : 'musicnew'
+        , 'play/:id'                 : 'play'
+        , 'singer'                   : 'singer'
+        , 'singerdetail/:id'         : 'singerdetail'
+        , 'singerhot'                : 'singerhot'
+        , 'topic'                    : 'topic'
         , 'topicdetail/:id/:name'    : 'topicdetail'
 
        
