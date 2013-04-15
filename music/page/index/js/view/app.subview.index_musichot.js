@@ -17,6 +17,7 @@ app.subview.index_musichot = app.subview.extend({
 
 
         options.size = 5;
+        
         me.model = new app.model.musichot_music(null, options);
         
 

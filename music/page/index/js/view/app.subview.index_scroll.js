@@ -22,6 +22,7 @@ app.subview.index_scroll = app.subview.extend({
         me.$el.append(
             me.template({})
         ).show();
+        
         me.refreshScrollerHeight();
         
         me.initOnOrientationChange.call(me);
@@ -114,7 +115,9 @@ app.subview.index_scroll = app.subview.extend({
             
         };
         
+        //可以使用GMU slider
         intervalFun();
+        
     }
 
 });

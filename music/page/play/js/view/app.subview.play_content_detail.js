@@ -39,6 +39,7 @@ app.subview.play_content_detail = app.subview.extend({
         );
         
         me._createPlayerBar.call(me);
+        
         me.refreshScrollerHeight();
         // Òþ²Øloading
         

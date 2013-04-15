@@ -128,7 +128,7 @@ a.expand.on:after {top: -9px;border-color: transparent transparent rgb(40,168,23
 #main .bannerAD {width: 100%;height: 50px;display: block;background: url("//mu5.bdstatic.com/st/i/3YlOtVsJ.png") no-repeat center;background-size: cover;}
 #main .zsh {background-image: url("//mu7.bdstatic.com/st/i/5IywzITx.jpg");background-size: cover;}
 
-#footer,#footer-index {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: justify;-moz-box-pack: justify;box-pack: justify;-webkit-box-align: center;-moz-box-align: center;box-align: center;margin: 20px 20px 0;padding-bottom: 10px;}
+#footer,#footer-index {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: justify;-moz-box-pack: justify;box-pack: justify;-webkit-box-align: center;-moz-box-align: center;box-align: center;margin: 15px 15px 0;padding-bottom: 10px;}
 #footer .btn,#footer-index .btn  {-webkit-box-flex: 1;-moz-box-flex: 1;box-flex: 1;display: block;margin: 0 5px;}
 #footer .btn:first-child,#footer-index .btn:first-child {margin-left: 0;}
 #footer .btn:last-child,#footer-index .btn:last-child {margin-right: 0;}
@@ -446,7 +446,7 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .route-home .artists ul li.hdli .hd div, .route-routeForAladin .artists ul li.hdli .hd div {margin-bottom: -10px;}
 .route-home .artists ul li.hdli a {color:#ffffff;}
 .route-home #footer, .route-routeForAladin #footer {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: start;-moz-box-pack: start;box-pack: start;-webkit-box-align: center;-moz-box-align: center;box-align: center;margin: 20px 15px 0;}
-.route-home #footer a, .route-routeForAladin #footer a {height: 27px;line-height: 27px;overflow: hidden;display: block;background: rgb(255,255,255);border: 1px solid rgb(153,153,153);color: rgb(51,51,51);font-size: 15px;text-align: center;}
+.route-home #footer a, .route-routeForAladin #footer a {height: 27px;line-height: 27px;overflow: hidden;display: block;background: rgb(255,255,255);border: 1px solid rgb(153,153,153);color: rgb(51,51,51);font-size: 13px;text-align: center;}
 .route-home #footer a.feedback, .route-routeForAladin #footer a.feedback {-webkit-box-flex: 1;-moz-box-flex: 1;box-flex: 1;height: 32px;line-height: 32px;overflow: hidden;margin-right: 10px;}
 .route-home #footer a.gotop, .route-routeForAladin #footer a.gotop {height: 32px;line-height: 32px;overflow: hidden;width: 85px;padding-right: 20px;background: rgb(255,255,255) url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABQSURBVBhXY2BAAlpzn2lpzn2+E0Qji8PZWquusGnOebYZqOg/iAbxURSiKAApQleoOe+Vqsbc59vBEmgYLA6UZ9CY82wDRPLZB0z8/D9IHgCBB03bV4zJRAAAAABJRU5ErkJggg==") no-repeat 80px 13px;}
 .product-view-list {padding: 5px 15px;}
@@ -542,6 +542,11 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 
 #singerdetail_content_albums {
     display:none;
+}
+
+/***********/
+.page-loading {
+    visibility:visible;
 }
 
 
