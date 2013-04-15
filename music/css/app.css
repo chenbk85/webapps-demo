@@ -252,7 +252,7 @@ html.debug .warning {border: 1px solid red;}
 .ui-dialog .ui-dialog-content .copy-limit .btn {margin: 20px auto;display: block;}
 .ui-dialog .ui-dialog-content .panel-ad {width: 100%;height: 50px;display: inline-block;background: url("//mu5.bdstatic.com/st/i/KQOAyTeI.png") center no-repeat;background-size: 260px;margin-top: 10px;}
 .ui-mask {position: absolute;top: 0;left: 0;background: rgb(136,136,136);opacity: 0.5;display: none;z-index: 9999;}
-#player {width: 100%;height: 46px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: none;z-index: 9998;border: 1px solid rgb(0,0,0);}
+#player {width: 100%;height: 46px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: none;z-index: 9998;border: 1px solid rgb(0,0,0);position:fixed;bottom:0;left:0;right:0;z-index:99999;}
 #player .player {display: -webkit-box;display: -moz-box;display: box;-webkit-box-orient: horizontal;-moz-box-orient: horizontal;box-orient: horizontal;-webkit-box-direction: normal;-moz-box-direction: normal;box-direction: normal;-webkit-box-pack: justify;-moz-box-pack: justify;box-pack: justify;-webkit-box-align: center;-moz-box-align: center;box-align: center;height: 100%;background: rgb(53,53,67);color: rgb(255,255,255);}
 #player .player img {width: 35px;height: 35px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;margin: 0 8px;}
 #player .player .title, #player .player .name {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 100px;display: inline-block;}
@@ -403,7 +403,7 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .route-home .albums .col-4 .items, .route-routeForAladin .albums .col-4 .items, .route-home .albums .col-5 .items, .route-routeForAladin .albums .col-5 .items {width: 200px;height: 190px;overflow: hidden;position: absolute;left: 200px;top: 0;margin: 0 -10px -10px 0;}
 .route-home .albums .col-4 .items li, .route-routeForAladin .albums .col-4 .items li, .route-home .albums .col-5 .items li, .route-routeForAladin .albums .col-5 .items li {margin: 0 10px 10px 0;}
 .route-home .albums .col-4 .items li.hd, .route-routeForAladin .albums .col-4 .items li.hd, .route-home .albums .col-5 .items li.hd, .route-routeForAladin .albums .col-5 .items li.hd {background-color: rgb(41,157,231);}
-.route-home .albums .col-5 .items, .route-routeForAladin .albums .col-5 .items {width: 300px;height: 190px;}
+.route-home .albums .col-5 .items, .route-routeForAladin .albums .col-5 .items {width: 100px;height: 190px;}
 .route-home .songs .hd h2, .route-routeForAladin .songs .hd h2 {text-align: left;}
 .route-home .songs .song b, .route-routeForAladin .songs .song b {margin-right: 8px;}
 .route-home .songs .song .left .rank, .route-routeForAladin .songs .song .left .rank {width: 35px;}
@@ -513,6 +513,8 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 .feedbackForm textarea.empty, .feedbackForm input.empty {color: rgb(153,153,153);}
 .feedbackForm textarea {height: 100px;padding: 10px;margin-bottom: 15px;resize: none;-webkit-appearance: textarea;}
 .feedbackForm input {height: 30px;padding: 5px 10px;-webkit-appearance: textfield;}
+.route-home .albums .col-5 .items .items2 {display:none;}
+.route-home .items1 {margin-top:5px;}
 
 @import url("./globalloading.css")
 @import url("./pageloading.css")

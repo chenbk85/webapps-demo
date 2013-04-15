@@ -7,6 +7,7 @@
             </div>
             <ul class="list">
                 <% _.each(musichot, function(item, index){ %>
+                <% if(!item.song_id){return;} %>
                 <li class="song url log" songid="<%= item.song_id %>">
                     <div class="left">
                         <% if(parseInt(item.rank_change,10)==0){ %>

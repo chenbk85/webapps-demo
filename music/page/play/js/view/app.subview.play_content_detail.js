@@ -37,8 +37,12 @@ app.subview.play_content_detail = app.subview.extend({
                 sing_info: me.model.toJSON()
             })
         );
+        
+        me._createPlayerBar.call(me);
         me.refreshScrollerHeight();
         // Òþ²Øloading
+        
+        
         me.hideLoading();
 
         return me;
@@ -71,8 +75,13 @@ app.subview.play_content_detail = app.subview.extend({
                     }
                 });
             }
-            
+            $('#player').hide();
             me.refreshScrollerHeight();
+            
+        }else{
+        
+            $('#player').show();
+            
         }
     }
     
@@ -80,6 +89,18 @@ app.subview.play_content_detail = app.subview.extend({
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();
+    }
+    
+    ,_createPlayerBar : function(){
+        var 
+              me = this
+            , tpl = _.template($('#t-player').html())
+            , str = tpl({sing_info: me.model.toJSON()})
+            ;
+        
+        $('#player').html(str);
+        
+        
     }
 
 });

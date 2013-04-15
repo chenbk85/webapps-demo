@@ -17,8 +17,12 @@
                     <li class="hd">
                         <h2>本周首发</h2>
                     </li>
-                    <% _.each(album_list.slice(1),function(item,index){%>
+                    <% _.each(album_list.slice(1,5),function(item,index){%>
+                        <% if(index == 0){ %>
                         <li class="log url">
+                        <% }else{ %>
+                        <li class="log url items2">
+                        <% } %>
                             <img alt="<%= item.title %>" src="<%= item.pic_small %>">
                             <div class="info">
                                 <span class="title"><%= item.title %></span>
@@ -27,8 +31,20 @@
                         </li>
                     <% }); %>
                 </ul>
+                
             </div>
         </div>
+        <ul class="items items1">
+            <% _.each(album_list.slice(2,5),function(item,index){%>
+                <li class="log url">
+                    <img alt="<%= item.title %>" src="<%= item.pic_small %>">
+                    <div class="info">
+                        <span class="title"><%= item.title %></span>
+                        <span class="author"><%= item.author %></span>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
     </div>
 			
 </script>
