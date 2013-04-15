@@ -1,39 +1,40 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
-app.subview.categorydetail_content_detail = app.subview.extend({
-   
-    template: _.template(
-        $('#template_categorydetail_content').text()
+app.subview.singerdetail_content_songs = app.subview.extend({
+    
+      className: 'songs'
+    
+    , template: _.template(
+        $('#template_singerdetail_content_songs').text()
     )
 
-    ,className : 'categorydetail_content_detail'
+    
 
     ,init: function(options){
         
         var me = this;
 
         me.isFirstLoad = true;
-
         
-        me.model = new app.model.categorydetail_music(null, options);
+        me.options = options;
 
+        me.model = new app.model.singerdetail_songs(null, options);
+        
         me.showLoading(me.$el);
-        
     }
 
     ,render: function(){
         var me = this;
 
-
         me.$el.append(
             me.template({
-                categorydetail: me.model.toJSON()
+                songs: me.model.toJSON()
             })
         );
+        
         me.refreshScrollerHeight();
+
         me.hideLoading();
 
         return me;
@@ -61,24 +62,27 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             me.$el.show();
             if(me.isFirstLoad){
                 me.model.fetch({
-                    success: function(){
+                      data : {
+                        id : param.id
+                    }
+                    , success: function(){
                         me.isFirstLoad = false;
                     }
                 });
-                
-            }
+           }
+
+            
             me.refreshScrollerHeight();
-            new app.subview.toolbar({
-                  title  : me.options.id
-            }, me);
         }
     }
     
-    ,refreshHeight: function(){
+     ,refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();
     }
+    
+    
 
 });
 

@@ -1,22 +1,23 @@
 (function($){
 
-app.model.singerdetail_info = app.model.extend({
+app.model.singerdetail_songs = app.model.extend({
 
-    initialize: function(attributes, options){
+    initialize: function(models, options){
         var me = this;
+        
         me.options = options;
     }
 
     ,url: function(){
         var me = this;
         
-        return _.template('/music/getInfo.php?<%= date %>')({
+        return _.template('/music/singersongs.php?<%= date %>')({
             date : (new Date()).getTime()
         });
     }
 
     ,parse: function(resp, xhr){
-        return resp;
+        return resp.songlist;
     }
 
 });

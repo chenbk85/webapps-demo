@@ -62,7 +62,7 @@
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap
-            match="/^\/music\/getInfo?$/"
+            match="/^\/music\/getInfo.php?$/"
             rewrite="data/getInfo.php"
             header="Content-Type:text/javascript; charset=UTF-8">
             <get param="id" match="/^\d+$/"/>
@@ -82,6 +82,16 @@
         <urlmap
             match="/^\/music\/recommendalbum\.php$/"
             rewrite="data/recommendalbum.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+            />
+        <urlmap
+            match="/^\/music\/singeralbum\.php$/"
+            rewrite="data/singeralbum.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+            />
+        <urlmap
+            match="/^\/music\/singersongs\.php$/"
+            rewrite="data/singersongs.php"
             header="Content-Type:text/javascript; charset=UTF-8"
             />
     </request>

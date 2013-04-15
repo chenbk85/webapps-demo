@@ -3,13 +3,13 @@
  */
 (function($) {
 
-app.subview.categorydetail_content_detail = app.subview.extend({
-   
-    template: _.template(
-        $('#template_categorydetail_content').text()
+app.subview.singerdetail_content_info = app.subview.extend({
+    
+      className: 'detail'
+    
+    , template: _.template(
+        $('#template_singerdetail_content_info').text()
     )
-
-    ,className : 'categorydetail_content_detail'
 
     ,init: function(options){
         
@@ -17,25 +17,27 @@ app.subview.categorydetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        
-        me.model = new app.model.categorydetail_music(null, options);
+        me.model = new app.model.singerdetail_info(null, options);
 
+        // 展示loading
         me.showLoading(me.$el);
-        
     }
 
     ,render: function(){
         var me = this;
-
-
+        
         me.$el.append(
             me.template({
-                categorydetail: me.model.toJSON()
+                info: me.model.toJSON()
             })
         );
+        
         me.refreshScrollerHeight();
+        // 隐藏loading
         me.hideLoading();
 
+        me._bindClickEvent.call(me);
+        
         return me;
     }
 
@@ -46,7 +48,6 @@ app.subview.categorydetail_content_detail = app.subview.extend({
     }
     ,unregisterEvents: function(){
         var me = this, ec = me.ec;
-
         ec.off('subpagebeforechange', me.onsubpagebeforechange, me);
         me.model.off('change', me.render, me);
 
@@ -61,23 +62,46 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             me.$el.show();
             if(me.isFirstLoad){
                 me.model.fetch({
-                    success: function(){
+                    data    : {
+                        id : param.id
+                    }
+                    ,success: function(){
                         me.isFirstLoad = false;
                     }
                 });
-                
             }
-            me.refreshScrollerHeight();
+            
             new app.subview.toolbar({
-                  title  : me.options.id
+                  title  : "歌手"
+                , action : 'singerdetail'
             }, me);
+            
+            me.refreshScrollerHeight();
         }
     }
     
-    ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();
+    }
+    
+
+    , _bindClickEvent : function(){
+        var me = this;
+        me.$el.parent().find('.songs-panel,.albums-panel').click(function(){
+            var panel = $(this).hasClass('songs-panel') ? 'songs' : 'albums';
+            
+            
+            
+            me.$el.parent().find('.songs-panel,.albums-panel').removeClass('on');
+            me.$el.parent().find('.' + panel + '-panel').addClass('on');
+            
+            me.$el.parent().find('.songs,.albums').hide();
+            me.$el.parent().find('.' + panel).show();
+
+            me.refreshScrollerHeight();
+        });
     }
 
 });

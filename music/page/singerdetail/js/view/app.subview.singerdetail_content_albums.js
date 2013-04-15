@@ -3,13 +3,13 @@
  */
 (function($) {
 
-app.subview.categorydetail_content_detail = app.subview.extend({
-   
-    template: _.template(
-        $('#template_categorydetail_content').text()
+app.subview.singerdetail_content_albums = app.subview.extend({
+    
+      className: 'albums'
+    
+    , template: _.template(
+        $('#template_singerdetail_content_albums').text()
     )
-
-    ,className : 'categorydetail_content_detail'
 
     ,init: function(options){
         
@@ -17,23 +17,23 @@ app.subview.categorydetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        
-        me.model = new app.model.categorydetail_music(null, options);
+        me.model = new app.model.singerdetail_albums(null, options);
 
         me.showLoading(me.$el);
-        
     }
 
     ,render: function(){
         var me = this;
-
-
+        
+        
         me.$el.append(
             me.template({
-                categorydetail: me.model.toJSON()
+                albums: me.model.toJSON()
             })
         );
+        
         me.refreshScrollerHeight();
+        // 隐藏loading
         me.hideLoading();
 
         return me;
@@ -56,25 +56,26 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             from = params.from,
             to = params.to,
             param = params.params;
-
+        
+        
         if(to == me.ec) {
-            me.$el.show();
+            //me.$el.show();
             if(me.isFirstLoad){
                 me.model.fetch({
-                    success: function(){
+                      data : {
+                        id : param.id
+                      }
+                    , success: function(){
                         me.isFirstLoad = false;
                     }
                 });
-                
             }
+            
             me.refreshScrollerHeight();
-            new app.subview.toolbar({
-                  title  : me.options.id
-            }, me);
         }
     }
     
-    ,refreshHeight: function(){
+     ,refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();

@@ -17,7 +17,7 @@ app.subview.index_musichot = app.subview.extend({
 
 
         options.size = 5;
-        me.collection = new app.collection.musichot_music(null, options);
+        me.model = new app.model.musichot_music(null, options);
         
 
         me.showLoading(me.$el);
@@ -28,7 +28,7 @@ app.subview.index_musichot = app.subview.extend({
 
         me.$el.append(
             me.template({
-                musichot: me.collection.toJSON()
+                musichot: me.model.toJSON()
             })
         );
         
@@ -41,12 +41,10 @@ app.subview.index_musichot = app.subview.extend({
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
-        me.$el.find('.list li').on('click',me.click,me);
+        me.model.on('change', me.render, me);
+        
     }
-    ,click : function(e){
-
-    }
+   
     
     ,onpagebeforechange: function(params){
         var me = this, 
@@ -58,7 +56,7 @@ app.subview.index_musichot = app.subview.extend({
             me.$el.show();
 
             if(me.isFirstLoad){
-                me.collection.fetch({
+                me.model.fetch({
                     success: function(){
                         me.isFirstLoad = false;
                     }

@@ -9,7 +9,11 @@ app.subview.topic_content = app.subview.extend({
     ,template: _.template(
         $('#template_topic_content').text()
     )
-
+    
+    ,template_item : _.template(
+        $('#template_topic_content_item').text()
+    )
+    
     ,events: {}
 
     ,init: function(options){
@@ -19,7 +23,7 @@ app.subview.topic_content = app.subview.extend({
 
         // 创建collection数据对象
         
-        me.collection = new app.collection.topic_music(null, options);
+        me.model = new app.model.topic_music(null, options);
         
        
         // 展示loading
@@ -27,26 +31,34 @@ app.subview.topic_content = app.subview.extend({
     }
 
     ,render: function(){
-        var me = this;
+        var me = this,item;
+        
+        item = me.template_item({
+                    topic : me.model.toJSON()
+                });
+                
+        if(me.model.get('page') == 0){
+            me.$el.append(
+                me.template({
+                    item : item
+                })
+            );
+            me._bindMoreEvent.call(me);
+        }else{
+            $(item).insertBefore(me.$el.find('.list li.load-more'));
 
-        // 使用append，避免将loading冲掉
-       
-        me.$el.append(
-            me.template({
-                topic: me.collection.toJSON()
-            })
-        );
-        me.refreshScrollerHeight();
-        // 隐藏loading
+            
+        }
         me.hideLoading();
-
+        me.refreshScrollerHeight();
+        
         return me;
     }
 
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
+        me.model.on('change', me.render, me);
     }
 
     ,onpagebeforechange: function(params){
@@ -58,7 +70,10 @@ app.subview.topic_content = app.subview.extend({
         if(to == me.ec) {
             me.$el.show();
             if(me.isFirstLoad){
-                me.collection.fetch({
+                me.model.fetch({
+                    data : {
+                        page:me.model.get('page')
+                    },
                     success: function(){
                         me.isFirstLoad = false;
                     }
@@ -73,6 +88,30 @@ app.subview.topic_content = app.subview.extend({
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();
+    }
+    
+    /**
+     * 绑定更多时的事件
+     *
+     */
+    , _bindMoreEvent : function(){
+        var me = this;
+        me.$el.find('.load-more').click(function(){
+            me.model.off('change');
+            me.model.set({
+                  page      : me.model.get('page') + 1
+            },{silent:true});
+            me.showLoading(me.$el);
+            me.model.fetch({
+                data : {
+                    page : me.model.get('page')
+                },
+                success: function(){
+                    me.render.call(me);
+                }
+            });
+        });
+    
     }
 
 });

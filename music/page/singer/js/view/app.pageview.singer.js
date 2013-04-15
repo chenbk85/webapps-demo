@@ -12,6 +12,8 @@ app.pageview.singer = app.pageview.extend({
         me.setup(new app.subview.singer_header(options, me));
 
         me.setup(new app.subview.singer_content(options, me));
+        
+        me.setup(new app.subview.shortcut({}, me));
     }
     
     ,registerEvents : function(){

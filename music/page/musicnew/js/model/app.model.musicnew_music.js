@@ -8,8 +8,7 @@ app.model.musicnew_music = app.model.extend({
     }
     
     , defaults : {
-          page      : 0
-        , loadCount : 1
+        page : 0
     }
     
     , url: function(){

@@ -30,20 +30,21 @@ app.subview.musicnew_content = app.subview.extend({
     }
 
     ,render: function(){
-        var me = this;
-        if(me.model.get('loadCount') == 1){
+        var me = this,item;
+        
+        item = me.template_item({
+                    musicnew : me.model.toJSON()
+                });
+                
+        if(me.model.get('page') == 0){
             me.$el.append(
                 me.template({
-                    item : me.template_item({
-                        musicnew : me.model.toJSON()
-                    })
+                    item : item
                 })
             );
             me._bindMoreEvent.call(me);
         }else{
-            $(me.template_item({
-                    musicnew: me.model.toJSON()
-             })).insertBefore(me.$el.find('.list li.load-more'));
+            $(item).insertBefore(me.$el.find('.list li.load-more'));
 
             
         }
@@ -98,8 +99,7 @@ app.subview.musicnew_content = app.subview.extend({
         me.$el.find('.load-more').click(function(){
             me.model.off('change');
             me.model.set({
-                  page      : 1
-                , loadCount : me.model.get('loadCount') + 1
+                  page      : me.model.get('page') + 1
             },{silent:true});
             me.showLoading(me.$el);
             me.model.fetch({
@@ -107,7 +107,6 @@ app.subview.musicnew_content = app.subview.extend({
                     page : me.model.get('page')
                 },
                 success: function(){
-                    
                     me.render.call(me);
                 }
             });

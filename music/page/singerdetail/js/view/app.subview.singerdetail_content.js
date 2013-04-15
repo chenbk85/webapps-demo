@@ -1,52 +1,25 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.singerdetail_content = app.subview.extend({
     el: "#singerdetail_page_content"
 
-    ,template: _.template(
-        $('#template_singerdetail_content').text()
-    )
-
-    ,events: {}
-
     ,init: function(options){
-        var me = this;
-
-        me.isFirstLoad = true;
-
-        // 创建collection数据对象
+        var me = this, 
+            id = options.id,
+            subView;
         
-        me.collection = new app.collection.singerdetail_music(null, options);
+        me.options = options;
         
-       
-        // 展示loading
-        me.showLoading(me.$el);
-    }
+        me.MAX_SUBPAGES = 3;
 
-    ,render: function(){
-        var me = this;
-
-        // 使用append，避免将loading冲掉
-       
-        me.$el.append(
-            me.template({
-                content: me.collection.toJSON()
-            })
-        );
-
-        // 隐藏loading
-        me.hideLoading();
-
-        return me;
+        me._registerCurSubpage.call(me,id);
+        
     }
 
     ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-        me.collection.on('reset', me.render, me);
     }
 
     ,onpagebeforechange: function(params){
@@ -54,17 +27,47 @@ app.subview.singerdetail_content = app.subview.extend({
             from = params.from,
             to = params.to,
             param = params.params;
+        
 
         if(to == me.ec) {
-            me.$el.show();
-            if(me.isFirstLoad){
-                me.collection.fetch({
-                    success: function(){
-                        me.isFirstLoad = false;
-                    }
-                });
+            
+            if(!me.getSubpage('singerdetail_info_' + param.id)){
+                
+                me._registerCurSubpage.call(me,param.id);
+
             }
+            
+            
+            me.setCurrentSubpage(me.getSubpage('singerdetail_info_' + param.id));
+            
+            me.recycleSubpage();
+            
+            me.$el.show();
         }
+    }
+    
+    , _registerCurSubpage : function(id){
+        var me = this;
+        
+        me._registerSubpage.call(me, 'singerdetail_info_' + id, 'singerdetail_content_info');
+        me._registerSubpage.call(me, 'singerdetail_songs_' + id, 'singerdetail_content_songs');
+        me._registerSubpage.call(me, 'singerdetail_albums_' + id, 'singerdetail_content_albums');
+    }
+    
+    
+    , _registerSubpage : function(id,subview){
+    
+        var me = this,subView;
+        
+        subView = new app.subview[ subview ](
+            $.extend({}, me.options), 
+            me
+        );
+        me.append(subView);
+
+        me.registerSubpage(id, subView);
+
+        return me;
     }
 
 });
