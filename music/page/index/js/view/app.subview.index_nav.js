@@ -25,6 +25,8 @@ app.subview.index_nav = app.subview.extend({
         me.$el.append(
             me.template({})
         ).show();
+        
+        me.initOnOrientationChange.call(me);
         me.refreshScrollerHeight();
         me.resetWidth.call(me);
 
@@ -53,6 +55,30 @@ app.subview.index_nav = app.subview.extend({
         window.scrollTo(0, 0);
         app.refreshScroll();
     }
+    
+    ,initOnOrientationChange : function(){
+        var me = this;
+        $(window).bind('orientationchange',function(){
+            var 
+                width                = $(window).width(),
+                outList              = me.$el.find('.outList'),
+                outListItem          = me.$el.find('.outListItem'),
+                cur                  = parseInt(outList.attr('cur'),10);
+
+        
+            outList.width( width * 2);
+            outListItem.width( width );
+
+            outList.css({
+                  '-webkit-transition' : '0 ease'
+                , '-webkit-transform'  : 'translate3d(-'+ (cur * width ) +'px, 0, 0)'
+             });
+        });
+        
+
+    }
+    
+    
     ,resetWidth : function(){
         var 
             me                   = this,
@@ -68,9 +94,10 @@ app.subview.index_nav = app.subview.extend({
         outListItem.width( width );
         
         me.$el.find('.navs-opts .prev').on('click',function(){
-
-            outList.css({
-                '-webkit-transform'  : 'translate3d(0, 0, 0)'
+            var width = $(window).width();
+            outList.attr('cur',0).css({
+                  '-webkit-transition' : '0.6s ease'
+                , '-webkit-transform'  : 'translate3d(0, 0, 0)'
             });
             
             identifyLI.removeClass('on');
@@ -78,11 +105,11 @@ app.subview.index_nav = app.subview.extend({
             
         });
         me.$el.find('.navs-opts .next').on('click',function(){
-           
-            outList.css({
-                '-webkit-transform'  : 'translate3d(-'+ (width)+'px, 0, 0)'
+           var width = $(window).width();
+            outList.attr('cur',1).css({
+                 '-webkit-transition' : '0.6s ease'
+                , '-webkit-transform' : 'translate3d(-'+ (width)+'px, 0, 0)'
             });
-            
             identifyLI.removeClass('on');
             identifyLI.eq(1).addClass('on');
         });

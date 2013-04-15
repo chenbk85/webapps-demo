@@ -23,6 +23,8 @@ app.subview.index_scroll = app.subview.extend({
             me.template({})
         ).show();
         me.refreshScrollerHeight();
+        
+        me.initOnOrientationChange.call(me);
         me.initAnimation.call(me);
         
         return me;
@@ -51,6 +53,30 @@ app.subview.index_scroll = app.subview.extend({
         app.refreshScroll();
     }
     
+    ,initOnOrientationChange : function(){
+        var me = this;
+        $(window).bind('orientationchange',function(){
+            var 
+                swipe          = me.$el.find('.swipe'),
+                identify       = me.$el.find('.identify'),
+                swipeUL        = swipe.find('ul'),
+                swipeLI        = swipeUL.find('li'),
+                screenWidth    = $(window).width(),
+                count          = swipeLI.length,
+                cur            = parseInt(swipeUL.attr('cur'),10)
+                ;
+        
+            swipeLI.css('width',screenWidth);
+            swipeUL.css('width',screenWidth * count);
+            
+            swipeUL.css({
+                  '-webkit-transition' : '0 ease'
+                , '-webkit-transform'  : 'translate3d(-'+ (cur * screenWidth)+'px, 0, 0)'
+             });
+        });
+    }
+    
+    
     ,initAnimation : function(){
         var 
             me             = this,
@@ -69,13 +95,14 @@ app.subview.index_scroll = app.subview.extend({
         
         intervalFun = function(){
             intervalHandle = window.setInterval(function(){
-                
+                var screenWidth = $(window).width();
                 if(cur >= count){
                     cur = 0;
                 }
                 
-                swipeUL.css({
-                    '-webkit-transform'  : 'translate3d(-'+ (cur * screenWidth)+'px, 0, 0)'
+                swipeUL.attr('cur',cur).css({
+                      '-webkit-transition' : '1s ease'
+                    , '-webkit-transform'  : 'translate3d(-'+ (cur * screenWidth)+'px, 0, 0)'
                 });
                 
                 identify.find('li').removeClass('on');
