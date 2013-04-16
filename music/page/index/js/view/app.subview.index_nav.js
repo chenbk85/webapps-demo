@@ -2,15 +2,15 @@
 (function($) {
 
 app.subview.index_nav = app.subview.extend({
-     el: "#index_page_nav"
+      el: "#index_page_nav"
 
-    ,template: _.template(
+    , template: _.template(
         $('#template_index_nav').text()
     )
 
-    ,events: {}
+    , events: {}
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
 
         me.isFirstLoad = true;
@@ -19,51 +19,56 @@ app.subview.index_nav = app.subview.extend({
        
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
 
         me.$el.append(
             me.template({})
         ).show();
         
-        me.initOnOrientationChange.call(me);
+        me._initOnOrientationChange.call(me);
+        me._initAnimate.call(me);
         me.refreshScrollerHeight();
-        me.resetWidth.call(me);
-
+        
         return me;
     }
     
     
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
     }
     
-    ,onpagebeforechange: function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange: function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
+            
         if(to == me.ec){
             me.$el.show();
             me.refreshScrollerHeight();
 
         }
     }
-    ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();
     }
     
-    ,initOnOrientationChange : function(){
+    , _initOnOrientationChange : function(){
         var me = this;
+        
         $(window).bind('orientationchange',function(){
             var 
-                width                = $(window).width(),
-                outList              = me.$el.find('.outList'),
-                outListItem          = me.$el.find('.outListItem'),
-                cur                  = parseInt(outList.attr('cur'),10);
+                  width                = $(window).width()
+                , outList              = me.$el.find('.outList')
+                , outListItem          = me.$el.find('.outListItem')
+                , cur                  = parseInt(outList.attr('cur'),10)
+                ;
 
         
             outList.width( width * 2);
@@ -74,19 +79,18 @@ app.subview.index_nav = app.subview.extend({
                 , '-webkit-transform'  : 'translate3d(-'+ (cur * width ) +'px, 0, 0)'
              });
         });
-        
-
     }
     
     
-    ,resetWidth : function(){
+    , _initAnimate : function(){
         var 
-            me                   = this,
-            width                = $(window).width(),
-            outList              = me.$el.find('.outList'),
-            outListItem          = me.$el.find('.outListItem'),
-            identify             = me.$el.find('.identify'),
-            identifyLI           = identify.find('li');
+              me                   = this
+            , width                = $(window).width()
+            , outList              = me.$el.find('.outList')
+            , outListItem          = me.$el.find('.outListItem')
+            , identify             = me.$el.find('.identify')
+            , identifyLI           = identify.find('li')
+            ;
         
        
         
@@ -95,23 +99,25 @@ app.subview.index_nav = app.subview.extend({
         
         me.$el.find('.navs-opts .prev').on('click',function(){
             var width = $(window).width();
+            
             outList.attr('cur',0).css({
                   '-webkit-transition' : '0.6s ease'
                 , '-webkit-transform'  : 'translate3d(0, 0, 0)'
             });
             
-            identifyLI.removeClass('on');
-            identifyLI.eq(0).addClass('on');
+            identifyLI.removeClass('on').eq(0).addClass('on');
             
         });
+        
         me.$el.find('.navs-opts .next').on('click',function(){
-           var width = $(window).width();
+            var width = $(window).width();
+           
             outList.attr('cur',1).css({
                  '-webkit-transition' : '0.6s ease'
                 , '-webkit-transform' : 'translate3d(-'+ (width)+'px, 0, 0)'
             });
-            identifyLI.removeClass('on');
-            identifyLI.eq(1).addClass('on');
+            
+            identifyLI.removeClass('on').eq(1).addClass('on');
         });
         
     }

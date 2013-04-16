@@ -7,7 +7,11 @@ app.model.singerhot_music = app.model.extend({
     }
 
     ,url: function(){
-        return '/music/singerhot.php?' + (new Date()).getTime();
+        var me = this;
+        
+        return _.template('/music/singerhot.php?<%= time %>')({
+              time : (new Date()).getTime()
+        });
     }
 
     ,parse: function(resp, xhr){

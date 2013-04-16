@@ -1,6 +1,4 @@
-/**
- * Ê×Ò³ContentViewÀà
- */
+
 (function($) {
 
 app.subview.play_content_detail = app.subview.extend({

@@ -4,9 +4,9 @@
 (function($) {
 
 app.pageview.musichot = app.pageview.extend({
-    el: "#musichot_page"
+      el: "#musichot_page"
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
 
         me.setup(new app.subview.musichot_content(options, me));
@@ -20,15 +20,17 @@ app.pageview.musichot = app.pageview.extend({
     }
     
     ,onpagebeforechange : function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
         
         if(to == me.ec){
             new app.subview.toolbar({
-                  title  : "热歌榜",
-                  action : "musichot"
+                    title  : "热歌榜"
+                  , action : "musichot"
             }, me);
         }    
         

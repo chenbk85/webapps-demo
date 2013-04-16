@@ -1,6 +1,4 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.singerdetail_content_info = app.subview.extend({

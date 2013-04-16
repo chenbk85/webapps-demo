@@ -1,6 +1,4 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.feedback_content = app.subview.extend({

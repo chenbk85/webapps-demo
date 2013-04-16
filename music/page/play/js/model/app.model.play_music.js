@@ -11,7 +11,11 @@ app.model.play_music = app.model.extend({
     ,url: function(){
         var me = this;
         
-        return '/music/play.php?id='+ me.options.id +'&' + (new Date()).getTime();
+        return _.template('/music/play.php?id=<%= id %>&<%= time %>')({
+              time : (new Date()).getTime()
+            , id   : me.options.id
+        });
+        
     }
 
     ,parse: function(resp, xhr){

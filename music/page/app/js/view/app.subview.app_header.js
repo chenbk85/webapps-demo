@@ -1,27 +1,26 @@
 (function($) {
 
 app.subview.app_header = app.subview.extend({
-    el: "#app_page_header",
+      el: "#app_page_header"
 
-    events: {
-    },
+    , events: {}
 
-    init: function(options){
+    , init: function(options){
         var me = this;
         me.render();
-    },
+    }
 
-    render: function(){
+    , render: function(){
         var me = this;
         return me;
-    },
+    }
 
-    registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
-    },
+    }
 
-    onpagebeforechange: function(params){
+    , onpagebeforechange: function(params){
         var me = this, 
             from = params.from,
             to = params.to,

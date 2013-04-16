@@ -9,7 +9,12 @@ app.model.index_music_recommendalbum = app.model.extend({
     }
 
     ,url: function(){
-        return '/music/recommendalbum.php?' + (new Date()).getTime();
+        var me = this;
+        
+        return _.template('/music/recommendalbum.php?<%= time %>')({
+            time : (new Date()).getTime()
+        });
+        
     }
 
     ,parse: function(resp, xhr){

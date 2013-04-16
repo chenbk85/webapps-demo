@@ -2,14 +2,14 @@
 (function($) {
 
 app.subview.categorydetail_content = app.subview.extend({
-    el: "#categorydetail_page_content"
+      el: "#categorydetail_page_content"
 
-   
-
-    ,init: function(options){
-        var me = this, 
-            id = options.id,
-            subView;
+    , init: function(options){
+        var 
+              me = this
+            , id = options.id
+            , subView
+            ;
 
         me.MAX_SUBPAGES = 1;
 
@@ -30,10 +30,12 @@ app.subview.categorydetail_content = app.subview.extend({
     }
 
     ,onpagebeforechange: function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
 
         if(to == me.ec) {
             if(!me.getSubpage(param.id)){

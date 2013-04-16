@@ -2,10 +2,11 @@
 (function($) {
 
 app.pageview.index = app.pageview.extend({
-    el: "#index_page"
+      el: "#index_page"
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
+        
         me.MAX_SUBPAGES = 6;
 
         me.setup(new app.subview.index_scroll(options, me));
@@ -19,16 +20,18 @@ app.pageview.index = app.pageview.extend({
         
     }
     
-    ,registerEvents : function(){
+    , registerEvents : function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
     }
     
-    ,onpagebeforechange : function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange : function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
         
         if(to == me.ec){
             new app.subview.toolbar({title:"百度音乐",action:'index'},me);
@@ -43,7 +46,7 @@ app.pageview.index = app.pageview.extend({
         
     }
     
-    ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();

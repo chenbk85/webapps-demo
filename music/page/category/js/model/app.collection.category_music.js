@@ -7,7 +7,12 @@ app.collection.category_music = app.collection.extend({
     }
 
     ,url: function(){
-        return '/music/category.json?' + (new Date()).getTime();
+        var me = this;
+        
+        return _.template('/music/category.json?<%= time %>')({
+            time : (new Date()).getTime()
+        });
+        
     }
 
     ,parse: function(resp, xhr){

@@ -3,24 +3,24 @@
 
 app.subview.toolbar = app.subview.extend({
 
-    el: "#header"
+      el: "#header"
 
-    ,template: _.template(
+    , template: _.template(
         $('#t-toolbar').text()
     )
 
-    ,events: {}
+    , events: {}
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
         me.render.call(me);
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
         
         me.$el.html(me.template({
-            options: me.options
+            options : me.options
         }));
         
         me.bindClickEvent.call(me);
@@ -28,17 +28,19 @@ app.subview.toolbar = app.subview.extend({
         return me;
     }
 
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         
     }
 
-    ,onpagebeforechange: function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange: function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
         
 
         if(to == me.ec) {
@@ -46,7 +48,7 @@ app.subview.toolbar = app.subview.extend({
         }
     }
     
-    ,bindClickEvent : function(){
+    , bindClickEvent : function(){
         var me = this;
         
         me.$el.find('h1').click(function(){
@@ -59,7 +61,7 @@ app.subview.toolbar = app.subview.extend({
         
     }
     
-    ,bindSearchEvent : function(){
+    , bindSearchEvent : function(){
         var me = this;
         
         me.$el.find('.right .btn-search').click(function(){

@@ -9,7 +9,11 @@ app.model.categorydetail_music = app.model.extend({
 
     ,url: function(){
         var me = this;
-        return '/music/categorydetail.php?tag='+ me.options.id + '&' + (new Date()).getTime();
+        
+        return _.template('/music/categorydetail.php?tag=<%= tag %>&<%= time %>')({
+              time : (new Date()).getTime()
+            , tag  : me.options.id
+        });
     }
 
     ,parse: function(resp, xhr){

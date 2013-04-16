@@ -11,8 +11,8 @@ app.model.topicdetail_music = app.model.extend({
         var me = this;
         
         return _.template('/music/topicdetail.php?code=<%= code %>&<%= date %>')({
-            code : me.options.id,
-            date : (new Date()).getTime()
+              code : me.options.id
+            , date : (new Date()).getTime()
         });
     }
 

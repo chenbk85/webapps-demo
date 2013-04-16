@@ -2,15 +2,15 @@
 (function($) {
 
 app.subview.index_musichot = app.subview.extend({
-    el: "#index_page_musichot"
+      el: "#index_page_musichot"
 
-    ,template: _.template(
+    , template: _.template(
         $('#template_index_musichot').text()
     )
 
-    ,events: {}
+    , events: {}
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
 
         me.isFirstLoad = true;
@@ -24,7 +24,7 @@ app.subview.index_musichot = app.subview.extend({
         me.showLoading(me.$el);
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
 
         me.$el.append(
@@ -39,7 +39,7 @@ app.subview.index_musichot = app.subview.extend({
         return me;
     }
 
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.model.on('change', me.render, me);
@@ -47,11 +47,13 @@ app.subview.index_musichot = app.subview.extend({
     }
    
     
-    ,onpagebeforechange: function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange: function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
 
         if(to == me.ec) {
             me.$el.show();
@@ -67,7 +69,7 @@ app.subview.index_musichot = app.subview.extend({
             me.refreshScrollerHeight();
         }
     }
-    ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();

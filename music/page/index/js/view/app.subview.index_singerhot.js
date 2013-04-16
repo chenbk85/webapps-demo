@@ -2,26 +2,25 @@
 (function($) {
 
 app.subview.index_singerhot = app.subview.extend({
-    el: "#index_page_singerhot"
+      el: "#index_page_singerhot"
 
-    ,template: _.template(
+    , template: _.template(
         $('#template_index_singerhot').text()
     )
 
-    ,events: {}
+    , events: {}
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
 
         me.isFirstLoad = true;
-
 
         me.model = new app.model.singerhot_music(null, options);
 
         me.showLoading(me.$el);
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
 
         
@@ -38,17 +37,19 @@ app.subview.index_singerhot = app.subview.extend({
         return me;
     }
 
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.model.on('change', me.render, me);
     }
 
-    ,onpagebeforechange: function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange: function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
 
         if(to == me.ec) {
             me.$el.show();
@@ -65,7 +66,7 @@ app.subview.index_singerhot = app.subview.extend({
         }
     }
     
-    ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();

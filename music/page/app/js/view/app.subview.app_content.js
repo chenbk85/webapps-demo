@@ -1,59 +1,52 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.app_content = app.subview.extend({
-    el: "#app_page_content"
+      el: "#app_page_content"
 
-    ,template: _.template(
+    , template: _.template(
         $('#template_app_content').text()
     )
 
-    ,events: {}
+    , events: {}
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
         me.collection = new app.collection.app_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
         me.$el.append(
             me.template({
                 content: me.collection.toJSON()
             })
         );
 
-        // 隐藏loading
         me.hideLoading();
         me.refreshScrollerHeight();
         return me;
     }
 
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.collection.on('reset', me.render, me);
     }
 
-    ,onpagebeforechange: function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange: function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
 
         if(to == me.ec) {
             me.$el.show();
@@ -69,7 +62,7 @@ app.subview.app_content = app.subview.extend({
         }
     }
     
-    ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();

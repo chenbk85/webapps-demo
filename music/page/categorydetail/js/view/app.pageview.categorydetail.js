@@ -2,9 +2,9 @@
 (function($) {
 
 app.pageview.categorydetail = app.pageview.extend({
-    el: "#categorydetail_page"
+      el: "#categorydetail_page"
 
-    ,init: function(options){
+    , init: function(options){
         var me = this;
 
         me.setup(new app.subview.categorydetail_header(options, me));

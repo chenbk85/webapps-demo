@@ -1,17 +1,15 @@
-/**
- * 首页ContentView类
- */
+
 (function($) {
 
 app.subview.topicdetail_content_detail = app.subview.extend({
     
-    template: _.template(
+      template: _.template(
         $('#template_topicdetail_content').text()
     )
 
-    ,className: 'topicdetail_content_detail'
+    , className: 'topicdetail_content_detail'
 
-    ,init: function(options){
+    , init: function(options){
         
         var me = this;
 
@@ -27,7 +25,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
         me.showLoading(me.$el);
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
 
         // 使用append，避免将loading冲掉
@@ -44,19 +42,19 @@ app.subview.topicdetail_content_detail = app.subview.extend({
         return me;
     }
 
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("subpagebeforechange", me.onsubpagebeforechange, me);
         me.model.on('change', me.render, me);
     }
-    ,unregisterEvents: function(){
+    , unregisterEvents: function(){
         var me = this, ec = me.ec;
 
         ec.off('subpagebeforechange', me.onsubpagebeforechange, me);
         me.model.off('change', me.render, me);
 
     }
-    ,onsubpagebeforechange: function(params){
+    , onsubpagebeforechange: function(params){
         var me = this, 
             from = params.from,
             to = params.to,
@@ -80,7 +78,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
         }
     }
     
-     ,refreshHeight: function(){
+    , refreshHeight: function(){
         var me = this;
         window.scrollTo(0, 0);
         app.refreshScroll();

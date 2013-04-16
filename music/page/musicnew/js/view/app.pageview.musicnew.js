@@ -1,12 +1,10 @@
-/**
- * 首页View类
- */
+
 (function($) {
 
 app.pageview.musicnew = app.pageview.extend({
-    el: "#musicnew_page"
+      el: "#musicnew_page"
 
-    ,init: function(options){
+    , init: function(options){
        var me = this;
         
         
@@ -15,21 +13,23 @@ app.pageview.musicnew = app.pageview.extend({
         me.setup(new app.subview.shortcut({}, me));
     }
     
-    ,registerEvents : function(){
+    , registerEvents : function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
     }
     
-    ,onpagebeforechange : function(params){
-        var me = this, 
-            from = params.from,
-            to = params.to,
-            param = params.params;
+    , onpagebeforechange : function(params){
+        var 
+              me = this
+            , from = params.from
+            , to = params.to
+            , param = params.params
+            ;
         
         if(to == me.ec){
             new app.subview.toolbar({
-                  title  : "新歌榜",
-                  action : 'musicnew'
+                    title  : "新歌榜"
+                  , action : 'musicnew'
             }, me);
         }    
         

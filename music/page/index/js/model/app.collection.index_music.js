@@ -9,7 +9,11 @@ app.collection.index_music = app.collection.extend({
     }
 
     ,url: function(){
-        return '/music/ad.json?' + (new Date()).getTime();
+        var me = this;
+        
+        return _.template('/music/ad.json?<%= time %>')({
+            time : (new Date()).getTime()
+        });
     }
 
     ,parse: function(resp, xhr){
