@@ -69,7 +69,7 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             }
             me.refreshScrollerHeight();
             new app.subview.toolbar({
-                  title  : me.options.id
+                  title  : decodeURIComponent(me.options.id)
             }, me);
         }
     }

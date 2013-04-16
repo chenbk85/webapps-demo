@@ -25,7 +25,7 @@
                 }
             %>
             <li class="<%= color %> log url">
-                <a href="#categorydetail/<%= item.label %>"><%= item.label %>
+                <a href="#categorydetail/<%= encodeURIComponent(item.label) %>"><%= item.label %>
             </li>
             <% }); %>
         </ul>

@@ -73,7 +73,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
             }
             
             new app.subview.toolbar({
-                  title  : me.options.name
+                  title  : decodeURIComponent(me.options.name)
             }, me);
             
             me.refreshScrollerHeight();

@@ -3,7 +3,7 @@
         <% if(!item.name){return;} %>
         <li class="topic left url arrow log">
             <img class="pic" alt="<%= item.name %>" src="<%= item.pic %>">
-            <div class="info"><a href="#topicdetail/<%= item.code %>/<%= item.name %>"><%= item.name %></a></div>
+            <div class="info"><a href="#topicdetail/<%= item.code %>/<%= encodeURIComponent(item.name) %>"><%= item.name %></a></div>
         </li>
     <% }); %>
 </script>
