@@ -12,7 +12,9 @@ app.subview.musichot_content = app.subview.extend({
         $('#template_musichot_content_item').text()
     )
     
-    ,events: {}
+    ,events: {
+        'click li.song' : 'playMusic'
+    }
 
     ,init: function(options){
         var me = this;
@@ -42,14 +44,14 @@ app.subview.musichot_content = app.subview.extend({
                     item : item
                 })
             );
+            me.hideLoading();
             me._bindMoreEvent.call(me);
         }else{
             $(item).insertBefore(me.$el.find('.list li.load-more'));
 
             
         }
-        me.hideLoading();
-        me.refreshScrollerHeight();
+        
         
         return me;
     }
@@ -80,14 +82,9 @@ app.subview.musichot_content = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }
     }
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
     /**
      * 绑定更多时的事件
      *
@@ -99,7 +96,7 @@ app.subview.musichot_content = app.subview.extend({
             me.model.set({
                   page      : me.model.get('page') + 1
             },{silent:true});
-            me.showLoading(me.$el);
+            //me.showLoading(me.$el); //防止白屏
             me.model.fetch({
                 data : {
                     page : me.model.get('page')
@@ -110,6 +107,20 @@ app.subview.musichot_content = app.subview.extend({
             });
         });
     
+    }
+    
+    , playMusic : function(e){
+         var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'play/<%= id %>'
+            ;
+        
+        route = _.template(route)({
+            id : encodeURIComponent(el.data('songid'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
 
 });

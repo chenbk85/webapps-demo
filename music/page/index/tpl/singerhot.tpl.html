@@ -3,7 +3,9 @@
         <ul class="mb10">
             <% _.each(singerhot,function(singer,index){ %>
                 <% if(index >=6 ){return;} %>
-                <li class="log url">
+                <li class="log url"
+                    data-songerid="<%= singer.ting_uid %>"
+                    >
                     <img alt="<%= singer.name %>" src="<%= singer.avatar_middle %>">
                     <span class="title"><%= singer.name %></span>
                 </li>
@@ -11,12 +13,13 @@
             <li class="hdli">
                 <div class="hd log url need-active">
                     <h2>热门歌手</h2>
-                    <div><a href="#singerhot">更多</a></div>
+                    <div>更多</div>
                 </div>
             </li>
             <% _.each(singerhot,function(singer,index){ %>
                 <% if(index < 6 ){return;} %>
-                <li class="log url">
+                <li class="log url"
+                    data-songerid="<%= singer.ting_uid %>">
                     <img alt="<%= singer.name %>" src="<%= singer.avatar_middle %>">
                     <span class="title"><%= singer.name %></span>
                 </li>

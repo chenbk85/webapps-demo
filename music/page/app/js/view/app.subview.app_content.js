@@ -30,7 +30,7 @@ app.subview.app_content = app.subview.extend({
         );
 
         me.hideLoading();
-        me.refreshScrollerHeight();
+
         return me;
     }
 
@@ -58,15 +58,9 @@ app.subview.app_content = app.subview.extend({
                 });
                 
             }
-            me.refreshScrollerHeight();
         }
     }
-    
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
 
 });
 

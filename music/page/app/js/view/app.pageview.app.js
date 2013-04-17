@@ -27,16 +27,10 @@ app.pageview.app = app.pageview.extend({
         
         if(to == me.ec){
             new app.subview.toolbar({title:"热门应用",action:'app'},me);
-            me.refreshScrollerHeight();
         }
         
     }
-    
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
 
 });
 

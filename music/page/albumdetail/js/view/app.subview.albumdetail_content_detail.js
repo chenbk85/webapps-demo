@@ -1,59 +1,64 @@
 
 (function($) {
 
-app.subview.categorydetail_content_detail = app.subview.extend({
-   
-    template: _.template(
-        $('#template_categorydetail_content').text()
+app.subview.albumdetail_content_detail = app.subview.extend({
+    
+      template: _.template(
+        $('#template_albumdetail_content').text()
     )
 
-    ,className : 'categorydetail_content_detail'
+    , className: 'albumdetail_content_detail'
     
     , events : {
-        'click .list li.url' : 'playMusic'
+        'click .album .list li.url' : 'playMusic'
     }
     
-    
-    ,init: function(options){
+    , init: function(options){
         
         var me = this;
 
         me.isFirstLoad = true;
 
-        
-        me.model = new app.model.categorydetail_music(null, options);
 
-        me.showLoading(me.$el);
+       
         
+        me.model = new app.model.albumdetail_music(null, options);
+        
+       
+        // 展示loading
+        me.showLoading(me.$el);
     }
 
-    ,render: function(){
+    , render: function(){
         var me = this;
 
-
+        // 使用append，避免将loading冲掉
+       
         me.$el.append(
             me.template({
-                categorydetail: me.model.toJSON()
+                albumdetail: me.model.toJSON()
             })
         );
+        
+        // 隐藏loading
         me.hideLoading();
 
         return me;
     }
 
-    ,registerEvents: function(){
+    , registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("subpagebeforechange", me.onsubpagebeforechange, me);
         me.model.on('change', me.render, me);
     }
-    ,unregisterEvents: function(){
+    , unregisterEvents: function(){
         var me = this, ec = me.ec;
 
         ec.off('subpagebeforechange', me.onsubpagebeforechange, me);
         me.model.off('change', me.render, me);
 
     }
-    ,onsubpagebeforechange: function(params){
+    , onsubpagebeforechange: function(params){
         var me = this, 
             from = params.from,
             to = params.to,
@@ -63,15 +68,20 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             me.$el.show();
             if(me.isFirstLoad){
                 me.model.fetch({
-                    success: function(){
+                      data : {
+                        id : param.id
+                      }
+                    , success: function(){
                         me.isFirstLoad = false;
                     }
                 });
-                
             }
+            
             new app.subview.toolbar({
-                  title  : decodeURIComponent(me.options.id)
+                  title  : decodeURIComponent(me.options.name)
             }, me);
+            
+            
         }
     }
     
@@ -83,12 +93,12 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             ;
         
         route = _.template(route)({
-            id : encodeURIComponent(el.data('songid'))
+              id : encodeURIComponent(el.data('songid'))
         });
         
-        Backbone.history.navigate(route, {trigger:true});   
+        Backbone.history.navigate(route, {trigger:true});
     }
-
+    
 
 });
 

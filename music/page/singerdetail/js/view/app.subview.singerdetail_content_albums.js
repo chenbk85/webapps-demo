@@ -30,7 +30,6 @@ app.subview.singerdetail_content_albums = app.subview.extend({
             })
         );
         
-        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
 
@@ -69,15 +68,9 @@ app.subview.singerdetail_content_albums = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }
     }
-    
-     ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
 
 });
 

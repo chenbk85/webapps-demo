@@ -8,7 +8,10 @@ app.subview.index_musichot = app.subview.extend({
         $('#template_index_musichot').text()
     )
 
-    , events: {}
+    , events: {
+          'click .songs .hd div' : 'musicHot'
+        , 'click .list li' : 'playMusic'
+    }
 
     , init: function(options){
         var me = this;
@@ -33,7 +36,6 @@ app.subview.index_musichot = app.subview.extend({
             })
         );
         
-        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -66,14 +68,37 @@ app.subview.index_musichot = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }
     }
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
+    
+    , playMusic : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('li')
+            , route  = 'play/<%= id %>'
+            ;
+        
+        route = _.template(route)({
+            id : encodeURIComponent(el.data('songid'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
+    
+    , musicHot : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('div')
+            , route  = 'musichot'
+            ;
+        
+        route = _.template(route)({
+            //
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
+    }
+
 
 });
 

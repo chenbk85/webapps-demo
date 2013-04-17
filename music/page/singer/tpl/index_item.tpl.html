@@ -1,9 +1,10 @@
 <script type="text/template" id="template_singer_content_item">
     <% _.each(singer, function(item, index){ %>
         <% if(!item.ting_uid){return;} %>
-        <li class="artist left url arrow log">
+        <li class="artist left url arrow log"
+            data-singerid="<%= item.ting_uid %>">
             <img class="pic" alt="<%= item.name %>" src="<%= item.avatar_middle %>">
-            <div class="info"><a href="#singerdetail/<%= item.ting_uid %>"><%= item.name %></a></div>
+            <div class="info"><%= item.name %></div>
         </li>
     <% }); %>
 </script>

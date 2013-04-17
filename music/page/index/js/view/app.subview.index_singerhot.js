@@ -8,7 +8,10 @@ app.subview.index_singerhot = app.subview.extend({
         $('#template_index_singerhot').text()
     )
 
-    , events: {}
+    , events: {
+          'click .artists li.url'  : 'singerDetail'
+        , 'click .artists li.hdli' : 'singerHot'
+    }
 
     , init: function(options){
         var me = this;
@@ -31,7 +34,6 @@ app.subview.index_singerhot = app.subview.extend({
             })
         );
 
-        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -62,15 +64,38 @@ app.subview.index_singerhot = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }
     }
     
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
+    , singerDetail : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'singerdetail/<%= id %>'
+            ;
+        
+        route = _.template(route)({
+            id : encodeURIComponent(el.data('songerid'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
+    
+    , singerHot : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('li')
+            , route  = 'singerhot'
+            ;
+        
+        route = _.template(route)({
+            //
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
+    }
+    
+
 
 });
 

@@ -20,16 +20,23 @@
 }
 
 .page-loading-anim{
-    height:50px;
-    width:50px;
-    -webkit-animation: loading-anim 2s linear infinite;
-    background:url("../img/pageloading.png") 0 0 no-repeat;
-    background-size: 200px 200px;
+    height:200px;
+    width:200px;
+
 }
 
 .page-loading-text{
+    width:64px;
+    height:64px;
     color: #888;
     font: bold 16px/30px normal;
+    background:url("../img/pageloading.png") 0 0 no-repeat;
+    background-size: 64px 64px;
+}
+
+.page-loading .page-loading-text{
+    width:64px;
+    height:64px;
 }
 /*
 .page-loading-logo{

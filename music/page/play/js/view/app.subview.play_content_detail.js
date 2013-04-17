@@ -13,10 +13,11 @@ app.subview.play_content_detail = app.subview.extend({
 
     ,init: function(options){
         var me = this;
+        
+        me.options = options;
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
         
         me.model = new app.model.play_music(null, options);
         
@@ -37,11 +38,7 @@ app.subview.play_content_detail = app.subview.extend({
         );
         
         me._createPlayerBar.call(me);
-        
-        me.refreshScrollerHeight();
-        // 隐藏loading
-        
-        
+        me._playerControl.call(me);
         me.hideLoading();
 
         return me;
@@ -75,7 +72,6 @@ app.subview.play_content_detail = app.subview.extend({
                 });
             }
             $('#player').hide();
-            me.refreshScrollerHeight();
             
         }else{
         
@@ -84,11 +80,7 @@ app.subview.play_content_detail = app.subview.extend({
         }
     }
     
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
     
     ,_createPlayerBar : function(){
         var 
@@ -99,7 +91,30 @@ app.subview.play_content_detail = app.subview.extend({
         
         $('#player').html(str);
         
+        $('#player').click(function(){
+            var route = 'play/<%= id %>';
+            
+            route = _.template(route)({
+                  id   : encodeURIComponent(me.options.id)
+            });
         
+            Backbone.history.navigate(route, {trigger:true});
+        });
+        
+        
+    }
+    
+    , _playerControl : function(){
+        var me = this;
+        $('.song .player .opt').click(function(){
+            var state = $(this).hasClass('play') ? 'play' : 'pause';
+            
+            if(state == 'play'){
+                $(this).removeClass('play').addClass('pause');
+            }else{
+                $(this).removeClass('pause').addClass('play');
+            }
+        });
     }
 
 });

@@ -9,7 +9,10 @@ app.subview.index_category = app.subview.extend({
         $('#template_index_category').text()
     )
 
-    , events: {}
+    , events: {
+          'click .tags .hd'    : 'categoryAll'
+        , 'click .tags li.url' : 'categoryDetail'
+    }
 
     , init: function(options){
         var me = this;
@@ -30,7 +33,6 @@ app.subview.index_category = app.subview.extend({
                 category: me.collection.toJSON()
             })
         );
-        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -61,14 +63,35 @@ app.subview.index_category = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }
     }
     
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
+    , categoryDetail : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'categorydetail/<%= label %>'
+            ;
+        
+        route = _.template(route)({
+            label : encodeURIComponent(el.data('label'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
+    }
+    
+    , categoryAll : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('.hd')
+            , route  = 'category'
+            ;
+        
+        route = _.template(route)({
+            //
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
 
 });

@@ -38,19 +38,13 @@ app.pageview.index = app.pageview.extend({
             
             $('#footer-index').show();
             $('#footer').hide();
-            me.refreshScrollerHeight();
         }else{
             $('#footer-index').hide();
             $('#footer').show();
         }
         
     }
-    
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
     
 });
 

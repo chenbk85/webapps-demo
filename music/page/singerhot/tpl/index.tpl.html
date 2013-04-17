@@ -2,12 +2,12 @@
     <section class="content">
         <ul class="list">
             <% _.each(singerhot, function(item, index){ %>
-            <li class="artist left url arrow log" onclick="location.href='#singerdetail/<%= item.ting_uid %>';">
+            <li class="artist left url arrow log" 
+                data-singerid="<%= item.ting_uid %>">
                 <img class="pic" alt="<%= item.name %>" src="<%= item.avatar_middle %>">
                 <div class="info"><%= item.name %></div>
             </li>
             <% }); %>
-            <li class="load-more need-active">查看更多...</li>
         </ul>
     </section>
 </script>

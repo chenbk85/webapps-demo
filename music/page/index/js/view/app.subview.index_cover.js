@@ -8,7 +8,10 @@ app.subview.index_cover = app.subview.extend({
         $('#template_index_cover').text()
     )
 
-    , events: {}
+    , events: {
+          'click .albums .cover li.url' : 'albumDetail'
+        , 'click .albums .items li.url' : 'albumDetail'
+    }
 
     , init: function(options){
         var me = this;
@@ -29,7 +32,6 @@ app.subview.index_cover = app.subview.extend({
             })
         );
         
-        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -60,15 +62,25 @@ app.subview.index_cover = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }
     }
     
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
+    , albumDetail : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'albumdetail/<%= id %>/<%= name %>'
+            ;
+        
+        route = _.template(route)({
+              id   : encodeURIComponent(el.data('id'))
+            , name : encodeURIComponent(el.data('name'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
+    
+    
 
 });
 

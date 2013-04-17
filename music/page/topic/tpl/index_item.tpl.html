@@ -1,9 +1,9 @@
 <script type="text/template" id="template_topic_content_item">
     <% _.each(topic,function(item,index){%>
         <% if(!item.name){return;} %>
-        <li class="topic left url arrow log">
+        <li class="topic left url arrow log" data-code="<%= item.code %>" data-name="<%= item.name %>">
             <img class="pic" alt="<%= item.name %>" src="<%= item.pic %>">
-            <div class="info"><a href="#topicdetail/<%= item.code %>/<%= encodeURIComponent(item.name) %>"><%= item.name %></a></div>
+            <div class="info"><%= item.name %></div>
         </li>
     <% }); %>
 </script>

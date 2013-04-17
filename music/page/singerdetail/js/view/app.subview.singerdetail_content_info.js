@@ -30,7 +30,6 @@ app.subview.singerdetail_content_info = app.subview.extend({
             })
         );
         
-        me.refreshScrollerHeight();
         // 隐藏loading
         me.hideLoading();
 
@@ -74,15 +73,10 @@ app.subview.singerdetail_content_info = app.subview.extend({
                 , action : 'singerdetail'
             }, me);
             
-            me.refreshScrollerHeight();
         }
     }
     
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
     
 
     , _bindClickEvent : function(){
@@ -98,7 +92,6 @@ app.subview.singerdetail_content_info = app.subview.extend({
             me.$el.parent().find('.songs,.albums').hide();
             me.$el.parent().find('.' + panel).show();
 
-            me.refreshScrollerHeight();
         });
     }
 

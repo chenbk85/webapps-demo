@@ -8,7 +8,9 @@ app.subview.singerhot_content = app.subview.extend({
         $('#template_singerhot_content').text()
     )
 
-    ,events: {}
+    ,events: {
+        'click li.url' : 'singerDetail'
+    }
 
     ,init: function(options){
         var me = this;
@@ -39,7 +41,7 @@ app.subview.singerhot_content = app.subview.extend({
 
         // 隐藏loading
         me.hideLoading();
-        me.refreshScrollerHeight();
+        
         return me;
     }
 
@@ -64,14 +66,23 @@ app.subview.singerhot_content = app.subview.extend({
                     }
                 });
             }
-            me.refreshScrollerHeight();
         }
     }
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
+    
+    , singerDetail : function(){
+         var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'singerdetail/<%= id %>'
+            ;
+        
+        route = _.template(route)({
+            id : encodeURIComponent(el.data('singerid'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
+    
 });
 
 })(Zepto);

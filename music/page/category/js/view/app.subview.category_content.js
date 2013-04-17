@@ -8,7 +8,9 @@ app.subview.category_content = app.subview.extend({
         $('#template_category_content').text()
     )
 
-    ,events: {}
+    ,events: {
+        'click .list li.url' : 'categoryDetail'
+    }
 
     ,init: function(options){
         var me = this;
@@ -32,7 +34,6 @@ app.subview.category_content = app.subview.extend({
         );
         
 
-        me.refreshScrollerHeight();
         me.hideLoading();
 
         return me;
@@ -60,17 +61,25 @@ app.subview.category_content = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
         }else{
             me.$el.hide();
         }
     }
     
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
+    , categoryDetail : function(e){
+         var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'categorydetail/<%= lable %>'
+            ;
+        
+        route = _.template(route)({
+            lable : encodeURIComponent(el.data('lable'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});    
     }
+
 
 });
 

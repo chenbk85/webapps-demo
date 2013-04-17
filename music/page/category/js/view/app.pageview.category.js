@@ -1,6 +1,4 @@
-/**
- * 首页View类
- */
+
 (function($) {
 
 app.pageview.category = app.pageview.extend({
@@ -34,7 +32,6 @@ app.pageview.category = app.pageview.extend({
                   title  : "音乐分类",
                   action : 'category'
             }, me);
-            window.setTimeout(function(){app.wrapperScroll.refresh();},200);
         }    
         
     }

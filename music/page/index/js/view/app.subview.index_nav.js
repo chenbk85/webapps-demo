@@ -28,7 +28,6 @@ app.subview.index_nav = app.subview.extend({
         
         me._initOnOrientationChange.call(me);
         me._initAnimate.call(me);
-        me.refreshScrollerHeight();
         
         return me;
     }
@@ -49,15 +48,10 @@ app.subview.index_nav = app.subview.extend({
             
         if(to == me.ec){
             me.$el.show();
-            me.refreshScrollerHeight();
 
         }
     }
-    , refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
     
     , _initOnOrientationChange : function(){
         var me = this;

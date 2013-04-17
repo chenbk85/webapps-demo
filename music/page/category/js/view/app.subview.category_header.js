@@ -30,7 +30,6 @@ app.subview.category_header = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
-            me.refreshScrollerHeight();
         }
     }
 });

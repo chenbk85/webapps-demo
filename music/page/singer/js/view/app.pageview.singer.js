@@ -29,16 +29,10 @@ app.pageview.singer = app.pageview.extend({
         
         if(to == me.ec){
             new app.subview.toolbar({title:"歌手",action:'singer'},me);
-            me.refreshScrollerHeight();
         }
         
     }
-    
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
 
 });
 

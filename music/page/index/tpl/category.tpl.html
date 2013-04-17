@@ -1,10 +1,8 @@
 <script type="text/template" id="template_index_category">
     <div class="tags mod-2">
         <div class="hd log url need-active">
-            <h2>
-                音乐分类
-            </h2>
-            <div><a href="#musichot">更多</a></div>
+            <h2>音乐分类</h2>
+            <div>更多</div>
         </div>
         <ul>
             <% _.each(category, function(item, index){ %>
@@ -24,8 +22,9 @@
                         break;
                 }
             %>
-            <li class="<%= color %> log url">
-                <a href="#categorydetail/<%= encodeURIComponent(item.label) %>"><%= item.label %>
+            <li class="<%= color %> log url"
+                data-label="<%= item.label %>">
+                <%= item.label %>
             </li>
             <% }); %>
         </ul>

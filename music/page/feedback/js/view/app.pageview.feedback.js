@@ -30,16 +30,10 @@ app.pageview.feedback = app.pageview.extend({
         
         if(to == me.ec){
             new app.subview.toolbar({title:"意见反馈",action:'feedback'},me);
-            me.refreshScrollerHeight();
         }
         
     }
-    
-    ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
+
 
 });
 

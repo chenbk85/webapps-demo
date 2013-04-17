@@ -12,7 +12,9 @@ app.subview.topic_content = app.subview.extend({
         $('#template_topic_content_item').text()
     )
     
-    ,events: {}
+    ,events: {
+        'click .content .list li.topic' : 'showDetail'
+    }
 
     ,init: function(options){
         var me = this;
@@ -48,7 +50,7 @@ app.subview.topic_content = app.subview.extend({
             
         }
         me.hideLoading();
-        me.refreshScrollerHeight();
+        
         
         return me;
     }
@@ -78,15 +80,10 @@ app.subview.topic_content = app.subview.extend({
                 });
             }
             
-            me.refreshScrollerHeight();
+            
         }
     }
     
-     ,refreshHeight: function(){
-        var me = this;
-        window.scrollTo(0, 0);
-        app.refreshScroll();
-    }
     
     /**
      * 绑定更多时的事件
@@ -110,6 +107,21 @@ app.subview.topic_content = app.subview.extend({
             });
         });
     
+    }
+    
+    , showDetail : function(e){
+         var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'topicdetail/<%= code %>/<%= name %>'
+            ;
+        
+        route = _.template(route)({
+              code : encodeURIComponent(el.data('code'))
+            , name : encodeURIComponent(el.data('name'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});
     }
 
 });

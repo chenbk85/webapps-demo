@@ -80,6 +80,11 @@
             header="Content-Type:text/javascript; charset=UTF-8"
             />
         <urlmap
+            match="/^\/music\/albumdetail\.php$/"
+            rewrite="data/albumdetail.php"
+            header="Content-Type:text/javascript; charset=UTF-8"
+            />
+        <urlmap
             match="/^\/music\/recommendalbum\.php$/"
             rewrite="data/recommendalbum.php"
             header="Content-Type:text/javascript; charset=UTF-8"

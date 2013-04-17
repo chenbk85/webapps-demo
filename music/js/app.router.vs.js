@@ -18,6 +18,7 @@ app.router.vs = app.router.extend({
         , 'singerhot'                : 'singerhot'
         , 'topic'                    : 'topic'
         , 'topicdetail/:id/:name'    : 'topicdetail'
+        , 'albumdetail/:id/:name'    : 'albumdetail'
 
        
     }
@@ -31,12 +32,12 @@ app.router.vs = app.router.extend({
         , 'categorydetail'
         , 'musichot'
         , 'musicnew'
-        , 'play'
         , 'singer'
-        , 'singerdetail'
         , 'singerhot'
+        , 'singerdetail'
         , 'topic'
         , 'topicdetail'
+        , 'play'
     ]
 
     // 位置记忆，默认为false，不进行位置记忆
@@ -47,8 +48,9 @@ app.router.vs = app.router.extend({
 
     // 页面切换动画配置
     ,pageTransition: {
-          'index-feedback' :'slide'
-        , 'feedback-app'   : 'fade'
+          'index-feedback'     : 'slide'
+        , 'feedback-app'       : 'fade'
+        , 'topicdetail-play'   : 'sample'
 
     }
 
@@ -141,6 +143,14 @@ app.router.vs = app.router.extend({
         id = id || 0;
         name = name || '';
         this.doAction('topicdetail', {id:decodeURIComponent(id),name:decodeURIComponent(name)},
+            //禁止发送
+            {disable: true}
+        );
+    }
+    ,albumdetail : function(id,name){
+        id = id || 0;
+        name = name || '';
+        this.doAction('albumdetail', {id:decodeURIComponent(id),name:decodeURIComponent(name)},
             //禁止发送
             {disable: true}
         );

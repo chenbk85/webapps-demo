@@ -15,11 +15,12 @@
                 <li class="hd"><%= item.name %></li>
                 <ul class="list">
                     <% _.each(item.songList,function(sitem,sindex){ %>
-                    <li class="song url log song-<%= sitem.song_id %>">
+                    <li class="song url log"
+                        data-songid="<%= sitem.song_id %>">
                         <div class="left">
                             <div class="rank"><%= sindex %></div>
                             <div class="info">
-                                <b><a href="#play/<%= sitem.song_id %>"><%= sitem.title %></a></b>
+                                <b><%= sitem.title %></b>
                                 <br><span class="txt"><%= sitem.author %></span>
 
                             </div>

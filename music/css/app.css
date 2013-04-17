@@ -525,6 +525,7 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
     background:#f3f3f3;
 }
 #wrapper {
+    /*
 	position:absolute;
     z-index:1;
 	top:43px; 
@@ -532,6 +533,8 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
     left:0;
 	width:100%;
 	overflow:auto;
+    */
+    margin-top:43px;
 
 }
 

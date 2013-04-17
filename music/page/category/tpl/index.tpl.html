@@ -2,7 +2,10 @@
     <section class="content">
         <ul class="list">
             <% _.each(category, function(item, index){ %>
-            <li class="tag log url arrow"><a href="#categorydetail/<%= encodeURIComponent(item.label) %>"><%= item.label %></a></li>
+            <li class="tag log url arrow"
+                data-lable="<%= item.label %>">
+                <%= item.label %>
+            </li>
             <% }); %>
         </ul>
     </section>
