@@ -9,7 +9,10 @@ app.subview.singerdetail_content_songs = app.subview.extend({
         $('#template_singerdetail_content_songs').text()
     )
 
+    , events : {
     
+        'click .list li.url' : 'playMusic'
+    }
 
     ,init: function(options){
         
@@ -74,7 +77,19 @@ app.subview.singerdetail_content_songs = app.subview.extend({
         }
     }
     
-    
+    , playMusic : function(e){
+         var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'play/<%= id %>'
+            ;
+        
+        route = _.template(route)({
+            id : encodeURIComponent(el.data('songid'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});    
+    }
     
     
 

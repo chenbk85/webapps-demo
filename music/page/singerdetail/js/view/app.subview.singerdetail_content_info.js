@@ -56,7 +56,11 @@ app.subview.singerdetail_content_info = app.subview.extend({
             param = params.params;
 
         if(to == me.ec) {
+            
             me.$el.show();
+            me.$el.find('.nav-tab span').removeClass('on').parent().find('.songs-panel').addClass('on');  //bug?
+            
+            
             if(me.isFirstLoad){
                 me.model.fetch({
                     data    : {

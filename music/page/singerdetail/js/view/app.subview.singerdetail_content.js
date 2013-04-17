@@ -36,8 +36,7 @@ app.subview.singerdetail_content = app.subview.extend({
                 me._registerCurSubpage.call(me,param.id);
 
             }
-            
-            
+
             me.setCurrentSubpage(me.getSubpage('singerdetail_info_' + param.id));
             
             me.recycleSubpage();

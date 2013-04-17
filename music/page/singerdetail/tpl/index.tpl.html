@@ -25,21 +25,22 @@
     <ul class="list">
         <% _.each(songs,function(item,index){ %>
             <%= songs.length %>
-            <li class="song url">
-                <div class="left"><a href="#play/<%= item.song_id %>"><%= item.title %></a></div>
+            <li class="song url"
+                data-songid="<%= item.song_id %>">
+                <div class="left"><%= item.title %></div>
                 <div class="download log need-active">下载</div>
             </li>
         <% }); %>
-        <li class="load-more need-active">
-            查看更多...
-        </li>
+        <!--<li class="load-more need-active">查看更多...</li>-->
     </ul>
 </script>
 
 <script type="text/template" id="template_singerdetail_content_albums">
     <ul class="list">
         <% _.each(albums,function(item,index){ %>
-            <li class="album left url arrow log">
+            <li class="album left url arrow log"
+                data-albumid="<%= item.album_id %>"
+                data-albumtitle="<%= item.title %>">
                 <img class="pic" alt="<%= item.title %>" src="<%= item.pic_small %>">
                 <div class="info"><a href="#play/<%= item.song_id %>"><%= item.title %></a></div>
             </li>

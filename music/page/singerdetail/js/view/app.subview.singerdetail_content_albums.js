@@ -8,7 +8,11 @@ app.subview.singerdetail_content_albums = app.subview.extend({
     , template: _.template(
         $('#template_singerdetail_content_albums').text()
     )
-
+    
+    , events : {
+        'click .list li' : 'albumDetail'
+    }
+    
     ,init: function(options){
         
         var me = this;
@@ -56,7 +60,7 @@ app.subview.singerdetail_content_albums = app.subview.extend({
         
         
         if(to == me.ec) {
-            //me.$el.show();
+            me.$el.hide(); // bug?
             if(me.isFirstLoad){
                 me.model.fetch({
                       data : {
@@ -69,6 +73,21 @@ app.subview.singerdetail_content_albums = app.subview.extend({
             }
             
         }
+    }
+    
+    , albumDetail : function(e){
+         var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = 'albumdetail/<%= id %>/<%= name %>'
+            ;
+        
+        route = _.template(route)({
+              id : encodeURIComponent(el.data('albumid'))
+            , name  : encodeURIComponent(el.data('albumtitle'))
+        });
+        
+        Backbone.history.navigate(route, {trigger:true});  
     }
 
 
