@@ -22,11 +22,8 @@ app.subview.musicnew_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-
         me.model = new app.model.musicnew_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
     }
 
@@ -34,7 +31,8 @@ app.subview.musicnew_content = app.subview.extend({
         var me = this,item;
         
         item = me.template_item({
-                    musicnew : me.model.toJSON()
+                      musicnew : me.model.toJSON()
+                    , page     : parseInt(me.model.get('page'),10) //api返回的rank字段有误
                 });
                 
         if(me.model.get('page') == 0){
@@ -47,8 +45,6 @@ app.subview.musicnew_content = app.subview.extend({
             me._bindMoreEvent.call(me);
         }else{
             $(item).insertBefore(me.$el.find('.list li.load-more'));
-
-            
         }
         
         
@@ -92,17 +88,20 @@ app.subview.musicnew_content = app.subview.extend({
     , _bindMoreEvent : function(){
         var me = this;
         me.$el.find('.load-more').click(function(){
+            var that = $(this),loadingMore = app.loadingMore(that);
             me.model.off('change');
             me.model.set({
                   page      : me.model.get('page') + 1
             },{silent:true});
             //me.showLoading(me.$el); //防止白屏
+            loadingMore.show();
             me.model.fetch({
                 data : {
                     page : me.model.get('page')
                 },
                 success: function(){
                     me.render.call(me);
+                    loadingMore.hide();
                 }
             });
         });

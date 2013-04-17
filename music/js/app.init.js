@@ -26,6 +26,25 @@ $.extend(app, {
             scroll();
         });
     }
+    
+    /**
+     * 列表页面"载入更多"伪进度条
+     *
+     */
+    , loadingMore : function( el ){
+        var el = el,ret;
+        ret = {
+            show : function(){
+                el.html('<img src="/static/music/img/loadingmore.gif" />');
+            }
+            ,hide : function(){
+                el.html('查看更多');
+            }
+        }
+        
+        
+        return ret;
+    }
 });
 
 })(Zepto);    

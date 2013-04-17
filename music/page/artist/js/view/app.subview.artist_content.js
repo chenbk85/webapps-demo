@@ -91,17 +91,20 @@ app.subview.artist_content = app.subview.extend({
     , _bindMoreEvent : function(){
         var me = this;
         me.$el.find('.load-more').click(function(){
+            var that = $(this),loadingMore = app.loadingMore(that);
             me.model.off('change');
             me.model.set({
                   page      : me.model.get('page') + 1
             },{silent:true});
             //me.showLoading(me.$el);  //防止白屏
+            loadingMore.show();
             me.model.fetch({
                 data : {
                     page : me.model.get('page')
                 },
                 success: function(){
                     me.render.call(me);
+                    loadingMore.hide();
                 }
             });
         });

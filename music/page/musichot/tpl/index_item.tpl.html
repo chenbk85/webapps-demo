@@ -4,7 +4,7 @@
          <li class="song url log" 
             data-songid="<%= item.song_id %>">
             <div class="left">
-                <div class="rank equal"><%= item.rank %></div>
+                <div class="rank equal"><%= ((page * 20) + (parseInt(index,10) + 1)) %></div>
                 <div class="info">
                     <b><%= item.title %></b>
                     <br/>

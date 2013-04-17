@@ -43,13 +43,14 @@ app.subview.topic_content = app.subview.extend({
                     item : item
                 })
             );
+            me.hideLoading();
             me._bindMoreEvent.call(me);
         }else{
             $(item).insertBefore(me.$el.find('.list li.load-more'));
 
             
         }
-        me.hideLoading();
+        
         
         
         return me;
@@ -92,17 +93,20 @@ app.subview.topic_content = app.subview.extend({
     , _bindMoreEvent : function(){
         var me = this;
         me.$el.find('.load-more').click(function(){
+            var that = $(this),loadingMore = app.loadingMore(that);
             me.model.off('change');
             me.model.set({
                   page      : me.model.get('page') + 1
             },{silent:true});
-            me.showLoading(me.$el);
+            //me.showLoading(me.$el); //bug?
+            loadingMore.show();
             me.model.fetch({
                 data : {
                     page : me.model.get('page')
                 },
                 success: function(){
                     me.render.call(me);
+                    loadingMore.hide();
                 }
             });
         });

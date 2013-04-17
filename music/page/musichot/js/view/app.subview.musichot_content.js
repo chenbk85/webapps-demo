@@ -35,7 +35,8 @@ app.subview.musichot_content = app.subview.extend({
         var me = this,item;
         
         item = me.template_item({
-                    musichot : me.model.toJSON()
+                      musichot : me.model.toJSON()
+                    , page     : parseInt(me.model.get('page'),10) //api返回的rank字段有误
                 });
                 
         if(me.model.get('page') == 0){
@@ -92,17 +93,20 @@ app.subview.musichot_content = app.subview.extend({
     , _bindMoreEvent : function(){
         var me = this;
         me.$el.find('.load-more').click(function(){
+            var that = $(this),loadingMore = app.loadingMore(that);
             me.model.off('change');
             me.model.set({
                   page      : me.model.get('page') + 1
             },{silent:true});
             //me.showLoading(me.$el); //防止白屏
+            loadingMore.show();
             me.model.fetch({
                 data : {
                     page : me.model.get('page')
                 },
                 success: function(){
                     me.render.call(me);
+                    loadingMore.hide();
                 }
             });
         });
