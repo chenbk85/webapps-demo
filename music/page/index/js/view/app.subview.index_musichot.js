@@ -75,7 +75,7 @@ app.subview.index_musichot = app.subview.extend({
         var 
               me     = this
             , el     = $(e.target).closest('li')
-            , route  = 'play/<%= id %>'
+            , route  = 'song/<%= id %>'
             ;
         
         route = _.template(route)({

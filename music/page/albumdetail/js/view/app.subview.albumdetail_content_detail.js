@@ -89,7 +89,7 @@ app.subview.albumdetail_content_detail = app.subview.extend({
          var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'play/<%= id %>'
+            , route  = 'song/<%= id %>'
             ;
         
         route = _.template(route)({

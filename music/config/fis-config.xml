@@ -17,13 +17,13 @@
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap 
-            match="/^\/music\/singer\.php$/" 
-            rewrite="data/singer.php"
+            match="/^\/music\/artist\.php$/" 
+            rewrite="data/artist.php"
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap 
-            match="/^\/music\/singerhot\.php$/" 
-            rewrite="data/singerhot.php"
+            match="/^\/music\/artisthot\.php$/" 
+            rewrite="data/artisthot.php"
             header="Content-Type:text/javascript; charset=UTF-8"
         />
         <urlmap 
@@ -90,13 +90,13 @@
             header="Content-Type:text/javascript; charset=UTF-8"
             />
         <urlmap
-            match="/^\/music\/singeralbum\.php$/"
-            rewrite="data/singeralbum.php"
+            match="/^\/music\/artistalbum\.php$/"
+            rewrite="data/artistalbum.php"
             header="Content-Type:text/javascript; charset=UTF-8"
             />
         <urlmap
-            match="/^\/music\/singersongs\.php$/"
-            rewrite="data/singersongs.php"
+            match="/^\/music\/artistsongs\.php$/"
+            rewrite="data/artistsongs.php"
             header="Content-Type:text/javascript; charset=UTF-8"
             />
     </request>

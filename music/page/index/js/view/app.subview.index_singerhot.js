@@ -1,16 +1,16 @@
 
 (function($) {
 
-app.subview.index_singerhot = app.subview.extend({
-      el: "#index_page_singerhot"
+app.subview.index_artisthot = app.subview.extend({
+      el: "#index_page_artisthot"
 
     , template: _.template(
-        $('#template_index_singerhot').text()
+        $('#template_index_artisthot').text()
     )
 
     , events: {
-          'click .artists li.url'  : 'singerDetail'
-        , 'click .artists li.hdli' : 'singerHot'
+          'click .artists li.url'  : 'artistDetail'
+        , 'click .artists li.hdli' : 'artistHot'
     }
 
     , init: function(options){
@@ -18,7 +18,7 @@ app.subview.index_singerhot = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.singerhot_music(null, options);
+        me.model = new app.model.artisthot_music(null, options);
 
         me.showLoading(me.$el);
     }
@@ -30,7 +30,7 @@ app.subview.index_singerhot = app.subview.extend({
         
         me.$el.append(
             me.template({
-                singerhot: me.model.toJSON()
+                artisthot: me.model.toJSON()
             })
         );
 
@@ -67,11 +67,11 @@ app.subview.index_singerhot = app.subview.extend({
         }
     }
     
-    , singerDetail : function(e){
+    , artistDetail : function(e){
         var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'singerdetail/<%= id %>'
+            , route  = 'artistdetail/<%= id %>'
             ;
         
         route = _.template(route)({
@@ -81,11 +81,11 @@ app.subview.index_singerhot = app.subview.extend({
         Backbone.history.navigate(route, {trigger:true});
     }
     
-    , singerHot : function(e){
+    , artistHot : function(e){
         var 
               me     = this
             , el     = $(e.target).closest('li')
-            , route  = 'singerhot'
+            , route  = 'artisthot'
             ;
         
         route = _.template(route)({

@@ -1,0 +1,29 @@
+<script type="text/template" id="template_index_artisthot">
+    <div class="artists mod-2">
+        <ul class="mb10">
+            <% _.each(artisthot,function(artist,index){ %>
+                <% if(index >=6 ){return;} %>
+                <li class="log url"
+                    data-songerid="<%= artist.ting_uid %>"
+                    >
+                    <img alt="<%= artist.name %>" src="<%= artist.avatar_middle %>">
+                    <span class="title"><%= artist.name %></span>
+                </li>
+            <% }); %>
+            <li class="hdli">
+                <div class="hd log url need-active">
+                    <h2>热门歌手</h2>
+                    <div>更多</div>
+                </div>
+            </li>
+            <% _.each(artisthot,function(artist,index){ %>
+                <% if(index < 6 ){return;} %>
+                <li class="log url"
+                    data-songerid="<%= artist.ting_uid %>">
+                    <img alt="<%= artist.name %>" src="<%= artist.avatar_middle %>">
+                    <span class="title"><%= artist.name %></span>
+                </li>
+            <% }); %>
+        </ul>
+    </div>		
+</script>

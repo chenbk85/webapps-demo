@@ -13,7 +13,7 @@ app.pageview.index = app.pageview.extend({
         me.setup(new app.subview.index_nav(options, me));
         me.setup(new app.subview.index_cover(options, me));
         me.setup(new app.subview.index_category(options, me));
-        me.setup(new app.subview.index_singerhot(options, me));
+        me.setup(new app.subview.index_artisthot(options, me));
         me.setup(new app.subview.index_musichot(options, me));
         
         

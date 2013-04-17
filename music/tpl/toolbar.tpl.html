@@ -10,7 +10,7 @@
              <% } %>
         </div>
 
-        <% if(_.indexOf(['musicnew', 'musichot', 'singer','category','topic'], options.action) >= 0){ %>
+        <% if(_.indexOf(['musicnew', 'musichot', 'artist','category','topic'], options.action) >= 0){ %>
         <h1  class="can-drop"><%= options.title %></h1>
         <% }else{ %>
         <h1><%= options.title %></h1>
@@ -26,7 +26,7 @@
         </div>
 
     </div>
-    <% if(_.indexOf(['musicnew', 'musichot', 'singer','category','topic'], options.action) >= 0){ %>
+    <% if(_.indexOf(['musicnew', 'musichot', 'artist','category','topic'], options.action) >= 0){ %>
     <ul class="drop-menu on" style="display:none;">
         <li class="new <%= (options.action == 'musicnew') ? 'on' : '' %>">
             <a href="#musicnew">新歌榜</a>
@@ -34,8 +34,8 @@
         <li class="hot <%= (options.action == 'musichot') ? 'on' : '' %>">
             <a href="#musichot">热歌榜</a>
         </li>
-        <li class="artists <%= (options.action == 'singer') ? 'on' : '' %>">
-            <a href="#singer">歌手</a>
+        <li class="artists <%= (options.action == 'artist') ? 'on' : '' %>">
+            <a href="#artist">歌手</a>
         </li>
         <li class="tags <%= (options.action == 'category') ? 'on' : '' %>">
             <a href="#category">音乐分类</a>

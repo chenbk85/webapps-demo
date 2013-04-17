@@ -12,10 +12,10 @@ app.router.vs = app.router.extend({
         , 'categorydetail/:id'       : 'categorydetail'
         , 'musichot'                 : 'musichot'
         , 'musicnew'                 : 'musicnew'
-        , 'play/:id'                 : 'play'
-        , 'singer'                   : 'singer'
-        , 'singerdetail/:id'         : 'singerdetail'
-        , 'singerhot'                : 'singerhot'
+        , 'song/:id'                 : 'song'
+        , 'artist'                   : 'artist'
+        , 'artistdetail/:id'         : 'artistdetail'
+        , 'artisthot'                : 'artisthot'
         , 'topic'                    : 'topic'
         , 'topicdetail/:id/:name'    : 'topicdetail'
         , 'albumdetail/:id/:name'    : 'albumdetail'
@@ -32,9 +32,9 @@ app.router.vs = app.router.extend({
         , 'categorydetail'
         , 'musichot'
         , 'musicnew'
-        , 'singer'
-        , 'singerhot'
-        , 'singerdetail'
+        , 'artist'
+        , 'artisthot'
+        , 'artistdetail'
         , 'topic'
         , 'topicdetail'
         , 'play'
@@ -104,30 +104,30 @@ app.router.vs = app.router.extend({
             {disable: true}
         );
     }
-    ,play : function(id){
+    ,song : function(id){
         id = id || 0;
-        this.doAction('play', {id:decodeURIComponent(id)},
+        this.doAction('song', {id:decodeURIComponent(id)},
             //禁止发送
             {disable: true}
         );
     }
-    ,singer : function(){
+    ,artist : function(){
         
-        this.doAction('singer', {},
+        this.doAction('artist', {},
             //禁止发送
             {disable: true}
         );
     }
-    ,singerdetail : function(id){
+    ,artistdetail : function(id){
         id = id || 0;
-        this.doAction('singerdetail', {id:decodeURIComponent(id)},
+        this.doAction('artistdetail', {id:decodeURIComponent(id)},
             //禁止发送
             {disable: true}
         );
     }
-    ,singerhot : function(){
+    ,artisthot : function(){
         
-        this.doAction('singerhot', {},
+        this.doAction('artisthot', {},
             //禁止发送
             {disable: true}
         );

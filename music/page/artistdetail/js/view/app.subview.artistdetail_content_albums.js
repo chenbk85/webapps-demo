@@ -1,94 +1,95 @@
 
 (function($) {
 
-app.subview.topicdetail_content_detail = app.subview.extend({
+app.subview.artistdetail_content_albums = app.subview.extend({
     
-      template: _.template(
-        $('#template_topicdetail_content').text()
+      className: 'albums'
+    
+    , template: _.template(
+        $('#template_artistdetail_content_albums').text()
     )
-
-    , className: 'topicdetail_content_detail'
     
     , events : {
-    
-        'click .topic ul li.url' : 'playMusic'
+        'click .list li' : 'albumDetail'
     }
     
-    , init: function(options){
+    ,init: function(options){
         
         var me = this;
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.topicdetail_music(null, options);
+        me.model = new app.model.artistdetail_albums(null, options);
 
         me.showLoading(me.$el);
     }
 
-    , render: function(){
+    ,render: function(){
         var me = this;
-
+        
+        
         me.$el.append(
             me.template({
-                topicdetail: me.model.toJSON()
+                albums: me.model.toJSON()
             })
         );
         
+        // 隐藏loading
         me.hideLoading();
 
         return me;
     }
 
-    , registerEvents: function(){
+    ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("subpagebeforechange", me.onsubpagebeforechange, me);
         me.model.on('change', me.render, me);
     }
-    , unregisterEvents: function(){
+    ,unregisterEvents: function(){
         var me = this, ec = me.ec;
 
         ec.off('subpagebeforechange', me.onsubpagebeforechange, me);
         me.model.off('change', me.render, me);
 
     }
-    , onsubpagebeforechange: function(params){
+    ,onsubpagebeforechange: function(params){
         var me = this, 
             from = params.from,
             to = params.to,
             param = params.params;
-
+        
+        
         if(to == me.ec) {
-            me.$el.show();
+            me.$el.hide(); // bug?
             if(me.isFirstLoad){
                 me.model.fetch({
-                    success: function(){
+                      data : {
+                        id : param.id
+                      }
+                    , success: function(){
                         me.isFirstLoad = false;
                     }
                 });
             }
             
-            new app.subview.toolbar({
-                  title  : decodeURIComponent(me.options.name)
-            }, me);
-            
-            
         }
     }
     
-    , playMusic : function(e){
+    , albumDetail : function(e){
          var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'song/<%= id %>'
+            , route  = 'albumdetail/<%= id %>/<%= name %>'
             ;
         
         route = _.template(route)({
-              id : encodeURIComponent(el.data('songid'))
+              id : encodeURIComponent(el.data('albumid'))
+            , name  : encodeURIComponent(el.data('albumtitle'))
         });
         
-        Backbone.history.navigate(route, {trigger:true});
+        Backbone.history.navigate(route, {trigger:true});  
     }
-    
+
 
 });
 

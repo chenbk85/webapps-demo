@@ -1,30 +1,28 @@
 
 (function($) {
 
-app.subview.musichot_content = app.subview.extend({
-    el: "#musichot_page_content"
+app.subview.artist_content = app.subview.extend({
+    el: "#artist_page_content"
 
     ,template: _.template(
-        $('#template_musichot_content').text()
+        $('#template_artist_content').text()
     )
     
     ,template_item : _.template(
-        $('#template_musichot_content_item').text()
+        $('#template_artist_content_item').text()
     )
     
     ,events: {
-        'click li.song' : 'playMusic'
+        'click li.url' : 'artistDetail'
     }
 
     ,init: function(options){
         var me = this;
-        
-        me.options = options;
-        
+
         me.isFirstLoad = true;
 
 
-        me.model = new app.model.musichot_music(null, options);
+        me.model = new app.model.artist_music(null, options);
         
        
         // 展示loading
@@ -35,7 +33,7 @@ app.subview.musichot_content = app.subview.extend({
         var me = this,item;
         
         item = me.template_item({
-                    musichot : me.model.toJSON()
+                    artist : me.model.toJSON()
                 });
                 
         if(me.model.get('page') == 0){
@@ -70,7 +68,7 @@ app.subview.musichot_content = app.subview.extend({
 
         if(to == me.ec) {
             me.$el.show();
-
+            
             if(me.isFirstLoad){
                 me.model.fetch({
                     data : {
@@ -81,10 +79,11 @@ app.subview.musichot_content = app.subview.extend({
                     }
                 });
             }
-            
         }
     }
+    
 
+    
     /**
      * 绑定更多时的事件
      *
@@ -96,7 +95,7 @@ app.subview.musichot_content = app.subview.extend({
             me.model.set({
                   page      : me.model.get('page') + 1
             },{silent:true});
-            //me.showLoading(me.$el); //防止白屏
+            //me.showLoading(me.$el);  //防止白屏
             me.model.fetch({
                 data : {
                     page : me.model.get('page')
@@ -109,20 +108,19 @@ app.subview.musichot_content = app.subview.extend({
     
     }
     
-    , playMusic : function(e){
+    , artistDetail : function(e){
          var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'song/<%= id %>'
+            , route  = 'artistdetail/<%= id %>'
             ;
         
         route = _.template(route)({
-            id : encodeURIComponent(el.data('songid'))
+            id : encodeURIComponent(el.data('artistid'))
         });
         
         Backbone.history.navigate(route, {trigger:true});
     }
-
 });
 
 })(Zepto);
