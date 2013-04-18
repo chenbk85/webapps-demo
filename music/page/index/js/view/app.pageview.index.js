@@ -6,18 +6,11 @@ app.pageview.index = app.pageview.extend({
 
     , init: function(options){
         var me = this;
-        
-        me.MAX_SUBPAGES = 6;
 
-        me.setup(new app.subview.index_scroll(options, me));
-        me.setup(new app.subview.index_nav(options, me));
-        me.setup(new app.subview.index_cover(options, me));
-        me.setup(new app.subview.index_category(options, me));
-        me.setup(new app.subview.index_artisthot(options, me));
-        me.setup(new app.subview.index_musichot(options, me));
         
-        
-        
+        me.setup(new app.subview.index_static(options, me));
+        me.setup(new app.subview.index_content(options, me));
+
     }
     
     , registerEvents : function(){

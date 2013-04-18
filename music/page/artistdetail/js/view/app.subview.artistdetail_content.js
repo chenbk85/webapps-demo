@@ -91,7 +91,7 @@ app.subview.artistdetail_content = app.subview.extend({
         
         route = _.template(route)({
               id    : me.options.id
-            , route : panel
+            , panel : panel
         });
         Backbone.history.navigate(route, {trigger:true});  
     }

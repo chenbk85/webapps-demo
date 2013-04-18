@@ -11,10 +11,10 @@
                 </div>
             </div>
             <nav class="nav-tab">
-                <span class="on songs-panel">
+                <span class="songs-panel <%= ((panel == 'songs') ? 'on' : '') %>">
                     歌曲&nbsp;(<%= info.songs_total %>)
                 </span>
-                <span class="albums-panel">
+                <span class="albums-panel <%= ((panel == 'albums') ? 'on' : '') %>">
                     专辑&nbsp;(<%= info.albums_total %>)
                 </span>
             </nav>

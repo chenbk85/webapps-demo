@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.index_scroll = app.subview.extend({
+app.subview.index_static_scroll = app.subview.extend({
       el: "#index_page_scroll"
 
     , template: _.template(

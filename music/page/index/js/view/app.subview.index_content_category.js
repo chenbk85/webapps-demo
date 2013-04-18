@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.index_category = app.subview.extend({
+app.subview.index_content_category = app.subview.extend({
 
       el: "#index_page_category"
 

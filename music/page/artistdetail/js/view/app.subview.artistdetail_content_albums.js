@@ -30,7 +30,8 @@ app.subview.artistdetail_content_albums = app.subview.extend({
         
         me.$el.append(
             me.template({
-                albums: me.model.toJSON()
+                  albums: me.model.toJSON()
+                , panel : me.options.panel
             })
         );
         

@@ -25,7 +25,8 @@ app.subview.artistdetail_content_info = app.subview.extend({
         
         me.$el.append(
             me.template({
-                info: me.model.toJSON()
+                  info  : me.model.toJSON()
+                , panel : me.options.panel
             })
         );
 
@@ -55,10 +56,12 @@ app.subview.artistdetail_content_info = app.subview.extend({
             
             me.$el.show();
             
-            if(me.options.panel == 'songs'){
-                me.$el.find('.nav-tab span').removeClass('on').parent().find('.songs-panel').addClass('on');  //bug?
+            if(param.panel == 'songs'){
+                me.$el.find('.albums-panel').removeClass('on');
+                me.$el.find('.songs-panel').addClass('on'); 
             }else{
-                me.$el.find('.nav-tab span').removeClass('on').parent().find('.albums-panel').addClass('on');  //bug?
+                me.$el.find('.albums-panel').addClass('on');
+                me.$el.find('.songs-panel').removeClass('on');
             }
             
             
@@ -80,17 +83,7 @@ app.subview.artistdetail_content_info = app.subview.extend({
             
         }
     }
-    
 
-    
-
-    , _bindClickEvent : function(){
-        var me = this;
-        me.$el.parent().find('.songs-panel,.albums-panel').tap(function(){
-
-
-        });
-    }
 
 });
 

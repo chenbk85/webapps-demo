@@ -1,16 +1,16 @@
 
 (function($) {
 
-app.subview.index_artisthot = app.subview.extend({
-      el: "#index_page_artisthot"
+app.subview.index_content_cover = app.subview.extend({
+      el: "#index_page_cover"
 
     , template: _.template(
-        $('#template_index_artisthot').text()
+        $('#template_index_cover').text()
     )
 
     , events: {
-          'tap .artists li.url'  : 'artistDetail'
-        , 'tap .artists li.hdli' : 'artistHot'
+          'tap .albums .cover li.url' : 'albumDetail'
+        , 'tap .albums .items li.url' : 'albumDetail'
     }
 
     , init: function(options){
@@ -18,7 +18,7 @@ app.subview.index_artisthot = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.artisthot_music(null, options);
+        me.model = new app.model.index_music_recommendalbum(null, options);
 
         me.showLoading(me.$el);
     }
@@ -26,26 +26,24 @@ app.subview.index_artisthot = app.subview.extend({
     , render: function(){
         var me = this;
 
-        
-        
         me.$el.append(
             me.template({
-                artisthot: me.model.toJSON()
+                album_list: _.values(me.model.toJSON())
             })
         );
-
+        
         me.hideLoading();
 
         return me;
     }
 
-    , registerEvents: function(){
+    ,registerEvents: function(){
         var me = this, ec = me.ec;
         ec.on("pagebeforechange", me.onpagebeforechange, me);
         me.model.on('change', me.render, me);
     }
 
-    , onpagebeforechange: function(params){
+    ,onpagebeforechange: function(params){
         var 
               me = this
             , from = params.from
@@ -67,35 +65,22 @@ app.subview.index_artisthot = app.subview.extend({
         }
     }
     
-    , artistDetail : function(e){
+    , albumDetail : function(e){
         var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'artistdetail/<%= id %>/songs'
+            , route  = 'albumdetail/<%= id %>/<%= name %>'
             ;
         
         route = _.template(route)({
-            id : encodeURIComponent(el.data('songerid'))
+              id   : encodeURIComponent(el.data('id'))
+            , name : encodeURIComponent(el.data('name'))
         });
         
         Backbone.history.navigate(route, {trigger:true});
     }
     
-    , artistHot : function(e){
-        var 
-              me     = this
-            , el     = $(e.target).closest('li')
-            , route  = 'artisthot'
-            ;
-        
-        route = _.template(route)({
-            //
-        });
-        
-        Backbone.history.navigate(route, {trigger:true});
-    }
     
-
 
 });
 
