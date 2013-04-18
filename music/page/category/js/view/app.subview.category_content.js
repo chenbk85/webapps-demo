@@ -33,7 +33,7 @@ app.subview.category_content = app.subview.extend({
             })
         );
         
-
+        me._bindTouchEvent.call(me);
         me.hideLoading();
 
         return me;
@@ -65,7 +65,19 @@ app.subview.category_content = app.subview.extend({
             me.$el.hide();
         }
     }
+    /**
+     * °ó¶¨touchÊÂ¼þ
+     *
+     */
+    , _bindTouchEvent : function(){
+         var me = this;
+        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
+            $(this).addClass('active');
+        }).bind('touchend',function(){
+            $(this).removeClass('active');
+        });
     
+    }
     , categoryDetail : function(e){
          var 
               me     = this

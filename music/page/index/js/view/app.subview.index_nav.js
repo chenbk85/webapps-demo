@@ -8,7 +8,9 @@ app.subview.index_nav = app.subview.extend({
         $('#template_index_nav').text()
     )
 
-    , events: {}
+    , events: {
+        'click .navs .nav li.url' : 'gotoRouter'
+    }
 
     , init: function(options){
         var me = this;
@@ -114,6 +116,23 @@ app.subview.index_nav = app.subview.extend({
             identifyLI.removeClass('on').eq(1).addClass('on');
         });
         
+
+        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
+            $(this).addClass('active');
+        }).bind('touchend',function(){
+            $(this).removeClass('active');
+        });
+        
+    }
+    
+    , gotoRouter : function(e){
+        var 
+              me     = this
+            , el     = $(e.target).closest('li.url')
+            , route  = el.data('url')
+            ;
+
+        Backbone.history.navigate(route, {trigger:true});
     }
 
 });

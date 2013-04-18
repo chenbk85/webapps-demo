@@ -47,7 +47,7 @@ app.subview.musicnew_content = app.subview.extend({
             $(item).insertBefore(me.$el.find('.list li.load-more'));
         }
         
-        
+        me._bindTouchEvent.call(me);
         return me;
     }
 
@@ -104,6 +104,20 @@ app.subview.musicnew_content = app.subview.extend({
                     loadingMore.hide();
                 }
             });
+        });
+    
+    }
+    
+    /**
+     * 绑定touch事件
+     *
+     */
+    , _bindTouchEvent : function(){
+         var me = this;
+        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
+            $(this).addClass('active');
+        }).bind('touchend',function(){
+            $(this).removeClass('active');
         });
     
     }

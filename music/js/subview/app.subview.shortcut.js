@@ -24,6 +24,8 @@ app.subview.shortcut = app.subview.extend({
                 options : me.options
             })
         );
+        
+       
         return me;
     }
 

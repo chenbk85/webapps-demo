@@ -19,8 +19,6 @@ app.router.vs = app.router.extend({
         , 'topic'                    : 'topic'
         , 'topicdetail/:id/:name'    : 'topicdetail'
         , 'albumdetail/:id/:name'    : 'albumdetail'
-
-       
     }
 
     // 页面切换顺序配置
@@ -28,23 +26,23 @@ app.router.vs = app.router.extend({
           'index'
         , 'feedback'
         , 'app'
-        , 'category'
-        , 'categorydetail'
-        , 'musichot'
         , 'musicnew'
+        , 'musichot'
         , 'artist'
         , 'artisthot'
         , 'artistdetail'
+        , 'category'
+        , 'categorydetail'      
         , 'topic'
         , 'topicdetail'
         , 'play'
     ]
 
     // 位置记忆，默认为false，不进行位置记忆
-    ,enablePositionRestore: true
+    ,enablePositionRestore : true
 
     // 默认页面切换动画
-    ,defaultPageTransition: 'slide'
+    ,defaultPageTransition : 'slide'
 
     // 页面切换动画配置
     ,pageTransition: {

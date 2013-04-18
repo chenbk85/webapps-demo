@@ -34,6 +34,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
             })
         );
         
+        me._bindTouchEvent.call(me);
         me.hideLoading();
 
         return me;
@@ -74,7 +75,19 @@ app.subview.topicdetail_content_detail = app.subview.extend({
             
         }
     }
+    /**
+     * °ó¶¨touchÊÂ¼þ
+     *
+     */
+    , _bindTouchEvent : function(){
+         var me = this;
+        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
+            $(this).addClass('active');
+        }).bind('touchend',function(){
+            $(this).removeClass('active');
+        });
     
+    }
     , playMusic : function(e){
          var 
               me     = this

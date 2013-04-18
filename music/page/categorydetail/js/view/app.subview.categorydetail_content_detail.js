@@ -36,6 +36,8 @@ app.subview.categorydetail_content_detail = app.subview.extend({
                 categorydetail: me.model.toJSON()
             })
         );
+        
+        me._bindTouchEvent.call(me);
         me.hideLoading();
 
         return me;
@@ -74,7 +76,19 @@ app.subview.categorydetail_content_detail = app.subview.extend({
             }, me);
         }
     }
+    /**
+     * °ó¶¨touchÊÂ¼þ
+     *
+     */
+    , _bindTouchEvent : function(){
+         var me = this;
+        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
+            $(this).addClass('active');
+        }).bind('touchend',function(){
+            $(this).removeClass('active');
+        });
     
+    }
     , playMusic : function(e){
          var 
               me     = this
