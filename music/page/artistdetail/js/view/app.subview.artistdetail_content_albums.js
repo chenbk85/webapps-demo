@@ -10,7 +10,7 @@ app.subview.artistdetail_content_albums = app.subview.extend({
     )
     
     , events : {
-        'click .list li' : 'albumDetail'
+        'tap .list li' : 'albumDetail'
     }
     
     ,init: function(options){
@@ -34,7 +34,6 @@ app.subview.artistdetail_content_albums = app.subview.extend({
             })
         );
         
-        // 隐藏loading
         me.hideLoading();
 
         return me;
@@ -60,7 +59,13 @@ app.subview.artistdetail_content_albums = app.subview.extend({
         
         
         if(to == me.ec) {
-            me.$el.hide(); // bug?
+            
+            if(param.panel == 'albums'){
+                me.$el.show();
+            }else{
+                me.$el.hide();
+            }
+            
             if(me.isFirstLoad){
                 me.model.fetch({
                       data : {

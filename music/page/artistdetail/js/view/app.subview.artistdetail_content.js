@@ -3,15 +3,19 @@
 
 app.subview.artistdetail_content = app.subview.extend({
     el: "#artistdetail_page_content"
-
+    
+    , events : {
+          'tap .songs-panel'  : 'showPanelSongs'
+        , 'tap .albums-panel' : 'showPanelAlbums'
+    }
+    
+    
     ,init: function(options){
         var me = this, 
             id = options.id,
             subView;
         
         me.options = options;
-        
-        me.MAX_SUBPAGES = 3;
 
         me._registerCurSubpage.call(me,id);
         
@@ -67,6 +71,29 @@ app.subview.artistdetail_content = app.subview.extend({
         me.registerSubpage(id, subView);
 
         return me;
+    }
+    
+    , showPanelSongs : function(e){
+        this._showPanel.call(this,'songs');
+    }
+    , showPanelAlbums : function(e){
+        this._showPanel.call(this,'albums');
+        
+    }
+    
+    ,_showPanel : function(panel){
+        var me = this,route = 'artistdetail/<%= id %>/<%= panel %>';
+        me.$el.find('.songs-panel,.albums-panel').removeClass('on');
+        me.$el.find('.' + panel + '-panel').addClass('on');
+        
+        me.$el.find('.songs,.albums').hide();
+        me.$el.find('.' + panel).show();
+        
+        route = _.template(route)({
+              id    : me.options.id
+            , route : panel
+        });
+        Backbone.history.navigate(route, {trigger:true});  
     }
 
 });

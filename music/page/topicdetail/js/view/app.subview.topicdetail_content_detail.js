@@ -11,7 +11,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
     
     , events : {
     
-        'click .topic ul li.url' : 'playMusic'
+        'tap .topic ul li.url' : 'playMusic'
     }
     
     , init: function(options){

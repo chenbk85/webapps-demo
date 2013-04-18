@@ -9,7 +9,7 @@ app.subview.category_content = app.subview.extend({
     )
 
     ,events: {
-        'click .list li.url' : 'categoryDetail'
+        'tap .list li.url' : 'categoryDetail'
     }
 
     ,init: function(options){

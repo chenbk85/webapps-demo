@@ -10,7 +10,7 @@ app.subview.categorydetail_content_detail = app.subview.extend({
     ,className : 'categorydetail_content_detail'
     
     , events : {
-        'click .list li.url' : 'playMusic'
+        'tap .list li.url' : 'playMusic'
     }
     
     

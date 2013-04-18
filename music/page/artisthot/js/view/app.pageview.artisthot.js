@@ -9,10 +9,8 @@ app.pageview.artisthot = app.pageview.extend({
     ,init: function(options){
         var me = this;
 
-        // 创建header子视图
         me.setup(new app.subview.artisthot_header(options, me));
 
-        // 创建content子视图
         me.setup(new app.subview.artisthot_content(options, me));
         
         me.setup(new app.subview.shortcut({}, me));

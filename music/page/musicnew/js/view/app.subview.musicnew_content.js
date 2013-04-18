@@ -14,7 +14,8 @@ app.subview.musicnew_content = app.subview.extend({
     )
     
     ,events: {
-        'click li.song' : 'playMusic'
+          'tap li.song'      : 'playMusic'
+        , 'tap .load-more'   : 'loadMore'
     }
 
     ,init: function(options){
@@ -42,7 +43,7 @@ app.subview.musicnew_content = app.subview.extend({
                 })
             );
             me.hideLoading();
-            me._bindMoreEvent.call(me);
+            
         }else{
             $(item).insertBefore(me.$el.find('.list li.load-more'));
         }
@@ -85,27 +86,23 @@ app.subview.musicnew_content = app.subview.extend({
      * 绑定更多时的事件
      *
      */
-    , _bindMoreEvent : function(){
-        var me = this;
-        me.$el.find('.load-more').click(function(){
-            var that = $(this),loadingMore = app.loadingMore(that);
-            me.model.off('change');
-            me.model.set({
-                  page      : me.model.get('page') + 1
-            },{silent:true});
-            //me.showLoading(me.$el); //防止白屏
-            loadingMore.show();
-            me.model.fetch({
-                data : {
-                    page : me.model.get('page')
-                },
-                success: function(){
-                    me.render.call(me);
-                    loadingMore.hide();
-                }
-            });
+    , loadMore : function(e){
+        var me = this,that = $(e.target),loadingMore = app.loadingMore(that);
+        me.model.off('change');
+        me.model.set({
+              page      : me.model.get('page') + 1
+        },{silent:true});
+        //me.showLoading(me.$el); //防止白屏
+        loadingMore.show();
+        me.model.fetch({
+            data : {
+                page : me.model.get('page')
+            },
+            success: function(){
+                me.render.call(me);
+                loadingMore.hide();
+            }
         });
-    
     }
     
     /**

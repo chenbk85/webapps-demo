@@ -9,7 +9,7 @@ app.subview.artisthot_content = app.subview.extend({
     )
 
     ,events: {
-        'click li.url' : 'artistDetail'
+        'tap li.url' : 'artistDetail'
     }
 
     ,init: function(options){
@@ -17,12 +17,8 @@ app.subview.artisthot_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
         me.model = new app.model.artisthot_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
         
         
@@ -31,8 +27,6 @@ app.subview.artisthot_content = app.subview.extend({
     ,render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
         me.$el.append(
             me.template({
                 artisthot: me.model.toJSON()
@@ -85,7 +79,7 @@ app.subview.artisthot_content = app.subview.extend({
          var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'artistdetail/<%= id %>'
+            , route  = 'artistdetail/<%= id %>/songs'
             ;
         
         route = _.template(route)({

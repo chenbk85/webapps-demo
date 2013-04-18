@@ -1,6 +1,4 @@
-/**
- * 首页View类
- */
+
 (function($) {
 
 app.pageview.artist = app.pageview.extend({

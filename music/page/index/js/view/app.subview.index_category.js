@@ -10,8 +10,8 @@ app.subview.index_category = app.subview.extend({
     )
 
     , events: {
-          'click .tags .hd'    : 'categoryAll'
-        , 'click .tags li.url' : 'categoryDetail'
+          'tap .tags .hd'    : 'categoryAll'
+        , 'tap .tags li.url' : 'categoryDetail'
     }
 
     , init: function(options){

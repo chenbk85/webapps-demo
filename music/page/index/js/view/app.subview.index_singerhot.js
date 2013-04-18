@@ -9,8 +9,8 @@ app.subview.index_artisthot = app.subview.extend({
     )
 
     , events: {
-          'click .artists li.url'  : 'artistDetail'
-        , 'click .artists li.hdli' : 'artistHot'
+          'tap .artists li.url'  : 'artistDetail'
+        , 'tap .artists li.hdli' : 'artistHot'
     }
 
     , init: function(options){
@@ -71,7 +71,7 @@ app.subview.index_artisthot = app.subview.extend({
         var 
               me     = this
             , el     = $(e.target).closest('li.url')
-            , route  = 'artistdetail/<%= id %>'
+            , route  = 'artistdetail/<%= id %>/songs'
             ;
         
         route = _.template(route)({

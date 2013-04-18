@@ -13,7 +13,8 @@ app.subview.topic_content = app.subview.extend({
     )
     
     ,events: {
-        'click .content .list li.topic' : 'showDetail'
+          'tap .content .list li.topic' : 'showDetail'
+        , 'tap .load-more'              : 'loadMore'
     }
 
     ,init: function(options){
@@ -21,12 +22,8 @@ app.subview.topic_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        // 创建collection数据对象
-        
         me.model = new app.model.topic_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
     }
 
@@ -44,7 +41,7 @@ app.subview.topic_content = app.subview.extend({
                 })
             );
             me.hideLoading();
-            me._bindMoreEvent.call(me);
+            
         }else{
             $(item).insertBefore(me.$el.find('.list li.load-more'));
 
@@ -90,27 +87,23 @@ app.subview.topic_content = app.subview.extend({
      * 绑定更多时的事件
      *
      */
-    , _bindMoreEvent : function(){
-        var me = this;
-        me.$el.find('.load-more').click(function(){
-            var that = $(this),loadingMore = app.loadingMore(that);
-            me.model.off('change');
-            me.model.set({
-                  page      : me.model.get('page') + 1
-            },{silent:true});
-            //me.showLoading(me.$el); //bug?
-            loadingMore.show();
-            me.model.fetch({
-                data : {
-                    page : me.model.get('page')
-                },
-                success: function(){
-                    me.render.call(me);
-                    loadingMore.hide();
-                }
-            });
+    , loadMore : function(e){
+        var me = this,that = $(e.target),loadingMore = app.loadingMore(that);
+        me.model.off('change');
+        me.model.set({
+              page      : me.model.get('page') + 1
+        },{silent:true});
+        //me.showLoading(me.$el); //bug?
+        loadingMore.show();
+        me.model.fetch({
+            data : {
+                page : me.model.get('page')
+            },
+            success: function(){
+                me.render.call(me);
+                loadingMore.hide();
+            }
         });
-    
     }
     /**
      * 绑定touch事件

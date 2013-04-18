@@ -9,8 +9,8 @@ app.subview.index_cover = app.subview.extend({
     )
 
     , events: {
-          'click .albums .cover li.url' : 'albumDetail'
-        , 'click .albums .items li.url' : 'albumDetail'
+          'tap .albums .cover li.url' : 'albumDetail'
+        , 'tap .albums .items li.url' : 'albumDetail'
     }
 
     , init: function(options){

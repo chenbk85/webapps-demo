@@ -11,7 +11,6 @@ app.subview.categorydetail_content = app.subview.extend({
             , subView
             ;
 
-        me.MAX_SUBPAGES = 1;
 
         subView = new app.subview.categorydetail_content_detail(
             $.extend({}, options), 

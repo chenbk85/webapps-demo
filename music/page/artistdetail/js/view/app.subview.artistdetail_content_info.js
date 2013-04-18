@@ -17,7 +17,6 @@ app.subview.artistdetail_content_info = app.subview.extend({
 
         me.model = new app.model.artistdetail_info(null, options);
 
-        // 展示loading
         me.showLoading(me.$el);
     }
 
@@ -29,12 +28,9 @@ app.subview.artistdetail_content_info = app.subview.extend({
                 info: me.model.toJSON()
             })
         );
-        
-        // 隐藏loading
+
         me.hideLoading();
 
-        me._bindClickEvent.call(me);
-        
         return me;
     }
 
@@ -58,7 +54,12 @@ app.subview.artistdetail_content_info = app.subview.extend({
         if(to == me.ec) {
             
             me.$el.show();
-            me.$el.find('.nav-tab span').removeClass('on').parent().find('.songs-panel').addClass('on');  //bug?
+            
+            if(me.options.panel == 'songs'){
+                me.$el.find('.nav-tab span').removeClass('on').parent().find('.songs-panel').addClass('on');  //bug?
+            }else{
+                me.$el.find('.nav-tab span').removeClass('on').parent().find('.albums-panel').addClass('on');  //bug?
+            }
             
             
             if(me.isFirstLoad){
@@ -85,16 +86,8 @@ app.subview.artistdetail_content_info = app.subview.extend({
 
     , _bindClickEvent : function(){
         var me = this;
-        me.$el.parent().find('.songs-panel,.albums-panel').click(function(){
-            var panel = $(this).hasClass('songs-panel') ? 'songs' : 'albums';
-            
-            
-            
-            me.$el.parent().find('.songs-panel,.albums-panel').removeClass('on');
-            me.$el.parent().find('.' + panel + '-panel').addClass('on');
-            
-            me.$el.parent().find('.songs,.albums').hide();
-            me.$el.parent().find('.' + panel).show();
+        me.$el.parent().find('.songs-panel,.albums-panel').tap(function(){
+
 
         });
     }

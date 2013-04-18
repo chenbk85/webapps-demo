@@ -10,7 +10,7 @@ app.subview.albumdetail_content_detail = app.subview.extend({
     , className: 'albumdetail_content_detail'
     
     , events : {
-        'click .album .list li.url' : 'playMusic'
+        'tap .album .list li.url' : 'playMusic'
     }
     
     , init: function(options){
@@ -19,21 +19,14 @@ app.subview.albumdetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-
-       
-        
         me.model = new app.model.albumdetail_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
     }
 
     , render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
         me.$el.append(
             me.template({
                 albumdetail: me.model.toJSON()

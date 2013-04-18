@@ -9,7 +9,7 @@ app.subview.index_nav = app.subview.extend({
     )
 
     , events: {
-        'click .navs .nav li.url' : 'gotoRouter'
+        'tap .navs .nav li.url' : 'gotoRouter'
     }
 
     , init: function(options){
@@ -93,7 +93,7 @@ app.subview.index_nav = app.subview.extend({
         outList.width( width * 2);
         outListItem.width( width );
         
-        me.$el.find('.navs-opts .prev').on('click',function(){
+        me.$el.find('.navs-opts .prev').tap(function(){
             var width = $(window).width();
             
             outList.attr('cur',0).css({
@@ -105,7 +105,7 @@ app.subview.index_nav = app.subview.extend({
             
         });
         
-        me.$el.find('.navs-opts .next').on('click',function(){
+        me.$el.find('.navs-opts .next').tap(function(){
             var width = $(window).width();
            
             outList.attr('cur',1).css({

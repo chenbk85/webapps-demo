@@ -8,9 +8,7 @@ app.pageview.feedback = app.pageview.extend({
 
     ,init: function(options){
         var me = this;
-        
-        
-        // 创建content子视图
+
         me.setup(new app.subview.feedback_content(options, me));
         
         me.setup(new app.subview.shortcut({}, me));

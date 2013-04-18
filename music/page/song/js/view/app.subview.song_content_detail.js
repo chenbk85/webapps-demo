@@ -18,19 +18,14 @@ app.subview.song_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        
         me.model = new app.model.song_music(null, options);
-        
-       
-        // 展示loading
+
         me.showLoading(me.$el);
     }
 
     ,render: function(){
         var me = this;
 
-        // 使用append，避免将loading冲掉
-       
         me.$el.append(
             me.template({
                 sing_info: me.model.toJSON()
@@ -91,7 +86,7 @@ app.subview.song_content_detail = app.subview.extend({
         
         $('#player').html(str);
         
-        $('#player').click(function(){
+        $('#player').tap(function(){
             var route = 'song/<%= id %>';
             
             route = _.template(route)({
@@ -106,7 +101,8 @@ app.subview.song_content_detail = app.subview.extend({
     
     , _playerControl : function(){
         var me = this;
-        $('.song .player .opt').click(function(){
+        
+        $('.song .player .opt').tap(function(){
             var state = $(this).hasClass('play') ? 'play' : 'pause';
             
             if(state == 'play'){

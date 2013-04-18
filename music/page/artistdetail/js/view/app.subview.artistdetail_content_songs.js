@@ -11,7 +11,7 @@ app.subview.artistdetail_content_songs = app.subview.extend({
 
     , events : {
     
-        'click .list li.url' : 'playMusic'
+        'tap .list li.url' : 'playMusic'
     }
 
     ,init: function(options){
@@ -61,7 +61,11 @@ app.subview.artistdetail_content_songs = app.subview.extend({
             param = params.params;
 
         if(to == me.ec) {
-            me.$el.show();
+            if(param.panel == 'songs'){
+                me.$el.show();
+            }else{
+                me.$el.hide();
+            }
             if(me.isFirstLoad){
                 me.model.fetch({
                       data : {

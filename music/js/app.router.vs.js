@@ -14,7 +14,7 @@ app.router.vs = app.router.extend({
         , 'musicnew'                 : 'musicnew'
         , 'song/:id'                 : 'song'
         , 'artist'                   : 'artist'
-        , 'artistdetail/:id'         : 'artistdetail'
+        , 'artistdetail/:id/:panel'  : 'artistdetail'
         , 'artisthot'                : 'artisthot'
         , 'topic'                    : 'topic'
         , 'topicdetail/:id/:name'    : 'topicdetail'
@@ -116,9 +116,10 @@ app.router.vs = app.router.extend({
             {disable: true}
         );
     }
-    ,artistdetail : function(id){
+    ,artistdetail : function(id,panel){
         id = id || 0;
-        this.doAction('artistdetail', {id:decodeURIComponent(id)},
+        panel = panel || 'songs';
+        this.doAction('artistdetail', {id:decodeURIComponent(id),panel:decodeURIComponent(panel)},
             //禁止发送
             {disable: true}
         );

@@ -9,8 +9,8 @@ app.subview.index_musichot = app.subview.extend({
     )
 
     , events: {
-          'click .songs .hd div' : 'musicHot'
-        , 'click .list li' : 'playMusic'
+          'tap .songs .hd div' : 'musicHot'
+        , 'tap .list li' : 'playMusic'
     }
 
     , init: function(options){
