@@ -50,7 +50,6 @@ app.subview.index_static_nav = app.subview.extend({
             
         if(to == me.ec){
             me.$el.show();
-
         }
     }
 
@@ -84,8 +83,6 @@ app.subview.index_static_nav = app.subview.extend({
             , width                = $(window).width()
             , outList              = me.$el.find('.outList')
             , outListItem          = me.$el.find('.outListItem')
-            , identify             = me.$el.find('.identify')
-            , identifyLI           = identify.find('li')
             ;
         
        
@@ -115,13 +112,11 @@ app.subview.index_static_nav = app.subview.extend({
             
             identifyLI.removeClass('on').eq(1).addClass('on');
         });
+       
+        
         
 
-        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
-            $(this).addClass('active');
-        }).bind('touchend',function(){
-            $(this).removeClass('active');
-        });
+        me.$el.find('li.url').highlight('active');
         
     }
     

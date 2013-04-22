@@ -71,11 +71,7 @@ app.subview.category_content = app.subview.extend({
      */
     , _bindTouchEvent : function(){
          var me = this;
-        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
-            $(this).addClass('active');
-        }).bind('touchend',function(){
-            $(this).removeClass('active');
-        });
+        me.$el.find('li.url').highlight('active');
     
     }
     , categoryDetail : function(e){

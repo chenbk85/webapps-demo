@@ -52,69 +52,29 @@ app.subview.index_static_scroll = app.subview.extend({
     
     , _initOnOrientationChange : function(){
         var me = this;
-        $(window).bind('orientationchange',function(){
-            var 
-                  swipe          = me.$el.find('.swipe')
-                , identify       = me.$el.find('.identify')
-                , swipeUL        = swipe.find('ul')
-                , swipeLI        = swipeUL.find('li')
-                , screenWidth    = $(window).width()
-                , count          = swipeLI.length
-                , cur            = parseInt(swipeUL.attr('cur'),10)
-                ;
-        
-            swipeLI.css('width',screenWidth);
-            swipeUL.css('width',screenWidth * count);
-            
-            swipeUL.css({
-                  '-webkit-transition' : '0 ease'
-                , '-webkit-transform'  : 'translate3d(-'+ (cur * screenWidth)+'px, 0, 0)'
-             });
-        });
+        me.slider && me.slider.destroy();
+        me._createSlider.call(me);
     }
     
     
     , initAnimation : function(){
+        var me = this;
+        me._createSlider.call(me);
+    }
+    
+    , _createSlider : function(){
         var 
               me             = this
             , swipe          = me.$el.find('.swipe')
             , identify       = me.$el.find('.identify')
-            , swipeUL        = swipe.find('ul')
-            , swipeLI        = swipeUL.find('li')
-            , screenWidth    = $(window).width()
-            , count          = swipeLI.length
-            , intervalHandle = null
-            , intervalFun    = null
-            , cur            = 0
             ;
-        
-        swipeLI.css('width',screenWidth);
-        swipeUL.css('width',screenWidth * count);
-        
-        intervalFun = function(){
-            intervalHandle = window.setInterval(function(){
-                var screenWidth = $(window).width();
-                if(cur >= count){
-                    cur = 0;
-                }
-                
-                swipeUL.attr('cur',cur).css({
-                      '-webkit-transition' : '1s ease'
-                    , '-webkit-transform'  : 'translate3d(-'+ (cur * screenWidth)+'px, 0, 0)'
-                });
-                
-                identify.find('li').removeClass('on').eq(cur).addClass('on');
-                
-                cur++;
-                
-                
-            },6000);
-            
-        };
-        
-        //可以使用GMU slider
-        intervalFun();
-        
+        me.slider = me.$el.find('.swipe ul').slider({
+              loop     : true
+            , showArr  : false
+            , slideend : function(e,page){
+                identify.find('li').removeClass('on').eq(page).addClass('on');
+            }
+        }); 
     }
 
 });

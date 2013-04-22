@@ -80,12 +80,8 @@ app.subview.topicdetail_content_detail = app.subview.extend({
      *
      */
     , _bindTouchEvent : function(){
-         var me = this;
-        me.$el.find('li.url').unbind('touchstart').unbind('touchend').bind('touchstart',function(){
-            $(this).addClass('active');
-        }).bind('touchend',function(){
-            $(this).removeClass('active');
-        });
+        var me = this;
+        me.$el.find('li.url').highlight('active');
     
     }
     , playMusic : function(e){
