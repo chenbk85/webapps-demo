@@ -11,6 +11,7 @@ app.subview.index_content_cover = app.subview.extend({
     , events: {
           'tap .albums .cover li.url' : 'albumDetail'
         , 'tap .albums .items li.url' : 'albumDetail'
+
     }
 
     , init: function(options){
@@ -81,6 +82,7 @@ app.subview.index_content_cover = app.subview.extend({
         
         e.preventDefault();
     }
+
     
     
 
