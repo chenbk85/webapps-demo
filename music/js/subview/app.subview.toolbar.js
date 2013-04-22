@@ -9,7 +9,10 @@ app.subview.toolbar = app.subview.extend({
         $('#t-toolbar').text()
     )
 
-    , events: {}
+    , events: {
+          'tap h1'                 : 'togglemenu'
+        , 'tap .right .btn-search' : 'showSearch'
+    }
 
     , init: function(options){
         var me = this;
@@ -23,8 +26,7 @@ app.subview.toolbar = app.subview.extend({
             options : me.options
         }));
         
-        me.bindClickEvent.call(me);
-        me.bindSearchEvent.call(me);
+
         return me;
     }
 
@@ -51,30 +53,18 @@ app.subview.toolbar = app.subview.extend({
         }
     }
     
-    , bindClickEvent : function(){
-        var me = this;
-        
-        me.$el.find('h1').click(function(){
-            var self = $(this);
-            $('.drop-menu').toggle();
-            
-            self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
-        });
-        
-        
+    , togglemenu : function(e){
+        var me = this,self = $(e.target);
+        $('.drop-menu').toggle();
+        self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
     }
     
-    , bindSearchEvent : function(){
-        var me = this;
+    , showSearch : function(e){
+        var me = this,self = $(e.target),search = me.$el.find('.search');
+        search.hasClass('on') ? search.removeClass('on') : search.addClass('on');
         
-        me.$el.find('.right .btn-search').click(function(){
-            var self = $(this),search = me.$el.find('.search');
-            search.hasClass('on') ? search.removeClass('on') : search.addClass('on');
-            
-            self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
-        });
-        
-        
+        self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
+
     }
 
 });
