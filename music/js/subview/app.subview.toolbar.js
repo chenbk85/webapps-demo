@@ -49,6 +49,7 @@ app.subview.toolbar = app.subview.extend({
             me.$el && me.$el.show();
         }else{
             me.remove();
+            $('#header').remove();
             $('#wrapper').before('<header id="header"></header>');
         }
     }

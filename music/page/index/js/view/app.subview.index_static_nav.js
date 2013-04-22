@@ -56,68 +56,41 @@ app.subview.index_static_nav = app.subview.extend({
     
     , _initOnOrientationChange : function(){
         var me = this;
-        
-        $(window).bind('orientationchange',function(){
-            var 
-                  width                = $(window).width()
-                , outList              = me.$el.find('.outList')
-                , outListItem          = me.$el.find('.outListItem')
-                , cur                  = parseInt(outList.attr('cur'),10)
-                ;
-
-        
-            outList.width( width * 2);
-            outListItem.width( width );
-
-            outList.css({
-                  '-webkit-transition' : '0 ease'
-                , '-webkit-transform'  : 'translate3d(-'+ (cur * width ) +'px, 0, 0)'
-             });
-        });
+        me.slider && me.slider.destroy();
+        me._createSlider.call(me);
     }
     
     
     , _initAnimate : function(){
-        var 
-              me                   = this
-            , width                = $(window).width()
-            , outList              = me.$el.find('.outList')
-            , outListItem          = me.$el.find('.outListItem')
-            ;
-        
-       
-        
-        outList.width( width * 2);
-        outListItem.width( width );
-        
-        me.$el.find('.navs-opts .prev').tap(function(){
-            var width = $(window).width();
-            
-            outList.attr('cur',0).css({
-                  '-webkit-transition' : '0.6s ease'
-                , '-webkit-transform'  : 'translate3d(0, 0, 0)'
-            });
-            
-            identifyLI.removeClass('on').eq(0).addClass('on');
-            
-        });
-        
-        me.$el.find('.navs-opts .next').tap(function(){
-            var width = $(window).width();
-           
-            outList.attr('cur',1).css({
-                 '-webkit-transition' : '0.6s ease'
-                , '-webkit-transform' : 'translate3d(-'+ (width)+'px, 0, 0)'
-            });
-            
-            identifyLI.removeClass('on').eq(1).addClass('on');
-        });
-       
-        
-        
+        var me = this;
+
+        me._createSlider.call(me);
 
         me.$el.find('li.url').highlight('active');
         
+    }
+    
+    , _createSlider : function(){
+        var 
+              me                   = this
+            , outList              = me.$el.find('.outList')
+            , identifyLI           = me.$el.find('.identify li')
+            ;
+
+        me.slider = outList.slider({
+              showArr  : false
+            , autoPlay : false
+            , slideend : function(e,page){
+                identifyLI.removeClass('on').eq(page).addClass('on');
+            }
+        });
+        
+        me.$el.find('.navs-opts .prev').tap(function(){
+            outList.slider('pre');
+        });
+        me.$el.find('.navs-opts .next').tap(function(){
+            outList.slider('next');
+        });
     }
     
     , gotoRouter : function(e){

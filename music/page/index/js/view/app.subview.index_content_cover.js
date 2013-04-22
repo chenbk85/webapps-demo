@@ -78,6 +78,8 @@ app.subview.index_content_cover = app.subview.extend({
         });
         
         Backbone.history.navigate(route, {trigger:true});
+        
+        e.preventDefault();
     }
     
     

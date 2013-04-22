@@ -127,6 +127,8 @@ app.subview.musicnew_content = app.subview.extend({
         });
         
         Backbone.history.navigate(route, {trigger:true});
+        
+        return false;
     }
    
 

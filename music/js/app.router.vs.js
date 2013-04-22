@@ -35,7 +35,7 @@ app.router.vs = app.router.extend({
         , 'categorydetail'      
         , 'topic'
         , 'topicdetail'
-        , 'play'
+        , 'song'
     ]
 
     // 位置记忆，默认为false，不进行位置记忆
@@ -48,7 +48,12 @@ app.router.vs = app.router.extend({
     ,pageTransition: {
           'index-feedback'     : 'slide'
         , 'feedback-app'       : 'fade'
-        , 'topicdetail-play'   : 'sample'
+        , 'topicdetail-song'   : 'slide'
+        , 'musichot-song'      : 'slide'
+        , 'musicnew-song'      : 'slide'
+        , 'artistdetail-song'  : 'slide'
+        , 'categorydetail-song': 'slide'
+        , 'topicdetail-song'   : 'slide'
 
     }
 

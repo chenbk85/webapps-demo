@@ -10,8 +10,9 @@ app.model.albumdetail_music = app.model.extend({
     ,url: function(){
         var me = this;
         
-        return _.template('/music/albumdetail.php?<%= date %>')({
-             date : (new Date()).getTime()
+        return _.template('/music/albumdetail.php?id=<%= id %>&<%= date %>')({
+              date : (new Date()).getTime()
+            , id   : me.options.id
         });
     }
 
