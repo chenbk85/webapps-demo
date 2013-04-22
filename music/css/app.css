@@ -550,5 +550,15 @@ to {-webkit-transform: scale(0.32) rotate(360deg);-moz-transform: scale(0.32) ro
 
 #index_page_nav .ui-slider-item {background:none;}
 
+/* ˙∆¡*/
+@media all and (orientation:portrait) {
+    .route-home .albums .col-5 .items .items2 {display:none;}
+}
 
+/*∫·∆¡*/
+@media all and (orientation:landscape) {
+    .route-home .albums .col-5 .items, .route-routeForAladin .albums .col-5 .items {width:200px;}
+    .albums .items1 {display:none;}
+    .route-home .albums .col-5 .items .items2 {display:block;}
+}
 

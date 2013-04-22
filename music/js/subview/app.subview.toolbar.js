@@ -12,6 +12,8 @@ app.subview.toolbar = app.subview.extend({
     , events: {
           'tap h1'                 : 'togglemenu'
         , 'tap .right .btn-search' : 'showSearch'
+        , 'tap .btn-back'          : 'goBack'
+        , 'tap .btn-baidu'         : 'goBaidu'
     }
 
     , init: function(options){
@@ -66,6 +68,18 @@ app.subview.toolbar = app.subview.extend({
         
         self.hasClass('on') ? self.removeClass('on') : self.addClass('on');
 
+    }
+    
+    , goBack : function(e){
+        history.go(-1);
+        e.preventDefault();
+        return false;
+    }
+    
+    , goBaidu : function(e){
+        window.location.href = 'http://m.baidu.com?from=music';
+        e.preventDefault();
+        return false;
     }
 
 });

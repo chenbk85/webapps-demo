@@ -25,6 +25,7 @@ $.extend(app, {
         $(function(e){
             scroll();
         });
+
     }
     
     /**

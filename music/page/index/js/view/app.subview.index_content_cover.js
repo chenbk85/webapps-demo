@@ -22,6 +22,8 @@ app.subview.index_content_cover = app.subview.extend({
         me.model = new app.model.index_music_recommendalbum(null, options);
 
         me.showLoading(me.$el);
+        
+        
     }
 
     , render: function(){
@@ -34,7 +36,7 @@ app.subview.index_content_cover = app.subview.extend({
         );
         
         me.hideLoading();
-
+        me.bindOrientationChange.call(me);
         return me;
     }
 
@@ -65,6 +67,8 @@ app.subview.index_content_cover = app.subview.extend({
             
         }
     }
+
+    
     
     , albumDetail : function(e){
         var 
