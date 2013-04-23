@@ -36,7 +36,6 @@ app.subview.index_content_cover = app.subview.extend({
         );
         
         me.hideLoading();
-        me.bindOrientationChange.call(me);
         return me;
     }
 
