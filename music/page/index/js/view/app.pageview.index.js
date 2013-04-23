@@ -7,7 +7,7 @@ app.pageview.index = app.pageview.extend({
     , init: function(options){
         var me = this;
 
-        
+
         me.setup(new app.subview.index_static(options, me));
         me.setup(new app.subview.index_content(options, me));
 

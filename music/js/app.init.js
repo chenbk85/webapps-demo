@@ -25,6 +25,12 @@ $.extend(app, {
         $(function(e){
             scroll();
         });
+        
+        $(window).bind('orientationchange',function(){
+            
+            window.scrollTo(0, window.scrollY);
+            
+        });
 
     }
     
