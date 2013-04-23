@@ -47,6 +47,13 @@ app.router.vs = app.router.extend({
     // 页面切换动画配置
     ,pageTransition: {
           'index-feedback'     : 'slide'
+        , 'index-musichot'     : 'slide'
+        , 'index-musicnew'     : 'slide'
+        , 'index-artist'       : 'slide'
+        , 'index-artisthot'    : 'slide'
+        , 'index-category'     : 'slide'
+        , 'index-topic'        : 'slide'
+        , 'index-song'         : 'slide'
         , 'feedback-app'       : 'fade'
         , 'topicdetail-song'   : 'slide'
         , 'musichot-song'      : 'slide'
