@@ -28,7 +28,6 @@ app.subview.index_static_nav = app.subview.extend({
             me.template({})
         ).show();
         
-        me._initOnOrientationChange.call(me);
         me._initAnimate.call(me);
         
         return me;
@@ -53,12 +52,7 @@ app.subview.index_static_nav = app.subview.extend({
         }
     }
 
-    
-    , _initOnOrientationChange : function(){
-        var me = this;
-        me.slider && me.slider.destroy();
-        me._createSlider.call(me);
-    }
+
     
     
     , _initAnimate : function(){

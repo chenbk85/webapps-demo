@@ -23,7 +23,6 @@ app.subview.index_static_scroll = app.subview.extend({
         ).show();
         
         
-        me._initOnOrientationChange.call(me);
         me.initAnimation.call(me);
         
         return me;
@@ -47,14 +46,7 @@ app.subview.index_static_scroll = app.subview.extend({
             me.$el.show();
         }
     }
-    
 
-    
-    , _initOnOrientationChange : function(){
-        var me = this;
-        me.slider && me.slider.destroy();
-        me._createSlider.call(me);
-    }
     
     
     , initAnimation : function(){
