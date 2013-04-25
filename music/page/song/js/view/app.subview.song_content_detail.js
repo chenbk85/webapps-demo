@@ -56,9 +56,15 @@ app.subview.song_content_detail = app.subview.extend({
             from = params.from,
             to = params.to,
             param = params.params;
-
+        
+        
         if(to == me.ec) {
-            me.$el.show();
+            
+            if(me.options.id == param.id){
+                me.$el.show();
+            }else{
+                me.$el.hide();
+            }
             if(me.isFirstLoad){
                 me.model.fetch({
                     success: function(){

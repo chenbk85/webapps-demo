@@ -59,7 +59,11 @@ app.subview.topicdetail_content_detail = app.subview.extend({
             param = params.params;
 
         if(to == me.ec) {
-            me.$el.show();
+            if(me.options.id == param.id){
+                me.$el.show();
+            }else{
+                me.$el.hide();
+            }
             if(me.isFirstLoad){
                 me.model.fetch({
                     success: function(){

@@ -10,7 +10,8 @@ app.subview.song_content = app.subview.extend({
             id = options.id,
             subView;
 
-        me.MAX_SUBPAGES = 1;
+        //me.MAX_SUBPAGES = 1;
+        
         subView = new app.subview.song_content_detail(
             $.extend({}, options), 
             me
