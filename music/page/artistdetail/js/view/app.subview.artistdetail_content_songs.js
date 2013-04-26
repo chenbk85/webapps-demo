@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.artistdetail_content_songs = app.subview.extend({
+rocket.subview.artistdetail_content_songs = rocket.subview.extend({
     
       className: 'songs'
     
@@ -22,7 +22,7 @@ app.subview.artistdetail_content_songs = app.subview.extend({
         
         me.options = options;
 
-        me.model = new app.model.artistdetail_songs(null, options);
+        me.model = new rocket.model.artistdetail_songs(null, options);
         
         me.showLoading(me.$el);
     }

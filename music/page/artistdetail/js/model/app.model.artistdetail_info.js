@@ -1,6 +1,6 @@
 (function($){
 
-app.model.artistdetail_info = app.model.extend({
+rocket.model.artistdetail_info = rocket.model.extend({
 
     initialize: function(attributes, options){
         var me = this;

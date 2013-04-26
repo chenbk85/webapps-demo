@@ -1,14 +1,14 @@
 
 (function($) {
 
-app.pageview.artistdetail = app.pageview.extend({
+rocket.pageview.artistdetail = rocket.pageview.extend({
     el: "#artistdetail_page"
 
     ,init: function(options){
         var me = this;
 
 
-        me.setup(new app.subview.artistdetail_content(options, me));
+        me.setup(new rocket.subview.artistdetail_content(options, me));
         
     }
 });

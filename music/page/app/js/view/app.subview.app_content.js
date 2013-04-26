@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.app_content = app.subview.extend({
+rocket.subview.app_content = rocket.subview.extend({
       el: "#app_page_content"
 
     , template: _.template(
@@ -15,7 +15,7 @@ app.subview.app_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.collection = new app.collection.app_music(null, options);
+        me.collection = new rocket.collection.app_music(null, options);
 
         me.showLoading(me.$el);
     }

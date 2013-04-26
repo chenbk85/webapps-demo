@@ -1,6 +1,6 @@
 (function($){
 
-app.collection.feedback_music = app.collection.extend({
+rocket.collection.feedback_music = rocket.collection.extend({
 
     initialize: function(models, options){
         var me = this;

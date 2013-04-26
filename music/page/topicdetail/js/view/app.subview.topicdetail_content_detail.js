@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.topicdetail_content_detail = app.subview.extend({
+rocket.subview.topicdetail_content_detail = rocket.subview.extend({
     
       template: _.template(
         $('#template_topicdetail_content').text()
@@ -20,7 +20,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.topicdetail_music(null, options);
+        me.model = new rocket.model.topicdetail_music(null, options);
 
         me.showLoading(me.$el);
     }
@@ -72,7 +72,7 @@ app.subview.topicdetail_content_detail = app.subview.extend({
                 });
             }
             
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                   title  : decodeURIComponent(me.options.name)
             }, me);
             

@@ -1,6 +1,6 @@
 (function($){
 
-app.model.topicdetail_music = app.model.extend({
+rocket.model.topicdetail_music = rocket.model.extend({
 
     initialize: function(attributes, options){
         var me = this;

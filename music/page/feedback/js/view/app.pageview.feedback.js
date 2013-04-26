@@ -1,17 +1,15 @@
-/**
- * 首页View类
- */
+
 (function($) {
 
-app.pageview.feedback = app.pageview.extend({
+rocket.pageview.feedback = rocket.pageview.extend({
     el: "#feedback_page"
 
     ,init: function(options){
         var me = this;
 
-        me.setup(new app.subview.feedback_content(options, me));
+        me.setup(new rocket.subview.feedback_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     
@@ -27,7 +25,7 @@ app.pageview.feedback = app.pageview.extend({
             param = params.params;
         
         if(to == me.ec){
-            new app.subview.toolbar({title:"意见反馈",action:'feedback'},me);
+            new rocket.subview.toolbar({title:"意见反馈",action:'feedback'},me);
         }
         
     }

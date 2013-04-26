@@ -3,15 +3,15 @@
  */
 (function($) {
 
-app.pageview.musichot = app.pageview.extend({
+rocket.pageview.musichot = rocket.pageview.extend({
       el: "#musichot_page"
 
     , init: function(options){
         var me = this;
 
-        me.setup(new app.subview.musichot_content(options, me));
+        me.setup(new rocket.subview.musichot_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     ,registerEvents : function(){
@@ -28,7 +28,7 @@ app.pageview.musichot = app.pageview.extend({
             ;
         
         if(to == me.ec){
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                     title  : "热歌榜"
                   , action : "musichot"
             }, me);

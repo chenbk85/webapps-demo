@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.topicdetail_content = app.subview.extend({
+rocket.subview.topicdetail_content = rocket.subview.extend({
       el: "#topicdetail_page_content"
 
     , init: function(options){
@@ -12,7 +12,7 @@ app.subview.topicdetail_content = app.subview.extend({
             ;
 
 
-        subView = new app.subview.topicdetail_content_detail(
+        subView = new rocket.subview.topicdetail_content_detail(
             $.extend({}, options), 
             me
         );
@@ -38,7 +38,7 @@ app.subview.topicdetail_content = app.subview.extend({
 
         if(to == me.ec) {
             if(!me.getSubpage(param.id)){
-                var subView = new app.subview.topicdetail_content_detail(
+                var subView = new rocket.subview.topicdetail_content_detail(
                     $.extend({}, param), 
                     me
                 );

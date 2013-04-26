@@ -1,19 +1,17 @@
-/**
- * 首页View类
- */
+
 (function($) {
 
-app.pageview.topic = app.pageview.extend({
+rocket.pageview.topic = rocket.pageview.extend({
     el: "#topic_page"
 
     ,init: function(options){
         var me = this;
         
-        me.setup(new app.subview.topic_header(options, me));
+        me.setup(new rocket.subview.topic_header(options, me));
 
-        me.setup(new app.subview.topic_content(options, me));
+        me.setup(new rocket.subview.topic_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     ,registerEvents : function(){
         var me = this, ec = me.ec;
@@ -27,7 +25,7 @@ app.pageview.topic = app.pageview.extend({
             param = params.params;
         
         if(to == me.ec){
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                   title  : "专题",
                   action : 'topic'
             }, me);

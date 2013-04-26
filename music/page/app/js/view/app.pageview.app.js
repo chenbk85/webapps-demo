@@ -1,17 +1,17 @@
 
 (function($) {
 
-app.pageview.app = app.pageview.extend({
+rocket.pageview.app = rocket.pageview.extend({
       el: "#app_page"
 
     ,init: function(options){
         var me = this;
 
-        me.setup(new app.subview.app_header(options, me));
+        me.setup(new rocket.subview.app_header(options, me));
 
-        me.setup(new app.subview.app_content(options, me));
+        me.setup(new rocket.subview.app_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     ,registerEvents : function(){
@@ -26,7 +26,7 @@ app.pageview.app = app.pageview.extend({
             param = params.params;
         
         if(to == me.ec){
-            new app.subview.toolbar({title:"热门应用",action:'app'},me);
+            new rocket.subview.toolbar({title:"热门应用",action:'app'},me);
         }
         
     }

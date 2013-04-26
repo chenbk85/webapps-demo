@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.feedback_content = app.subview.extend({
+rocket.subview.feedback_content = rocket.subview.extend({
     el: "#feedback_page_content"
 
     ,template: _.template(
@@ -15,7 +15,7 @@ app.subview.feedback_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.collection = new app.collection.feedback_music(null, options);
+        me.collection = new rocket.collection.feedback_music(null, options);
 
         me.showLoading(me.$el);
     }

@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.artistdetail_content = app.subview.extend({
+rocket.subview.artistdetail_content = rocket.subview.extend({
     el: "#artistdetail_page_content"
     
     , events : {
@@ -62,7 +62,7 @@ app.subview.artistdetail_content = app.subview.extend({
     
         var me = this,subView;
         
-        subView = new app.subview[ subview ](
+        subView = new rocket.subview[ subview ](
             $.extend({}, me.options), 
             me
         );

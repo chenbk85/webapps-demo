@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.topic_content = app.subview.extend({
+rocket.subview.topic_content = rocket.subview.extend({
     el: "#topic_page_content"
 
     ,template: _.template(
@@ -22,7 +22,7 @@ app.subview.topic_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.topic_music(null, options);
+        me.model = new rocket.model.topic_music(null, options);
 
         me.showLoading(me.$el);
     }
@@ -88,7 +88,7 @@ app.subview.topic_content = app.subview.extend({
      *
      */
     , loadMore : function(e){
-        var me = this,that = $(e.target),loadingMore = app.loadingMore(that);
+        var me = this,that = $(e.target),loadingMore = rocket.loadingMore(that);
         me.model.off('change');
         me.model.set({
               page      : me.model.get('page') + 1

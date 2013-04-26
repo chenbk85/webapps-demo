@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.song_content = app.subview.extend({
+rocket.subview.song_content = rocket.subview.extend({
     
     el: "#song_page_content"
 
@@ -10,9 +10,7 @@ app.subview.song_content = app.subview.extend({
             id = options.id,
             subView;
 
-        //me.MAX_SUBPAGES = 1;
-        
-        subView = new app.subview.song_content_detail(
+        subView = new rocket.subview.song_content_detail(
             $.extend({}, options), 
             me
         );
@@ -36,7 +34,7 @@ app.subview.song_content = app.subview.extend({
 
         if(to == me.ec) {
             if(!me.getSubpage(param.id)){
-                var subView = new app.subview.song_content_detail(
+                var subView = new rocket.subview.song_content_detail(
                     $.extend({}, param), 
                     me
                 );

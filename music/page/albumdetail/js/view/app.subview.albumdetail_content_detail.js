@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.albumdetail_content_detail = app.subview.extend({
+rocket.subview.albumdetail_content_detail = rocket.subview.extend({
     
 
       template: _.template(
@@ -18,7 +18,7 @@ app.subview.albumdetail_content_detail = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.albumdetail_music(null, options);
+        me.model = new rocket.model.albumdetail_music(null, options);
 
         me.showLoading(me.$el);
     }

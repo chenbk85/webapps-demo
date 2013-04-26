@@ -1,6 +1,6 @@
 (function($) {
 
-app.subview.feedback_header = app.subview.extend({
+rocket.subview.feedback_header = rocket.subview.extend({
     el: "#feedback_page_header",
 
     events: {

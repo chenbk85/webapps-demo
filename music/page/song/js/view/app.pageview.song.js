@@ -1,17 +1,15 @@
-/**
- * 首页View类
- */
+
 (function($) {
 
-app.pageview.song = app.pageview.extend({
+rocket.pageview.song = rocket.pageview.extend({
       el: "#song_page"
 
     , init: function(options){
         var me = this;
 
-        me.setup(new app.subview.song_content(options, me));
+        me.setup(new rocket.subview.song_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     ,registerEvents : function(){
@@ -28,7 +26,7 @@ app.pageview.song = app.pageview.extend({
             ;
         
         if(to == me.ec){
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                   title  : "播放歌曲"
             }, me);
         }    

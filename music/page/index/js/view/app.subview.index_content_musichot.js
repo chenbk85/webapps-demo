@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.index_content_musichot = app.subview.extend({
+rocket.subview.index_content_musichot = rocket.subview.extend({
       el: "#index_page_musichot"
 
     , template: _.template(
@@ -21,7 +21,7 @@ app.subview.index_content_musichot = app.subview.extend({
 
         options.size = 5;
         
-        me.model = new app.model.musichot_music(null, options);
+        me.model = new rocket.model.musichot_music(null, options);
         
 
         me.showLoading(me.$el);

@@ -1,17 +1,17 @@
 
 (function($) {
 
-app.pageview.artist = app.pageview.extend({
+rocket.pageview.artist = rocket.pageview.extend({
     el: "#artist_page"
 
     ,init: function(options){
         var me = this;
 
-        me.setup(new app.subview.artist_header(options, me));
+        me.setup(new rocket.subview.artist_header(options, me));
 
-        me.setup(new app.subview.artist_content(options, me));
+        me.setup(new rocket.subview.artist_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     ,registerEvents : function(){
@@ -26,7 +26,7 @@ app.pageview.artist = app.pageview.extend({
             param = params.params;
         
         if(to == me.ec){
-            new app.subview.toolbar({title:"歌手",action:'artist'},me);
+            new rocket.subview.toolbar({title:"歌手",action:'artist'},me);
         }
         
     }

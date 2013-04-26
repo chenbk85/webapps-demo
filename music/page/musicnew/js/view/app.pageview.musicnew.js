@@ -1,16 +1,16 @@
 
 (function($) {
 
-app.pageview.musicnew = app.pageview.extend({
+rocket.pageview.musicnew = rocket.pageview.extend({
       el: "#musicnew_page"
 
     , init: function(options){
        var me = this;
         
         
-        me.setup(new app.subview.musicnew_content(options, me));
+        me.setup(new rocket.subview.musicnew_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     , registerEvents : function(){
@@ -27,7 +27,7 @@ app.pageview.musicnew = app.pageview.extend({
             ;
         
         if(to == me.ec){
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                     title  : "新歌榜"
                   , action : 'musicnew'
             }, me);

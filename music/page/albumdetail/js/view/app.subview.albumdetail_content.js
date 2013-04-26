@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.albumdetail_content = app.subview.extend({
+rocket.subview.albumdetail_content = rocket.subview.extend({
     
     el: "#albumdetail_page_content"
 
@@ -10,7 +10,7 @@ app.subview.albumdetail_content = app.subview.extend({
             id = options.id,
             subView;
 
-        subView = new app.subview.albumdetail_content_detail(
+        subView = new rocket.subview.albumdetail_content_detail(
             $.extend({}, options), 
             me
         );
@@ -34,7 +34,7 @@ app.subview.albumdetail_content = app.subview.extend({
 
         if(to == me.ec) {
             if(!me.getSubpage(param.id)){
-                var subView = new app.subview.albumdetail_content_detail(
+                var subView = new rocket.subview.albumdetail_content_detail(
                     $.extend({}, param), 
                     me
                 );

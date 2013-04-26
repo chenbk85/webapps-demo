@@ -1,6 +1,6 @@
 (function($) {
 
-app.subview.artisthot_header = app.subview.extend({
+rocket.subview.artisthot_header = rocket.subview.extend({
     el: "#artisthot_page_header",
 
     events: {

@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.artistdetail_content_info = app.subview.extend({
+rocket.subview.artistdetail_content_info = rocket.subview.extend({
     
       className: 'detail'
     
@@ -15,7 +15,7 @@ app.subview.artistdetail_content_info = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.artistdetail_info(null, options);
+        me.model = new rocket.model.artistdetail_info(null, options);
 
         me.showLoading(me.$el);
     }
@@ -76,7 +76,7 @@ app.subview.artistdetail_content_info = app.subview.extend({
                 });
             }
             
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                   title  : "歌手"
                 , action : 'artistdetail'
             }, me);

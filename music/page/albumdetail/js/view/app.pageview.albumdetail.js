@@ -1,15 +1,15 @@
 
 (function($) {
 
-app.pageview.albumdetail = app.pageview.extend({
+rocket.pageview.albumdetail = rocket.pageview.extend({
       el: "#albumdetail_page"
 
     , init: function(options){
         var me = this;
 
-        me.setup(new app.subview.albumdetail_content(options, me));
+        me.setup(new rocket.subview.albumdetail_content(options, me));
         
-        me.setup(new app.subview.shortcut({}, me));
+        me.setup(new rocket.subview.shortcut({}, me));
     }
     
     ,registerEvents : function(){
@@ -26,7 +26,7 @@ app.pageview.albumdetail = app.pageview.extend({
             ;
         
         if(to == me.ec){
-            new app.subview.toolbar({
+            new rocket.subview.toolbar({
                   title  : me.options.name
             }, me);
         }    

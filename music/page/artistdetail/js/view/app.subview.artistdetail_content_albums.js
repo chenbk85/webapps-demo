@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.artistdetail_content_albums = app.subview.extend({
+rocket.subview.artistdetail_content_albums = rocket.subview.extend({
     
       className: 'albums'
     
@@ -19,7 +19,7 @@ app.subview.artistdetail_content_albums = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.artistdetail_albums(null, options);
+        me.model = new rocket.model.artistdetail_albums(null, options);
 
         me.showLoading(me.$el);
     }

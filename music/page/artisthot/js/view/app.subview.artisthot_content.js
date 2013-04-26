@@ -1,7 +1,7 @@
 
 (function($) {
 
-app.subview.artisthot_content = app.subview.extend({
+rocket.subview.artisthot_content = rocket.subview.extend({
     el: "#artisthot_page_content"
 
     ,template: _.template(
@@ -17,7 +17,7 @@ app.subview.artisthot_content = app.subview.extend({
 
         me.isFirstLoad = true;
 
-        me.model = new app.model.artisthot_music(null, options);
+        me.model = new rocket.model.artisthot_music(null, options);
 
         me.showLoading(me.$el);
         

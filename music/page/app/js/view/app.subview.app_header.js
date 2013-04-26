@@ -1,6 +1,6 @@
 (function($) {
 
-app.subview.app_header = app.subview.extend({
+rocket.subview.app_header = rocket.subview.extend({
       el: "#app_page_header"
 
     , events: {}
