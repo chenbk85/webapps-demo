@@ -8,15 +8,19 @@ rocket.subview.albumdetail_content = rocket.subview.extend({
     ,init: function(options){
         var me = this, 
             id = options.id,
-            subView;
-
+            subView,spm;
+        
+         spm = me.getSubpageManager({
+            subpageClass: rocket.subview.albumdetail_content_detail
+        });
+        
         subView = new rocket.subview.albumdetail_content_detail(
             $.extend({}, options), 
             me
         );
         me.append(subView);
 
-        me.registerSubpage(id, subView);
+        spm.registerSubpage(me.featureString, subView);
     }
 
 
@@ -33,17 +37,6 @@ rocket.subview.albumdetail_content = rocket.subview.extend({
             param = params.params;
 
         if(to == me.ec) {
-            if(!me.getSubpage(param.id)){
-                var subView = new rocket.subview.albumdetail_content_detail(
-                    $.extend({}, param), 
-                    me
-                );
-                me.append(subView);
-                me.registerSubpage(param.id, subView);
-            }
-
-            me.setCurrentSubpage(me.getSubpage(param.id));
-            me.recycleSubpage();
 
             me.$el.show();
         }else{

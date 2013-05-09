@@ -34,17 +34,7 @@ rocket.subview.artistdetail_content = rocket.subview.extend({
         
 
         if(to == me.ec) {
-            
-            if(!me.getSubpage('artistdetail_info_' + param.id)){
-                
-                me._registerCurSubpage.call(me,param.id);
 
-            }
-
-            me.setCurrentSubpage(me.getSubpage('artistdetail_info_' + param.id));
-            
-            me.recycleSubpage();
-            
             me.$el.show();
         }
     }
@@ -52,23 +42,24 @@ rocket.subview.artistdetail_content = rocket.subview.extend({
     , _registerCurSubpage : function(id){
         var me = this;
         
-        me._registerSubpage.call(me, 'artistdetail_info_' + id, 'artistdetail_content_info');
-        me._registerSubpage.call(me, 'artistdetail_songs_' + id, 'artistdetail_content_songs');
-        me._registerSubpage.call(me, 'artistdetail_albums_' + id, 'artistdetail_content_albums');
+        me._registerSubpage.call(me,'artistdetail_content_info');
+
     }
     
     
-    , _registerSubpage : function(id,subview){
+    , _registerSubpage : function(subview){
     
-        var me = this,subView;
-        
+        var me = this,subView,spm;
+        spm = me.getSubpageManager({
+            subpageClass: rocket.subview[ subview ]
+        });
         subView = new rocket.subview[ subview ](
             $.extend({}, me.options), 
             me
         );
         me.append(subView);
 
-        me.registerSubpage(id, subView);
+        spm.registerSubpage(me.featureString, subView);
 
         return me;
     }
@@ -93,7 +84,8 @@ rocket.subview.artistdetail_content = rocket.subview.extend({
               id    : me.options.id
             , panel : panel
         });
-        Backbone.history.navigate(route, {trigger:true});  
+        
+        Backbone.history.navigate(route, {trigger:false});  
     }
 
 });

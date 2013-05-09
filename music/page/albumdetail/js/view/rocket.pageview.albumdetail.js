@@ -27,7 +27,7 @@ rocket.pageview.albumdetail = rocket.pageview.extend({
         
         if(to == me.ec){
             new rocket.subview.toolbar({
-                  title  : me.options.name
+                  title  : "专辑"
             }, me);
         }    
         

@@ -9,16 +9,19 @@ rocket.subview.topicdetail_content = rocket.subview.extend({
               me = this
             , id = options.id
             , subView
+            , spm
             ;
 
-
+        spm = me.getSubpageManager({
+            subpageClass: rocket.subview.topicdetail_content_detail
+        });
         subView = new rocket.subview.topicdetail_content_detail(
             $.extend({}, options), 
             me
         );
         me.append(subView);
 
-        me.registerSubpage(id, subView);
+        spm.registerSubpage(me.featureString, subView);
     }
 
     
