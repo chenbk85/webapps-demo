@@ -1,0 +1,80 @@
+.ui-toolbar {
+	position: relative;
+
+	z-index: 2;
+
+
+}
+
+.ui-toolbar-left {
+	
+}
+.ui-toolbar-wrap {
+    
+    
+
+}
+
+.ui-toolbar-wrap a {
+    text-decoration: none;
+}
+
+.ui-toolbar-title {
+    
+}
+
+.ui-toolbar-backbtn {
+    border: none;
+
+}
+
+.ui-toolbar-backbtn:before, .ui-toolbar-backbtn:after {
+
+}
+
+.ui-toolbar-backbtn:before {
+    
+}
+
+.ui-toolbar-backbtn:after {
+    
+    
+}
+
+.ui-toolbar .ui-toolbar-backbtn.ui-state-hover {
+    background-color: #d9d9d9;
+    border-color: #b3b3b3;
+}
+.ui-toolbar .ui-toolbar-backbtn.ui-state-hover:after {
+    
+}
+.ui-toolbar .ui-toolbar-backbtn.ui-state-hover:before {
+    
+}
+
+.ui-toolbar-backbtn {
+	position:static;
+}
+/*css for pad*/
+@media all and (min-device-width:768px) and (max-device-width: 1024px){
+    .ui-toolbar-wrap {
+        height: 48px;
+    }
+    .ui-toolbar-title {
+        font-size: 16px;
+        line-height: 48px;
+    }
+    .ui-toolbar-backbtn {
+        line-height: 35px;
+        height: 36px;
+        margin: 6px 0 0 22px;
+        padding: 0 0.6em 0 0.5em;
+    }
+    .ui-toolbar-backbtn:before, .ui-toolbar-backbtn:after {
+        
+    }
+    .ui-toolbar-backbtn:after {
+        
+    }
+}
+

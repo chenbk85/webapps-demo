@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>百度壁纸</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <link rel="stylesheet" type="text/css" href="./css/all.css" />
+</head>
+<body>
+    <div id="wrapper">
+			<!--inline[./tpl/globalloading.html]-->
+			<!--inline[./tpl/pageloading.html]-->
+			
+
+			{{page.html}}
+
+
+			<div id="_common__page">正在加载</div>
+
+    </div>
+
+	
+	
+	
+	<script type="text/javascript" src="/js/common/gmu/js/zepto.js"></script>
+	<script type="text/javascript" src="/js/common/gmu/js/zepto.extend.js"></script>
+	<script type="text/javascript" src="/js/common/chassis/chassis.js"></script>
+	<script type="text/javascript" src="/js/common/mod.js"></script>
+	<script>
+		(function(){
+			require.resourceMap( {{map.json}} );
+			require.async( 
+				[
+					'js/common/baidutemplate/baidutemplate.js',
+					'js/init.js'
+				],
+				function(){
+					app.init();
+				}
+			);
+		})();
+	</script>
+</body>
+</html>

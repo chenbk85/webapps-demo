@@ -1,0 +1,77 @@
+<% for(var m = 0 ,n = pics.length; m < n; m+= 6){ %>
+	<% if(random === 4){ %>
+		<% random = 0; %>
+	<% } %>
+	<div class="picList">
+		<div style="display:none;"><img /></div>
+		<% if( random == 0 ) { %>
+			<div class="group up">
+				<div class="big"><img src="/data/referer.php?url=<%= pics[ m ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				<div class="small">
+					<div><img src="/data/referer.php?url=<%= pics[ m+1 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+					<div><img src="/data/referer.php?url=<%= pics[ m+2 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				</div>
+				<div class="line"></div>
+				<ul>
+					<% for(var i = m+3; i < m+6; i++){ %>
+						<li><img src="/data/referer.php?url=<%= pics[ i ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></li>
+					<% } %>
+				</ul>
+			</div>
+			
+			
+		<% } %>
+		<% if( random == 1 ) { %>
+			<div class="group up">
+				<div class="small">
+					<div><img src="/data/referer.php?url=<%= pics[ m ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+					<div><img src="/data/referer.php?url=<%= pics[ m+1 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				</div>
+				<div class="big"><img src="/data/referer.php?url=<%= pics[ m+2 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				<div class="line"></div>
+				<ul>
+					<% for(var i = m+3; i < m+6; i++){ %>
+						<li><img src="/data/referer.php?url=<%= pics[ i ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></li>
+					<% } %>
+				</ul>
+			</div>
+			
+			
+		<% } %>
+		
+		<% if( random == 2 ) { %>
+			
+			<div class="group down">
+				<ul>
+					<% for(var i = m; i < m+3; i++){ %>
+						<li><img src="/data/referer.php?url=<%= pics[ i ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></li>
+					<% } %>
+				</ul>
+				<div class="line"></div>
+				<div class="big"><img src="/data/referer.php?url=<%= pics[ m+3 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				<div class="small">
+					<div><img src="/data/referer.php?url=<%= pics[ m+4 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+					<div><img src="/data/referer.php?url=<%= pics[ m+5][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				</div>
+			</div>
+		<% } %>
+		
+		<% if( random == 3 ) { %>
+			
+			<div class="group down">
+				<ul>
+					<% for(var i = m; i < m+3; i++){ %>
+						<li><img src="/data/referer.php?url=<%= pics[ i ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></li>
+					<% } %>
+				</ul>
+				<div class="line"></div>
+				<div class="small">
+					<div><img src="/data/referer.php?url=<%= pics[ m+3 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+					<div><img src="/data/referer.php?url=<%= pics[ m+4][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+				</div>
+				<div class="big"><img src="/data/referer.php?url=<%= pics[ m+5 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
+			</div>
+		<% } %>
+	</div>
+	<% random++; %>
+<% } %>

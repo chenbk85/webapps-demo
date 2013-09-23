@@ -1,0 +1,14 @@
+.ui-panel{
+    width: 15em;
+    height: 560px;
+    top: 0;
+    padding: 0;
+    background: #2d2d2d;
+    color: #e2e2e2;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+	.ui-panel h2 {
+		height:45px;
+		line-height:45px;
+	}

@@ -1,0 +1,22 @@
+@import url("./reset.css?__inline");
+@import url("./globalloading.css?__inline");
+@import url("./pageloading.css?__inline");
+@import url("./app.css?__inline");
+@import url("/js/common/gmu/css/widget/panel/panel.css?__inline");
+@import url("/js/common/gmu/css/widget/toolbar/toolbar.css?__inline");
+@import url("/js/common/gmu/css/widget/slider/slider.css?__inline");
+@import url("/js/common/gmu/css/skin/refresh/refresh.css?__inline");
+@import url("/js/common/gmu/css/skin/panel/panel.css?__inline");
+@import url("/js/common/gmu/css/skin/toolbar/toolbar.css?__inline");
+@import url("/js/common/gmu/css/skin/slider/slider.css?__inline");
+@import url("./typicons/font/typicons.css?__inline");
+
+#_common__page {
+	width:100%;
+	height:100%;
+	line-height:80px;
+	color:#999;
+	font-size:20px;
+	text-align:center;
+}
+{{page.css}}
