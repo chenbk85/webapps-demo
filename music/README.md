@@ -69,6 +69,16 @@ fisc release
    }
    ```
 
+设置页面切换时的动画：
+
+页面切换默认无动画，仅需要配置列表页至详情页的动画为`slider`:
+
+```javascript
+   "pageTransition: {
+      "index-detail" : "slider"
+   }
+```
+
 ##代码实现
 
 
