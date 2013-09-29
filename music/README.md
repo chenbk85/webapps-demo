@@ -9,7 +9,7 @@ npm install -g fis-chassis
 新建项目目录：
 
 ```
-md wallpaper
+mkdir wallpaper
 cd wallpaper
 ```
 
