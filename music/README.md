@@ -149,6 +149,8 @@ if (window.navigator.userAgent.indexOf('iPhone') != -1) {
 location.hash = destPage;
 ```
 
+TODO:写入配置文件。
+
 
 
 
