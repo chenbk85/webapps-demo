@@ -31,9 +31,9 @@ fisc release
 
    ```javascript
    {
-       ''           : 'index',
-       'index'      : 'index',
-       'index/:tag' : 'index'
+       ""           : "index",
+       "index"      : "index",
+       "index/:tag" : "index"
    }
    ```
 
@@ -41,7 +41,7 @@ fisc release
 
    ```javascript
    {
-       'detail/:tag/:index' : 'detail'
+       "detail/:tag/:index" : "detail"
    }
    ```
 
@@ -49,7 +49,7 @@ fisc release
 
    ```javascript
    {
-       'cover' : 'cover'
+       "cover" : "cover"
    }
    ```
 
@@ -57,7 +57,7 @@ fisc release
 
    ```javascript
    {
-       'install' : 'install'
+       "install" : "install"
    }
    ```
 
@@ -66,7 +66,7 @@ fisc release
 
    ```javascript
    {
-       'iphone' : 'iphone'
+       "iphone" : "iphone"
    }
    ```
 
@@ -77,7 +77,7 @@ fisc release
 页面切换默认无动画，仅需要配置列表页至详情页的动画为`slider`:
 
 ```javascript
-   "pageTransition: {
+   "pageTransition": {
       "index-detail" : "slider"
    }
 ```
@@ -89,7 +89,7 @@ fisc release
 ```javascript
 fis.config.merge({
     chassis : {
-		home   : 'index.html',
+		home   : "index.html",
 		router : {
 			"routes" : {
 				""                  : "index",
