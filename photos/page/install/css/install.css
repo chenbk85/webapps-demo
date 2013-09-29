@@ -1,0 +1,39 @@
+/*页面视图id，与action同名，以_page为后缀*/
+#install_page {
+    background:#fff;
+	font-size:12px;
+	height:100%;
+	text-align:center;
+	padding-top:60px;
+}
+
+	#install_page h3 {
+		font-size:18px;
+	}
+		#install_page h3 strong {
+			font-weight:700;
+		}
+	
+	#install_page .desc {
+		margin:10px 0;
+		padding:0 20px;
+		line-height:26px;
+	}
+		#install_page .desc  img {
+			margin-top:10px;
+		}
+	#install_page .add2desktop {
+		width:100%;
+		position:absolute;
+		bottom:0;
+		z-index:99999;
+		
+	}
+		#install_page .add2desktop .text {
+			line-height:25px;
+			font-weight:800;
+		}
+		
+		#install_page .add2desktop .arrow {
+			font-size:25px;
+		}

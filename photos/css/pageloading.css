@@ -23,7 +23,7 @@
     height:50px;
     width:50px;
     -webkit-animation: loading-anim 2s linear infinite;
-    background:url("../img/rotating.png") 0 0 no-repeat;
+    background:url("/img/rotating.png") 0 0 no-repeat;
     background-size: 50px 50px;
 }
 
@@ -41,7 +41,7 @@
     -webkit-box-align:center;
     -webkit-box-orient:vertical;
     -webkit-box-sizing:border-box;
-    background: url("../img/loading-logo-news.png") 0 0 no-repeat;
+    background: url("/img/loading-logo-news.png") 0 0 no-repeat;
     background-size: 65px 65px;
 }
 

@@ -1571,8 +1571,6 @@ Chassis.mixin( Router.prototype, Events, {
         /**
          * 计算页面切换方向：0-无方向，1-向左，2-向右
          */
-		 
-		
         if ( fromAction !== toAction ) {
             if ( -1 !== fromIndex && -1 !== toIndex ) {
                 dir = fromIndex > toIndex ? 2 : 1;
@@ -1669,13 +1667,12 @@ Chassis.mixin( Router.prototype, Events, {
 
         var me = this,
             animate;
-		
-		
+
         // 根据action组合，选择不同切换动画方法
         animate = me._selectTransition( from && from.action, to && to.action );
-		
+
         animate = animate || Chassis.FX[ me.defaultTransition ].animate; 
-		
+
         animate(
             from && from.el, 
                 to && to.el, 
@@ -1717,7 +1714,7 @@ Chassis.mixin( Router.prototype, Events, {
      * @return 
      **/
     _bindRoutes : function() {
-        var me = this; 
+        var me = this;
         
         // 对routes支持数组的处理
         me._routeArray.call( me );
@@ -1730,8 +1727,6 @@ Chassis.mixin( Router.prototype, Events, {
 			}
 			
         } );
-		
-		
 		
 		// 设定一个空的配置
 		if ( !me.routes[ '' ] ) {
@@ -2446,6 +2441,14 @@ Chassis.mixin( View.prototype, Events, {
         }
 
         this.$el = el instanceof Chassis.$ ? el : Chassis.$( el );
+
+        el = View.Plugin.invoke( 
+            'setElement', this, this.$el, this.$el, delegate );
+
+        if ( el ) {
+            this.$el = el;
+        }
+
         this.el = this.$el[ 0 ];
 
         if ( delegate !== false ) {
@@ -2465,13 +2468,21 @@ Chassis.mixin( View.prototype, Events, {
      * @example
      *      //格式为 {"event[ selector]": "callback"}
      *      {
+     *          // DOM事件
      *          'mousedown .title': 'edit',
      *          'click .button': 'save',
      *          'click .open': function( e ){},
      *          'orientationchange window': 'refresh',
      *          'click document': 'close',
+     *          
+     *          // View事件
      *          'beforepagein view': 'onBeforePageIn',
-     *          'change model': 'render'
+     *
+     *          // Model事件
+     *          'change model': 'render',
+     *
+     *          // Widget事件
+     *          'slide widget#topSlider': 'slide'
      *      }
      */
     delegateEvents: function( events ) {
@@ -2514,6 +2525,11 @@ Chassis.mixin( View.prototype, Events, {
 
                 fullEventName = eventName + '.delegateEvents' + this.cid;
 
+                if ( View.Plugin.invoke( 'delegateEvents', this, true, 
+                        eventName, selector, method ) === false ) {
+                    continue;
+                }
+
                 switch ( selector ) {
                     case 'window':
                     case 'document':
@@ -2551,6 +2567,8 @@ Chassis.mixin( View.prototype, Events, {
         Chassis.$( document ).off( eventName );
 
         this.stopListening();
+
+        View.Plugin.invoke( 'undelegateEvents', this );
 
         return this;
     },
@@ -2763,7 +2781,32 @@ Chassis.mixin( View.prototype, Events, {
             pid,
             pe,
             viewElement,
-			_subView;
+			_subView,
+			hide = true; //hide 临时加的，GMU里会使用
+		
+		if ( (typeof view === 'string') && ( view.indexOf( 'GMU.' ) === 0 ) ) {
+			
+			view = 'GMU' + view.split( '.' )[ 1 ] + 'View';
+			
+			view = new Chassis.UI[  view ]( opt );
+			
+			view.trigger( 'beforepagein' );
+			
+			hide = false;
+
+		}
+		
+        if ( View.Plugin.invoke( 
+                'addSubView', 
+                this, 
+                true,
+                view, 
+                action, 
+                opt, 
+                async, 
+                trigger ) === false ) {
+            return;
+        }
 		
 		me._removeRecycleView();
 		
@@ -2826,7 +2869,7 @@ Chassis.mixin( View.prototype, Events, {
                         break;
                 }
                 
-                view.$el.hide();
+                hide ? view.$el.hide() : 0;
             }
 
 			
@@ -3093,6 +3136,98 @@ Chassis.mixin( View, {
 		return view;
 	},
 
+    /**
+     * View插件，允许针对setElement/delegateEvents/undelegateEvents/addSubView
+     * 补充自定义操作；
+     * 此外还允许增加原型方法；
+     */
+    Plugin: {
+        _plugins: {},
+
+        /**
+         * 添加View插件
+         * @param {[type]} id             视图插件ID
+         * @param {[type]} implementation 视图插件实现，包括inject和proto两个部分，
+         * inject中的方法会在预定义的位置被调用，包括setElement/delegateEvents/
+         * undelegateEvents/addSubView四种注入；proto方法则会被添加到原型上；
+         */
+        add: function( id, implementation ) {
+            var plugin = this._plugins[ id ];
+
+            if ( plugin ) {
+                throw new Error( 'Plugin ' + id + ' already exists.' );
+            }
+
+            this._plugins[ id ] = implementation;
+
+            if ( implementation.proto ) {
+                Chassis.mixin( View.prototype, implementation.proto );
+            }
+        },
+
+        /**
+         * 调用视图插件中的inject方法
+         * @param  {string} methodName 函数名
+         * @param  {object} context    函数context
+         * @param  {object} defaultVal 如果插件未处理时的默认返回值
+         * @return {object}            如果存在多个插件的话则返回数组，
+         * 否则返回插件函数返回值
+         */
+        invoke: function( methodName, context, defaultVal /*[, args]*/ ) {
+            var plugins = this._plugins,
+                results = [],
+                args = [].slice.call( arguments, 3 ),
+                finalResult = defaultVal,
+                plugin,
+                pluginId,
+                method,
+                i,
+                result;
+
+            for ( pluginId in plugins  ) {
+                if ( plugins.hasOwnProperty( pluginId ) ) {
+                    plugin = plugins[ pluginId ];
+
+                    if ( !plugin.inject ) {
+                        continue;
+                    }
+
+                    method = plugin.inject[ methodName ];
+
+                    if ( method ) {
+
+                        /**
+                         * 插件方法的返回值结构：
+                         * {
+                         *     valid: true/false,
+                         *     value: mixed
+                         * }
+                         * valid为true表示方法对输入进行了处理，输出为value;
+                         * valid为false表示方法未处理，可以忽略；
+                         * 在多个插件时，对于某个方法（例如setElement）应该只有一个结果
+                         * 中的valid为true，否则invoke的返回值为最后一个invalid为true
+                         * 的value值。
+                         */
+                        result = method.apply( context, args );
+                        
+                        if ( result !== undefined ) {
+                            results.push( result );
+                        }
+                    }
+                }
+            }
+
+            for ( i = 0; i < results.length; i++ ) {
+                result =  results[ i ];
+
+                if ( result && result.valid ) {
+                    finalResult = result.value;
+                }
+            }
+
+            return finalResult;
+        }
+    },
 
     extend: Chassis.extend
 } );
@@ -3809,7 +3944,7 @@ Chassis.FX.slider = (function() {
 			// 由于多种动画混杂，必须进行位置恢复
 			var restore = true,
 				clientWidth = document.documentElement.clientWidth;
-			
+
 			if ( dir === 0 ) {
 				if ( fromEl !== toEl ) {
 
@@ -3834,11 +3969,7 @@ Chassis.FX.slider = (function() {
 			// 准备位置
 			toEl = $( toEl );
 			fromEl = $( fromEl );
-			
-			
-			
-			
-			
+
 			fromEl.css({
 				'-webkit-transition-property': '-webkit-transform',
 				'-webkit-transform': generateTransform( 0, 0, 0 ), 
@@ -4180,4 +4311,303 @@ Chassis.mixin( View.prototype, {
 } );
 
 
+/*jshint camelcase:false, undef:false*/
+
+/**
+ * @fileOverview 将其他UI库组件封装成ChassisUI组件的基类
+ */
+var UI = Chassis.UI = {},
+    widgetEventPrefix = 'widget.',
+    WidgetView = UI.WidgetView = Chassis.SubView.extend({
+    _initialize: function( opts, parent ) {
+        this._applyProtocol();
+        WidgetView.__super__._initialize.apply( this, arguments );
+    },
+
+    /**
+     * 创建具体的UI组件实例
+     * @return {[type]} [description]
+     */
+    createWidget: noop,
+
+    
+    bindEvents: function() {
+        var events = this.protocol.events,
+            me = this;
+
+        Chassis.$.each( events, function( idx, event ) {
+            me.widget.on( event, function() {
+                var args = [].slice.call( arguments );
+
+                // 区分widget事件与其他事件，加上widget前缀
+                args.unshift( widgetEventPrefix + event );
+
+                me.trigger.apply( me, args );
+            } );
+        } );
+    },
+
+    _applyProtocol: function() {
+        var me = this,
+            methods = this.protocol.methods,
+            options = this.protocol.options,
+            widgetOptions = {},
+            viewOptions = this.options,
+            model = this.model,
+            events = this.protocol.events,
+            _on = this.on;
+
+        // 处理options
+        Chassis.$.each( options, function( idx, optionName ) {
+            if ( model && optionName in model ) {
+                widgetOptions[ optionName ] = model[ optionName ];
+            }
+        } );
+
+        this.widgetOptions = widgetOptions;
+
+        // 注册方法
+        // 如果是字符串则为方法名，直接赋值默认方法
+        // 如果是对象则表示将该方法直接代理到widget上
+        Chassis.$.each( methods, function( idx, methodName ) {
+            var isString = typeof(methodName) === 'string';
+
+            if ( isString && !(methodName in me) ) {
+                me[ methodName ] = function() {
+                    throw new Error( 
+                        methodName + ' is not implmented.' );
+                };
+            }
+
+            /*
+            else {
+                for( var widgetViewMethodName in methodName ) {
+                    var widgetMethodName = methodName[ widgetViewMethodName ];
+                    me[ widgetViewMethodName ] = function() {
+                        return me.widget[ widgetMethodName ].apply( 
+                            me.widget, arguments );
+                    }
+                }
+            }
+            */
+        } );
+
+        // 处理events，只能listenTo protocol中的事件
+        this.on = function( eventName, callback, context ) {
+            var isWidgetEvent = 
+                (eventName.indexOf( widgetEventPrefix ) === 0);
+
+            if ( isWidgetEvent && events.indexOf( eventName ) === -1 ) {
+                throw new Error( 
+                    eventName.substring( widgetEventPrefix.length ) +
+                    ' is not a protocol event.' );
+            }
+            else {
+                _on.apply( me, arguments );
+            }
+        };
+        
+    },
+    onBeforePageIn : function() {
+        this.widget = this.createWidget( this.widgetOptions );
+        this.bindEvents();
+        this.$el.show();
+		window.ddd = this.widget;
+    },
+    protocol: {
+
+        /**
+         * 方法列表，具体UI类中需实现的方法
+         * @type {Array}
+         */
+        methods: [
+
+            /*
+            'method1', 'method2'
+            */
+        ],
+
+        /**
+         * 事件列表
+         * @type {Array}
+         */
+        events: [],
+
+        /**
+         * 配置项(从model中获取具体的值)
+         * @type {Array}
+         */
+        options: []
+    }
+});
+
+View.Plugin.add( 'widgetView', {
+    inject: {
+        delegateEvents: function( eventName, selector, method ) {
+            var valid = false,
+                value = true,
+                widgetId,
+                widgetView;
+			
+
+            if ( selector.indexOf( 'widget#' ) === 0 ) {
+                widgetId = selector.substring( 7 );
+                selector = 'widget';
+				
+				//此时widget view还没有创建，是找不到的
+                widgetView = this.widgets[ widgetId ];
+
+                if ( !widgetView ) {
+                    throw new Error( 
+                        'widgetview#' + widgetId + ' does not exists.' );
+                }
+
+                this.listenTo( 
+                    widgetView, widgetEventPrefix + eventName, method );
+
+                valid = true;
+                value = false;
+            }
+
+            return {
+                valid: valid,
+                value: value
+            };
+        }
+    }
+} );
+/*jshint camelcase:false,undef:false*/
+/**
+ * @fileOverview Panel组件基类
+ */
+var PanelView = UI.PanelView = WidgetView.extend({
+    protocol: {
+        methods: [ 'open', 'close', 'toggle', 'state', 'destroy' ],
+        
+        events: [ 
+            'ready', 
+            'beforeopen', 
+            'open', 
+            'beforeclose', 
+            'close', 
+            'destroy'
+        ],
+
+        options: [ 'contentWrap', 'display', 'position' ]
+    }
+});
+/*jshint camelcase:false,undef:false*/
+/**
+ * @fileOverview Slider组件基类
+ */
+var SliderView = UI.SliderView = WidgetView.extend({
+    protocol: {
+        methods: [ 'prev', 'next', 'stop', 'resume' ],
+        events: [ 'init', 'slide', 'slideend', 'destroy' ],
+        options: [ 'data', 'autoPlay', 'showNavi', 'showIndicator' ]
+    }
+});
+/*jshint camelcase:false,undef:false*/
+/**
+ * @fileOverview Toolbar组件基类
+ */
+var ToolbarView = UI.ToolbarView = WidgetView.extend({
+    protocol: {
+        methods: [ 
+            'addBtns', 'show', 'hide', 'toggle'
+        ],
+        
+        events: [ 
+            'show',
+            'hide',
+            'ready', 
+            'destroy'
+        ],
+
+        options: [ 
+            'container', 
+            'title', 
+            'leftBtns', 
+            'rightBtns', 
+            'fixed'
+        ]
+    }
+});
+/*jshint camelcase:false,undef:false*/
+
+/**
+ * @fileOverview GMU Panel实现
+ */
+UI.GMUPanelView = PanelView.extend({
+    createWidget: function( options ) {
+        return $.ui.panel( this.$el, options );
+    },
+    show: function() {
+        this.widget.open.apply( this.widget, arguments );
+    },
+    hide: function() {
+        this.widget.close.apply( this.widget, arguments );
+    },
+    toggle: function() {
+        this.widget.toggle.apply( this.widget, arguments );
+    },
+    state: function() {
+        this.widget.state.apply( this.widget, arguments );
+    },
+    destroy: function() {
+        this.widget.destroy.apply( this.widget, arguments );
+    }
+});
+/*jshint camelcase:false,undef:false*/
+/**
+ * @fileOverview Panel组件基类
+ */
+UI.GMUSliderView = SliderView.extend({
+    createWidget: function( options ) {
+        var widget = $.ui.slider( this.$el, {
+            autoPlay: options.autoPlay !== false,
+            showArr: options.showNavi !== false,
+            showDot: options.showIndicator !== false,
+            content: $.isArray( options.data ) ? options.data : [],
+			itemRender : $.isArray( options.data ) ? null : options.data
+        } );
+		
+
+        return widget;
+    },
+    prev: function() {
+        this.widget.pre.apply( this.widget, arguments );
+    },
+    next: function() {
+        this.widget.next.apply( this.widget, arguments );
+    },
+    stop: function() {
+        this.widget.stop.apply( this.widget, arguments );
+    },
+    resume: function() {
+        this.widget.resume.apply( this.widget, arguments );
+    }
+});
+/*jshint camelcase:false,undef:false*/
+
+/**
+ * @fileOverview GMU Toolbar实现
+ */
+UI.GMUToolbarView = ToolbarView.extend({
+    createWidget: function( options ) {
+        return $.ui.toolbar( this.$el, options );
+    },
+    addButtons: function() {
+        this.widget.addBtns.apply( this.widget, arguments );
+    },
+    show: function() {
+        this.widget.show.apply( this.widget, arguments );
+    },
+    hide: function() {
+        this.widget.hide.apply( this.widget, arguments );
+    },
+    toggle: function() {
+        this.widget.toggle.apply( this.widget, arguments );
+    }
+});
 })()

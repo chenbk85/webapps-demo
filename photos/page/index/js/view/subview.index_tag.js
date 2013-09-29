@@ -33,11 +33,18 @@ Chassis.SubView.index_tag = Chassis.SubView.extend( {
 			me._togglePanel.call( me );
 			
 		} );
+		
+		me.$el.find( 'h2' ).html( "百度壁纸" );
+		
+		me.$el.find( 'h2' ).on( 'touchmove',function( e ) {
+			e.preventDefault();
+		} );
   
     },
 	
 	_togglePanel : function( ) {
-		this.panelUI.panel( 'toggle', 'push', 'left' );
+		
+		this.panelUI.panel( 'toggle', 'reveal', 'left' );
 	},
 	
 	

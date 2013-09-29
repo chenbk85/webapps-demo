@@ -5,7 +5,9 @@ fis.config.merge({
 			"routes" : {
 				""                  : "index",
 				"index/:tag"        : "index",
-				"detail/:tag/:i"    : "detail"
+				"detail/:tag/:i"    : "detail",
+				"cover"             : "cover",
+				"install"           : "install"
 			},
 			
 			"defaultPageTransition" : "simple",
@@ -13,7 +15,8 @@ fis.config.merge({
 			"enablePositionRestore" : true,
 			
 			"pageTransition" : {
-				"index-detail" : "slide"
+				"index-detail" : "slide",
+				"cover-index"  : "slider"
 			}
 		}
 	}

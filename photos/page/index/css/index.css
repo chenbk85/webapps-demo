@@ -1,21 +1,32 @@
+#index_page {
+	width:320px;
+}
 /**
  * Tag分类区
  * index_page_tag
  */
 .index_page_tag {
-	background:#000;
+	background:#232323;
+	height:425px;
+	overflow-y:scroll;
 }
 .index_page_tag .tagItem {
 	height:48px;
 	line-height:48px;
 	border-top:1px solid #373737;
 	border-bottom:1px solid #212121;
-	font-weight:500;
+	font-weight:600;
 	background-position:5px 15px;
 	background-repeat:no-repeat;
 	text-indent:35px;
 }
-
+	.index_page_tag .tagItem:first {
+		border-top:none;
+	}
+	
+	.index_page_tag .tagItem:last {
+		border-bottom:none;
+	}
 .index_page_tag li.select {
 	background-position:5px -85px;
 	background-color:#232323;
@@ -35,8 +46,19 @@
 	.index_page_tag .pp_creative_hd {background-image:url("/img/tag/pp_creative_hd.png");}
 	.index_page_tag .pp_painting_hd {background-image:url("/img/tag/pp_painting_hd.png");}
 	
+
+	#index_page_panel  h2 {
+		text-indent:10px;
+		background:#2d2d2d;
+		border-top-left-radius:8px;
+		margin-top:5px;
+		color:#fff;
+	}
 #index_page_panel .ui-panel {
 	width:262px;
+	height:460px;
+	background:#000;
+	-webkit-user-drag:none;
 } 
 
 /**
@@ -59,14 +81,22 @@
 }
 
 #index_page_content .navbar {
-	opacity:0.6
+	opacity:0.6;
+	width:320px;
+	height: 45px;
+	line-height: 45px;
+	overflow:hidden;
 }
 
 	#index_page_content .navbar {
 		height:45px;
 		line-height:45px;
-		background:#312f34;
+		background:#2d2d2d;
 		color:#fff;
+		border-top-left-radius:8px;
+		border-top-right-radius:8px;
+		border-bottom:1px solid #414141;
+		box-shadow: 0px 2px 2px 2px #000;
 	}
 
 		#index_page_content .navbar .list,
@@ -83,9 +113,10 @@
 		#index_page_content .navbar .reload {text-align:right;}
 		#index_page_content .navbar .list,
 		#index_page_content .navbar .reload {
-			font-size:32px;
+			font-size:28px;
 			font-weight:400;
 		}
+			#index_page_content .navbar .list {text-indent:5px;}
 
 /**
  * 图片内容区
@@ -93,7 +124,6 @@
 #index_page_content ul {
 	clear:both;
 	width:315px;
-	height:150px;
 	overflow:hidden;
 }
 #index_page_content ul li {
@@ -101,7 +131,7 @@
 	margin:0 0 0 5px;
 	padding:0;
 	width:100px;
-	height:150px;
+	height:100%;
 	text-align:center;
 	
 }
@@ -109,7 +139,7 @@
 		font-size:0;
 		margin:0;padding:0;
 		width:100%;
-		height:150px;
+		height:100%;
 		overflow:hidden;
 		
 		
@@ -118,8 +148,17 @@
 	#index_page_content .content {
 		height:600px;
 		overflow-y:scroll;
-		background:#312f34;
-		margin-top:-40px;
+		background:#232323;
+		padding-top:5px;
+		/*margin-top:-40px;*/
+	}
+	
+	#index_page_content {
+		background:#000;
+		box-shadow: 0 2px 2px 2px #000;
+	}
+	#index_page_content .content .picList {
+		background:#232323;
 	}
 		#index_page_content .group {
 			clear:both;
@@ -131,7 +170,7 @@
 				font-size:0;
 				margin:0;padding:0;
 				width:100%;
-				height:150px;
+				height:222px;
 				overflow:hidden;
 			}
 			
@@ -140,21 +179,19 @@
 					height:5px;
 					font-size:0;
 				}
-				
-				#index_page_content .group .big {width:205px;height:292px;float:left;margin-left:5px;}
-				#index_page_content .group .small {width:100px;height:292px;float:left;margin-left:5px;}
+				#index_page_content .group .smallitem {
+					overflow:hidden;
+					margin-bottom:2px;
+				}
+				#index_page_content .group .big {width:205px;height:268px;float:left;margin-left:5px;}
+				#index_page_content .group .small {width:100px;height:268px;overflow:hidden;float:left;margin-left:5px;}
 			
 				#index_page_content .group .big img {
 					width:100%;
-					height:292.5px;
+					height:100%;
 				}
 				
-				#index_page_content .group .small img {
-					width:100%;
-					height:144px;
-				}
-	
-
+				
 
 
 

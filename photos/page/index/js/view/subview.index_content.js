@@ -57,17 +57,24 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 		me.$el.html( tpl_photo.template( {title:me.tagTitle} ) );
 		
 		if ( me.page == 1 ) {
-			me.$el.find( '.content' ).html( tpl_piclist.template( $.extend( data,{ random : 0 } ) ) );
+			me.$el.find( '.content' ).html( tpl_piclist.template( $.extend( data,{ random : 0,height : app.isIphone5 ? 160 : 132} ) ) );
 		} else {
-			me.$el.find( '.content' ).append( tpl_piclist.template( $.extend( data,{ random : 0 } ) ) );
+			me.$el.find( '.content' ).append( tpl_piclist.template( $.extend( data,{ random : 0, height : app.isIphone5 ? 160 : 132} ) ) );
 		}
 		
 		me.$el.find( '.content .picList' ).height( height );
 		
+		/*
+		$.ui.toolbar( '.navbar', {
+			useFix : true;
+		} );
+		*/
 		
 		me.$el.find( '.navbar' ).toolbar( {
 			useFix : true
 		} );
+		
+		
 		
 		
 		me.$el.find('.content').slider( {
@@ -80,9 +87,9 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 		
 		} );
 		
-        
-		
-		
+		me.$el.on( 'touchmove',function( e ) {
+			e.preventDefault();
+		} );
     },
 	
 	onBeforePageIn : function(){
@@ -171,9 +178,7 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 		if( !i ){
 			return;
 		}
-		
-		
-		
+
 		Chassis.history.navigate( 'detail/' + me.tag + '/' + i );
 	}
 

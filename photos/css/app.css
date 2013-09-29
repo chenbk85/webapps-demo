@@ -17,6 +17,7 @@
     /*阻止文本选中*/
     -webkit-user-select: none;
     -moz-user-select: none;
+	background:#312f34;
 }
 
 #wrapper{

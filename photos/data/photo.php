@@ -1,15 +1,31 @@
 <?php
-	$tag = $_GET[ 'tag' ];
-	$page = $_GET[ 'page' ];
-	$limit = 6 * 10;
-	
-	if( $tag == ''){
+	define("PHOTO_SOURCE",     "androidesk");
+	define("PHOTO_LIMIT",      24);
+
+	require_once( "photo/". PHOTO_SOURCE ."/photo.php" );
+
+	$tag  = isset( $_GET[ 'tag' ] )  ? trim( $_GET[ 'tag' ] )  : '';
+	$page = isset( $_GET[ 'page' ] ) ? (int)( $_GET[ 'page' ] ) : 1;
+
+	if ( $tag == '' ) {
 		$tag = 'wp_retina_plant_auditor';
 	}
-	
-	if( $page == ''){
-		$page = 1;
-	}
-    $url = "http://bj1.pics.apphope.com/pics?source=wallpaper&tag=".$tag."&sort=hot&maxid=&page=".$page."&limit=".$limit."&show_type=waterflow&screen_w=640&screen_h=960&ir=0&app=9P_RetinaWallpapers&v=3.6&lang=zh-Hans&jb=0&as=0&mobclix=0&deviceid=replaceudid&macaddr=0C771A458105&idv=CB1EB5D1-A2B9-4661-A769-6EBC3122FC81&idvs=&ida=D52F3538-D519-4332-885F-6C31E9C5053F&phonetype=iphone&model=iphone4%2C1&osn=iPhone%20OS&osv=6.1.3&tz=8";
-    echo file_get_contents($url);
+
+
+	$photo = new PhotoThird();
+
+	$photolist = $photo->getPhotoList(
+		array(
+		
+			"tag"   => $tag,
+			"limit" => PHOTO_LIMIT,
+			"page"  => $page
+			
+		)
+	);
+
+	$result = array(
+		"pics" => $photolist
+	);
+	echo json_encode( $result );
 ?>

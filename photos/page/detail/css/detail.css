@@ -1,39 +1,72 @@
+#detail_page {
+	width:320px;
+}
 /**
  * 清空内容，开始编写自定义样式
  *
  */
-#pics ul {
-	width:320px;
-	height:600px;
+.detail_page_content_item {
+	width:100%;
+	height:465px;
+	overflow:hidden;
 }
-	#pics ul  li {
-		width:100%;
-		height:100%;
+.pics {
+	width:320px;
+	height:465px;
+	overflow:hidden;
+	background:#312f34;
+}
+.pics ul {
+	width:320px;
+	height:465px;
+	overflow:hidden;
+}
+	.pics ul  li {
+		width:320px;
+		height:465px;
+		background:#1a1a1a url(/img/loading.png) no-repeat center center;
+		display:inline-block;
 	}
-		#pics ul  li img {
+		.pics ul  li img {
 			width:100%;
 			height:100%;
 		}
 		
-#pic-tools {
+.pic-tools {
 	height:35px;
 	width:300px;
-	position:absolute;
-	top:380px;
+
+	position:relative;
+	top:-55px;
 	left:10px;
 	z-index:99999999;
+	/*
 	background:#000;
 	opacity: 0.6;
 	border-radius:5px;
+	*/
 	display:none;
+
 }
-	#pic-tools li {
+	.pic-tools li {
 		display:inline-block;
-		width:65px;
+		width:75px;
 		text-align:center;
 		overflow:hidden;
 		color:#fff;
 		line-height:35px;
 		font-size:28px;
 	}
+	
+/*
+ * 预览
+ *
+ */
+.pic-iphone {
+	display:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+	color:#fff;
+}
 	
