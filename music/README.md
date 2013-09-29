@@ -89,7 +89,15 @@ fisc release
 ```javascript
 fis.config.merge({
     chassis : {
-		home   : "index.html",
+		home   : 'index.html',
+		main   : {
+			"iphone" : {
+				"standalone" : "cover",
+				"other"      : "install"
+			},
+			"other"  : "iphone"
+		},
+		
 		router : {
 			"routes" : {
 				""                  : "index",
