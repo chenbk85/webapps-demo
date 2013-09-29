@@ -1,6 +1,6 @@
 ##初始化webapp
 
-下载npm辅助工具：
+下载npm辅助工具`fis-chassis`：
 
 ```
 npm install -g fis-chassis
@@ -26,11 +26,48 @@ fisc release
 
 首先分析下需要哪些页面：
 
-1. index页
-2. cover页
-3. install页
-4. detail页
-5. iphone页
+1. 壁纸列表页
+
+   ```javascript
+   {
+       ''           : 'index',
+       'index'      : 'index',
+       'index/:tag' : 'index'
+   }
+   ```
+
+2. 壁纸详情页
+
+   ```javascript
+   {
+       'detail/:tag/:index' : 'detail'
+   }
+   ```
+
+3. 封面
+
+   ```javascript
+   {
+       'cover' : 'cover'
+   }
+   ```
+
+4. 添加到`主屏幕`的页面
+
+   ```javascript
+   {
+       'install' : 'install'
+   }
+   ```
+
+
+5. 非iPhone浏览器的提示页面
+
+   ```javascript
+   {
+       'iphone' : 'iphone'
+   }
+   ```
 
 ##代码实现
 
