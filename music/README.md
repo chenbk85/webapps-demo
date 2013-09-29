@@ -130,4 +130,26 @@ fisc release
 
 ##代码实现
 
+###起始页面
+
+webapp启动时，需要将第一屏设置为`cover`封面页，打开`/js/init.js`，在`init`入口处写上以下逻辑：
+```javascript
+var destPage;
+
+if (window.navigator.userAgent.indexOf('iPhone') != -1) {
+	if (window.navigator.standalone == true) {
+		hash = 'cover';
+	}else{
+				
+		hash = 'cover'; //install
+	}
+}else{
+	hash = 'iphone';
+}
+
+location.hash = destPage;
+```
+
+
+
 
