@@ -82,6 +82,20 @@ fisc release
    }
 ```
 
+###启动页面
+
+我们的webapp设定为仅在iPhone的standalone模式下运行，当为非iPhone时将定位至`iphone`，如果为非standalone模式，将定位至`install`，配置如下：
+
+```javascript
+{
+	"iphone" : {
+		"standalone" : "cover",
+		"other"      : "install"
+	},
+	"other"  : "iphone"
+}
+```
+
 ###写入配置
 
 将上述的配置写入`/fis-conf.js`，最终的配置如下：
@@ -137,27 +151,6 @@ fisc release
 
 
 ##代码实现
-
-###起始页面
-
-webapp启动时，需要将第一屏设置为`cover`封面页，打开`/js/init.js`，在`init`入口处写上以下逻辑：
-```javascript
-var destPage;
-
-if (window.navigator.userAgent.indexOf('iPhone') != -1) {
-	if (window.navigator.standalone == true) {
-		hash = 'cover';
-	}else{
-		hash = 'install';
-	}
-}else{
-	hash = 'iphone';
-}
-
-location.hash = destPage;
-```
-
-TODO:写入配置文件。
 
 ###封面
 
