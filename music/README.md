@@ -1,25 +1,25 @@
 ##初始化webapp
 
-下载npm辅助工具`fis-chassis`：
+安装chassis命令行辅助工具`fis-chassis`：
 
 ```
 npm install -g fis-chassis
 ```
 
-新建项目目录：
+新建项目目录`wallpaper`：
 
 ```
 mkdir wallpaper
 cd wallpaper
 ```
 
-初始化webapp：
+初始化`wallpaper`：
 
 ```
 fisc release
 ```
 
-根据命令提示即可完成webapp的初始化。此时webapp的脚手架已经搭建完毕。
+根据命令提示即可完成`wallpaper`的初始化。此时`wallpaper`的脚手架已经搭建完毕。
 
 
 ##配置路由及动画
@@ -71,8 +71,6 @@ fisc release
    ```
 
 ###动画
-
-设置页面切换时的动画：
 
 页面切换默认无动画，仅需要配置列表页至详情页的动画为`slider`:
 
@@ -152,7 +150,7 @@ fis.config.merge({
 fisc release
 ```
 
-根据提示完成即可。
+根据命令提示完成即可。
 
 此时，`page/`目录下已经生成了对应的脚手架目录及文件。后续我们只需要填充对应的业务逻辑即可。
 
