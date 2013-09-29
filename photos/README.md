@@ -1,5 +1,7 @@
 #壁纸应用开发教程
 
+1. [初始化webapp](#初始化webapp)
+
 ##初始化webapp
 
 安装chassis命令行辅助工具`fis-chassis`：
