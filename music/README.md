@@ -165,11 +165,11 @@ fisc release
 
 ###首页列表页
 
-列表页主要分为左侧的`tag分类`和右侧的壁纸列表，所以我们在`/page/index/js/view`下是这么划分的：
+列表页主要分为左侧的`tag分类`和右侧的`壁纸列表`，所以我们在`/page/index/js/view`下是这么划分的：
 
-1. pageview.index.js
-2. subview.index_tag.js
-3. subview.index_content.js
+1. `pageview.index.js`
+2. `subview.index_tag.js`
+3. `subview.index_content.js`
 
 
 `index_tag`和`index_content`两个`subview`由`index`来动态调用。
@@ -182,9 +182,9 @@ fisc release
 
 由于详情页查看的频率比较高，所以我们对详情页采用`SubPageMgr`来管理，具体的文件划分：
 
-1. pageview.detail.js
-2. subview.detail_content.js
-3. subview.detail_content_item.js
+1. `pageview.detail.js`
+2. `subview.detail_content.js`
+3. `subview.detail_content_item.js`
 
 `detail_content`会根据参数的不同，动态创建`detail_content_item`，而且在必要的时候会执行`清理`
 
