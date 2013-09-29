@@ -22,8 +22,9 @@ fisc release
 根据命令提示即可完成webapp的初始化。此时webapp的脚手架已经搭建完毕。
 
 
-##配置路由
+##配置路由及动画
 
+###路由
 首先分析下需要哪些页面：
 
 1. 壁纸列表页
@@ -69,6 +70,8 @@ fisc release
    }
    ```
 
+###动画
+
 设置页面切换时的动画：
 
 页面切换默认无动画，仅需要配置列表页至详情页的动画为`slider`:
@@ -79,6 +82,37 @@ fisc release
    }
 ```
 
+###写入配置
+
+将上述的配置写入`/fis-conf.js`，最终的配置如下：
+
+```javascript
+fis.config.merge({
+    chassis : {
+		home   : 'index.html',
+		router : {
+			"routes" : {
+				""                  : "index",
+				"index/:tag"        : "index",
+				"detail/:tag/:i"    : "detail",
+				"cover"             : "cover",
+				"install"           : "install"
+			},
+			
+			"defaultPageTransition" : "simple",
+			
+			"enablePositionRestore" : true,
+			
+			"pageTransition" : {
+				"index-detail" : "slide",
+				"cover-index"  : "slider"
+			}
+		}
+	}
+});
+```
+
+注意，`fis-conf.js`的内容要求是一个符合`JSON`规范的配置文件，所以注意单双引号。
 ##代码实现
 
 
