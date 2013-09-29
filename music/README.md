@@ -141,7 +141,7 @@ if (window.navigator.userAgent.indexOf('iPhone') != -1) {
 		hash = 'cover';
 	}else{
 				
-		hash = 'cover'; //install
+		hash = 'install';
 	}
 }else{
 	hash = 'iphone';
