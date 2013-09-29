@@ -84,7 +84,14 @@ fisc release
 
 ###启动页面
 
-我们的webapp设定为仅在`iPhone`的`standalone`模式下运行，当为非iPhone时将定位至`iphone`，如果为非`standalone`模式，将定位至`install`，配置如下：
+我们的webapp设定为仅在`iPhone`的`standalone`模式下运行
+
+
+1. 当为非iPhone时将定位至`iphone`路由
+2. 如果为非`standalone`模式，将定位至`install`页面
+3. 在`iPhone && standalone`下首先显示`cover`封面页
+
+配置如下：
 
 ```javascript
 {
