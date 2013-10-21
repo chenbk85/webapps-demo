@@ -12,7 +12,7 @@ Chassis.load.config.ruler = function( pkg ){
 		];
 	}
 	
-	
+	console.log( 'subview',pkg );
 	if( pkg.indexOf( 'subview' ) === 0 ){
 		page = pkg.substring(8);
 		
@@ -23,7 +23,7 @@ Chassis.load.config.ruler = function( pkg ){
 		}
 		
 		pkg = 'subview.' + pkg.substring(8);
-		
+		console.log('page/' + page + '/js/view/' + pkg + '.js');
 		return 'page/' + page + '/js/view/' + pkg + '.js';
 	}
 

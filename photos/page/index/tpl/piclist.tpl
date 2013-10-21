@@ -1,3 +1,8 @@
+<div class="picList">
+	<div class="group loading">
+		loading...
+	</div>
+</div>
 <% for(var m = 0 ,n = pics.length; m < n; m+= 6){ %>
 	<% if(random === 4){ %>
 		<% random = 0; %>
@@ -71,6 +76,12 @@
 				<div class="big" style="height:<%= (height * 2) +2 %>px;"><img src="<%= pics[ m+5 ][ 'thumb' ][ 'url' ] %>" data-i="<%= m %>" /></div>
 			</div>
 		<% } %>
+			
 	</div>
 	<% random++; %>
 <% } %>
+<div class="picList">
+	<div class="group loading">
+		loading...
+	</div>
+</div>

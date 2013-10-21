@@ -20,11 +20,11 @@
 	background-repeat:no-repeat;
 	text-indent:35px;
 }
-	.index_page_tag .tagItem:first {
+	.index_page_tag .tagItem:first-child {
 		border-top:none;
 	}
 	
-	.index_page_tag .tagItem:last {
+	.index_page_tag .tagItem:last-child {
 		border-bottom:none;
 	}
 .index_page_tag li.select {
@@ -160,6 +160,10 @@
 	#index_page_content .content .picList {
 		background:#232323;
 	}
+		#index_page_content .content .picList .loading {
+			color:#fff;
+			line-height:300px;
+		}
 		#index_page_content .group {
 			clear:both;
 			height:600px;

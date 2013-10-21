@@ -9,7 +9,6 @@
 			<ul>
 				<li><span class="typcn typcn-arrow-left-outline"></span></li>
 				<li><span class="typcn typcn-eye-outline"></span></li>
-				<li><span class="typcn typcn-media-play"></span></li>
 				<li><span class="typcn typcn-arrow-forward"></span></li>
 			</ul>
 		</div>

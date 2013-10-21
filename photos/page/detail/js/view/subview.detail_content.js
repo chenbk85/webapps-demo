@@ -1,5 +1,4 @@
 (function($){
-
 Chassis.SubView.detail_content = Chassis.SubView.extend({
 
     el: '#detail_page_content',

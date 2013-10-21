@@ -3776,7 +3776,6 @@ Chassis.mixin( SPM.prototype, Events, {
 			stamp = me.getStamp( params ),
 			target = me.getBy( 'stamp', stamp ),
 			subViewName = me.klass,
-			kkls,
 			subpage;
 			
 		if ( !e.to.$el ) {
@@ -4251,7 +4250,12 @@ Chassis.mixin( View, {
 			
 			view.$el.show();
 
-			view.trigger( 'beforepagein,afterpagein', {
+			view.trigger( 'beforepagein', {
+				from: me.previousView,
+				to: me.currentView,
+				params: request
+			} );
+			view.trigger( 'afterpagein', {
 				from: me.previousView,
 				to: me.currentView,
 				params: request

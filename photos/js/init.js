@@ -27,13 +27,13 @@ window.app = window.app || {};
 			if (window.navigator.userAgent.indexOf('iPhone') != -1) {
 				if (window.navigator.standalone == true) {
 					// Initialize your app
-					hash = 'cover';
+					hash = '{{setting.main.iphone.standalone}}';
 				}else{
 					// Display a message asking to add the app to the Home Screen
-					hash = 'cover'; //install
+					hash = '{{setting.main.iphone.other}}'; //install
 				}
 			}else{
-				hash = 'iphone';
+				hash = '{{setting.main.other}}';
 			}
 			
 			location.hash = hash;

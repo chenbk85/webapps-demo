@@ -1,18 +1,27 @@
 fis.config.merge({
     chassis : {
 		home   : 'index.html',
+		main   : {
+			"iphone" : {
+				"standalone" : "cover",
+				"other"      : "cover" //"install"
+			},
+			"other"  : "iphone"
+		},
+		
 		router : {
 			"routes" : {
 				""                  : "index",
 				"index/:tag"        : "index",
 				"detail/:tag/:i"    : "detail",
 				"cover"             : "cover",
-				"install"           : "install"
+				"install"           : "install",
+				"iphone"            : "iphone"
 			},
 			
 			"defaultPageTransition" : "simple",
 			
-			"enablePositionRestore" : true,
+			"enablePositionRestore" : false,
 			
 			"pageTransition" : {
 				"index-detail" : "slide",

@@ -32,6 +32,7 @@ Chassis.SubView.index_tag = Chassis.SubView.extend( {
 			
 			me._togglePanel.call( me );
 			
+			return false;
 		} );
 		
 		me.$el.find( 'h2' ).html( "百度壁纸" );
@@ -45,6 +46,8 @@ Chassis.SubView.index_tag = Chassis.SubView.extend( {
 	_togglePanel : function( ) {
 		
 		this.panelUI.panel( 'toggle', 'reveal', 'left' );
+		
+		
 	},
 	
 	

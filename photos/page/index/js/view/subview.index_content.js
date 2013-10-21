@@ -1,7 +1,7 @@
 ( function ( $ ) {
 var tpl_tag     = require( 'page/index/tpl/tag.tpl' ),
 	tpl_photo   = require( 'page/index/tpl/photo.tpl' ),
-	tpl_piclist   = require( 'page/index/tpl/piclist.tpl' ),
+	tpl_piclist = require( 'page/index/tpl/piclist.tpl' ),
 	model_photo = require( 'page/index/js/model/model.photo.js' ),
 	panel       = require( 'js/common/gmu/js/widget/panel.js' ),
 	toolbar     = require( 'js/common/gmu/js/widget/toolbar.js' ),
@@ -14,7 +14,7 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 	events : {
 		'change model'              : 'onModelChange',
 		'tap .typcn-arrow-repeat'   : 'eRefresh',
-		'tap .typcn-th-list'        : 'eTag',
+		'click .typcn-th-list'        : 'eTag',
 		'tap .picList'              : 'eView'
 	},
 	
@@ -33,11 +33,14 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 
 		me.model = new Chassis.Model.Photo();
     },
-
+	
+	flag : true,
+	sliderPrev :0,
+	sliderCurr : 0,
+	
 	render: function(sections){
         var me = this,
 			data = me.model.toJSON(),
-			
 			height = data.pics.length * 50;
 		
 		app._cache = app._cache || [];
@@ -54,38 +57,74 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 		me.tagTitle = me._findTagName.call( me, me.tag );
 		
 		
-		me.$el.html( tpl_photo.template( {title:me.tagTitle} ) );
 		
+		
+		var html = tpl_piclist.template( $.extend( data, { 
+															random : 0,
+															height : app.isIphone5 ? 160 : 132
+														} 
+												) );
+		me.$el.html( tpl_photo.template( {title:me.tagTitle} ) );
 		if ( me.page == 1 ) {
-			me.$el.find( '.content' ).html( tpl_piclist.template( $.extend( data,{ random : 0,height : app.isIphone5 ? 160 : 132} ) ) );
+			
+			me.$el.find( '.content' ).html(  html );
 		} else {
-			me.$el.find( '.content' ).append( tpl_piclist.template( $.extend( data,{ random : 0, height : app.isIphone5 ? 160 : 132} ) ) );
+			me.$el.find( '.content' ).html( html );
+			
 		}
+		
+
 		
 		me.$el.find( '.content .picList' ).height( height );
 		
-		/*
-		$.ui.toolbar( '.navbar', {
-			useFix : true;
-		} );
-		*/
-		
-		me.$el.find( '.navbar' ).toolbar( {
-			useFix : true
-		} );
+
 		
 		
+		//me.$el.find( '.navbar' ).toolbar( );
 		
+
 		
-		me.$el.find('.content').slider( {
+		var slider = me.$el.find('.content').slider( {
 			autoPlay : false,
 			loop     : false,
             showArr  : false,
+
             slideend : function( e, page ) {
-                console.log( 1 );
+				var all = me.$el.find( '.content .picList' ).length;
+                
+				me.sliderPrev = me.sliderCurr;
+				me.sliderCurr = page;
+				
+				me.flag = me.sliderCurr >= me.sliderPrev;
+				
+				
+				//切换到最后1屏时
+					if( page === (all-1) ){
+						me.page++;
+						me._reload();
+					}
+					if( page === 0 ){
+						me.page--;
+						
+						if( me.page < 1){
+							me.$el.find('.content').slider( 'next' );
+							return;
+						}
+						me._reload();
+					}
+				
             }
 		
 		} );
+		
+		
+		
+		if( me.flag ){
+			me.$el.find('.content').slider( 'next' );
+		} else {
+			me.$el.find('.content').slider( 'next' ).slider( 'next' ).slider( 'next' ).slider( 'next' );
+		}
+		
 		
 		me.$el.on( 'touchmove',function( e ) {
 			e.preventDefault();
@@ -157,11 +196,12 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 		var me = this,
 			el = $( e.target );
 		
-		
+
 		me.root.trigger( 'panel', {
 			el : me.$el
 		} );
 		
+		return false;
 	},
 	
 	eRefresh : function( e ) {
@@ -174,7 +214,8 @@ Chassis.SubView.index_content = Chassis.SubView.extend( {
 		var me = this,
 			el = $( e.target ),
 			i = el.attr( 'data-i' );
-			
+		
+		
 		if( !i ){
 			return;
 		}
