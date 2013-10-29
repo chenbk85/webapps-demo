@@ -20,3 +20,8 @@
 ##精简后代码量
 
 1. chassis.js ***5.5K****(UglifyJS+GZIP)
+
+
+##预览
+
+预览地址:[http://webappdemos.duapp.com/](http://webappdemos.duapp.com/)
