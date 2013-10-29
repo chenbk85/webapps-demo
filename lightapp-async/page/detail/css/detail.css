@@ -1,0 +1,30 @@
+/**
+ * 清空内容，开始编写自定义样式
+ *
+ */
+#detail_page {
+	padding:10px;
+	color:#333;
+	text-align:center;
+	font-size:12px;
+}
+	#detail_page h1 {
+		font-weight:700;
+		color:#333;
+		font-size:65px;
+		margin:25px 0;
+	}
+	
+	#detail_page h3 {
+		font-weight:700;
+		color:#333;
+		font-size:32px;
+		margin:15px 0;
+	}
+	
+	#detail_page h4 {
+		font-weight:700;
+		color:#333;
+		font-size:18px;
+		margin:10px 0;
+	}

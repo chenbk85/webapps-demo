@@ -1,0 +1,59 @@
+/**
+ * 清空内容，开始编写自定义样式
+ *
+ */
+
+#index_page {
+	padding:10px;
+	color:#333;
+
+}
+	#index_page h1 {
+		font-weight:700;
+		color:#333;
+		font-size:65px;
+		margin:25px 0;
+	}
+	
+	#index_page h3 {
+		font-weight:700;
+		color:#333;
+		font-size:32px;
+		margin:15px 0;
+	}
+	
+	#index_page h4 {
+		font-weight:700;
+		color:#333;
+		font-size:18px;
+		margin:10px 0;
+	}
+	
+	
+	#index_page_content pre {
+		background-color: #f8f8f8;
+		border: 1px solid #ddd;
+		font-size: 13px;
+		line-height: 19px;
+		overflow: auto;
+		padding: 6px 10px;
+		border-radius: 3px;
+	}
+	
+	#index_page_content code {
+		margin: 0;
+		padding: 0;
+		background-color: transparent;
+		border: none;
+		margin: 0;
+		padding: 0;
+		white-space: pre;
+		border: none;
+		background: transparent;
+	}
+	
+	#index_page_content p {
+		margin:10px 0;
+		text-indent:26px;
+		line-height:26px;
+	}

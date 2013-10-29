@@ -1,0 +1,87 @@
+<div id="index_page" class="pageview">
+    <div id="index_page_content">
+		<h1>Hello, Webapp!</h1>
+		<div>
+			<h3>关于当前示例的说明</h3>
+			<p>
+				这个示例展示了一个简单的webapp，它包含两个Page，<a href="#detail">点击这里</a>体验一下页面的互相切换。
+			</p>
+			
+			<h3>目录结构介绍</h3>
+			<pre>
+				<code>
+.
+│  fis-conf.js  fis配置文件
+│  index.html   项目首页
+│  router.json  router配置文件
+│
+├─css  整个项目通用的CSS文件
+│      all.css
+│      reset.css
+│      app.css  router命令自动生成，勿修改
+│      globalloading.css
+│      pageloading.css
+│      page.css
+│      
+├─data  存放模拟数据
+│
+├─img   img目录
+│      
+├─js    存放公共库及Chassis初始化所需的入口文件
+│  │  app.data.js
+│  │  chassis.config.js
+│  │  init.js
+│  │  pageview._TRANSITION_.js
+│  │  
+│  └─common  公共库
+│      │  mod.js
+│      ├─baidutemplate 
+│      ├─chassis  
+│      └─gmu
+│                      
+├─page  Page目录
+│  │  all.html  router命令自动生成，勿修改
+│  │  
+│  ├─detail  detail page
+│  └─index   index page
+│      ├─css  对应的CSS文件
+│      │      index.css
+│      │      
+│      ├─html 对应的HTML文件
+│      │      index.html
+│      │      
+│      ├─js   对应的JS文件
+│      │  └─view
+│      │          pageview.index.js
+│      │          subview.index_content.js
+│      │          
+│      └─tpl 对应的TPL文件
+│              index.tpl
+│              
+└─tpl   项目通用模板
+		globalloading.html
+		pageloading.html
+				</code>
+			</pre>
+			<h3>从哪里开始</h3>
+			<p>
+				1. 当前页面的内容在page/index/html/index.html，修改后重新`fis release`下试试
+			</p>
+			<p>
+				2. 查看page/index下的其它文件，修改后重新`fis release`下试试
+			</p>
+			<p>
+				3. 编辑router.json，新增一个`page`试试
+			</p>
+			
+			<h3>还有一个更复杂的例子</h3>
+			<p>
+				使用命令 `fis router -i -d webapp2 -s demo`
+			</p>
+			
+			<p>
+				关于Chassis的详细帮助，请<a href="https://github.com/xspider/fis-chassis-plugin/blob/master/README.md" target="_blank">参考这里</a>
+			</p>
+		</div>
+	</div>
+</div>

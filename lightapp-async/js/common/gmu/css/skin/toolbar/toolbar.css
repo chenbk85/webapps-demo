@@ -1,0 +1,112 @@
+.ui-toolbar {
+	position: relative;
+	height: 40px;
+	z-index: 2;
+	text-align: center;
+	background: #f4f4f4;
+	font-weight: normal;
+	border-top: 1px solid #df2c2c;
+	border-bottom: 1px solid #820000;
+	color: #fff;
+	background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#b71313),to(#a91111));
+}
+
+.ui-toolbar-left {
+	left:-11px;
+}
+.ui-toolbar-wrap {
+    height: 40px;
+    
+
+}
+
+.ui-toolbar-wrap a {
+    text-decoration: none;
+}
+
+.ui-toolbar-title {
+    text-align: center;
+    line-height: 40px;
+}
+
+.ui-toolbar-backbtn {
+    border: none;
+    
+
+    line-height: 30px;
+    height: 30px;
+    margin: 5px 0 0 20px;
+    padding: 0 8px 0 6px;
+	background-image: url("http://m.baidu.com/static/news/webapp_lite/img/titlebar.png?t=2");
+	background-repeat: no-repeat;
+	background-size: 55px 1100px;
+	background-position: 0 -178px;
+	
+	width:64px;
+	color:#FFF;
+}
+
+.ui-toolbar-backbtn:before, .ui-toolbar-backbtn:after {
+    content: '\0020';
+    border-width:15px 8px 15px 0;
+    border-style:solid;
+    position: absolute;
+    left: -8px;
+    top: -1px;
+    width:0;
+    height:0;
+    display: block;
+}
+
+.ui-toolbar-backbtn:before {
+    
+}
+
+.ui-toolbar-backbtn:after {
+    
+    left: -7px;
+}
+
+.ui-toolbar .ui-toolbar-backbtn.ui-state-hover {
+    background-color: #d9d9d9;
+    border-color: #b3b3b3;
+}
+.ui-toolbar .ui-toolbar-backbtn.ui-state-hover:after {
+    
+}
+.ui-toolbar .ui-toolbar-backbtn.ui-state-hover:before {
+    
+}
+
+.ui-toolbar-backbtn {
+	position:static;
+}
+/*css for pad*/
+@media all and (min-device-width:768px) and (max-device-width: 1024px){
+    .ui-toolbar-wrap {
+        height: 48px;
+    }
+    .ui-toolbar-title {
+        font-size: 16px;
+        line-height: 48px;
+    }
+    .ui-toolbar-backbtn {
+        line-height: 35px;
+        height: 36px;
+        margin: 6px 0 0 22px;
+        padding: 0 0.6em 0 0.5em;
+    }
+    .ui-toolbar-backbtn:before, .ui-toolbar-backbtn:after {
+        content: '\0020';
+        border-width:18px 9px 18px 0;
+        left: -8px;
+        top: -1px;
+        width:0;
+        height:0;
+        display: block;
+    }
+    .ui-toolbar-backbtn:after {
+        left: -7px;
+    }
+}
+
