@@ -11,7 +11,7 @@
 
 ##使用步骤
 
-1. 安装FISC
+1. 安装[FISC](https://github.com/xspider/fis-chassis)
 2. 下载本项目至开发目录
 3. 开启server后release即可预览
 4. 根据自己的业务需求修改代码逻辑即可
