@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>demo</title>
+    <title>LightApp</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
@@ -9,37 +9,27 @@
     <link rel="stylesheet" type="text/css" href="./css/all.css" />
 </head>
 <body>
+	<div id="topNav">
+		<!--inline[./globalview/sidenav/html/sidenav.html]-->
+	</div>
+	
     <div id="wrapper">
-			<!--inline[./tpl/globalloading.html]-->
-			<!--inline[./tpl/pageloading.html]-->
-			
-
-			{{page.html}}
-
-
-			
-
-    </div>
-
-	
-	<script type="text/template" id="tpl-detail">
-		<!--inline[./page/detail/tpl/detail.tpl]-->
-	</script>
-	<script type="text/template" id="tpl-index">
-		<!--inline[./page/index/tpl/index.tpl]-->
-	</script>
-	
-	<script>
-		window.app = {
-			router : {{setting.router}},
-			map    : {{map.json}}
-		};
+		<!--inline[./tpl/globalloading.html]-->
+		<!--inline[./tpl/pageloading.html]-->
 		
-	</script>
+		
+		{{page.html}}
+    </div>
+	<div id="footer">
+		请看footer
+	</div>
+
 	
+	{{page.tpl}}
+
 	<script type="text/javascript" src="/pkg/all.js"></script>
 	<script>
-	app.init();
+		app.init( {{setting.router}} );
 	</script>
 </body>
 </html>

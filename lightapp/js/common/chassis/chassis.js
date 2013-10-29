@@ -42,15 +42,9 @@ Chassis.FX = {};
  * @type object
  */
 Chassis.$ = root.jQuery || root.Zepto || root.ender;
-Chassis.F = root.F;
 
-/**
- * 通用模块缓存
- * @property commonView
- * @static
- * @type object
- */
-Chassis.commonView = {};
+
+
 
 /**
  * 获取无冲突命名空间
@@ -63,11 +57,7 @@ Chassis.noConflict = function() {
 	return this;
 };
 
-Chassis.reset = function() {
-	Chassis.commonView = {};
-	Chassis.PageView.AllPageView = [];
-	Chassis.PageView.AllPageViewBox = {};
-};
+
  /*jshint camelcase:false*/
  /**
  * @fileOverview 语言增强
@@ -335,15 +325,7 @@ Chassis.object = function( list, values ) {
 
 
 
-Chassis.load = function( pkg, callback ) {
-    var pkgs = Chassis.load.config.ruler( pkg );
-    if ( pkgs ) {
-        Chassis.F.load( pkgs, callback );
-    }
-};
-Chassis.load.config = {
-    ruler : function( pkg ) {}
-};
+
 
 
 $.support = Chassis.mixin( $.support || {}, {
@@ -1605,8 +1587,7 @@ Chassis.mixin( Router.prototype, Events, {
         });
         */
         
-        // 通用subview复用及影子节点处理
-        to.$el && to._repairCommonSubView();
+        
         
         me._doTransition(
             from,
@@ -1847,7 +1828,7 @@ Chassis.mixin( Router.prototype, Events, {
             }
 			
 			view = me.views[ action ] = 
-					Chassis.View.getViewInstance.call( me, action, request );
+					new Chassis.PageView[ action ]( request, action )
 
         }
         
@@ -1859,6 +1840,7 @@ Chassis.mixin( Router.prototype, Events, {
             from: me.previousView,
             to: me.currentView,
             params: request,
+			action : action,
             views: this.views
         } );
 
@@ -2178,162 +2160,8 @@ History.Hash = History.extend({
         }
     }
 });
-/**
- * @fileOverview 使用pushstate实现的history
- * @requires Router.History
- */
 
-/**
- * Pushstate
- * > 用户不需要手动调用，当使用history.start时，会根据传递的参数自动实例化此类并覆盖之前的history实例。
- *
- * > 当用户调用destroy时，history将自动恢复至初始状态。
- * @class Pushstate
- * @namespace Chassis.History
- * @constructor
- * @param {object} handler
- * @private
- */
-History.Pushstate = History.extend({
-    
-    /**
-     * 当所有的 路由 创建并设置完毕，调用 Chassis.history.start() 开始监控 Pushstate 事件并分配路由。
-     *
-     * @overwrite
-     * @public
-     * @method start
-     * @param {object} opts
-     * @return 
-     **/
-    start : function( opts ) {
-        var me = this,
-			pathname = window.location.pathname,
-			atRoot;
 
-        if ( History.start ) {
-            return;
-        }
-        
-        History.start = true;
-        
-        if ( !opts ) {
-            opts = { trigger : true };
-        }
-        
-        
-        if ( opts.root ) {
-            me.root = (opts.root.indexOf( '/' ) === 0) ? 
-				opts.root : ('/' + opts.root);
-        }
-        
-		// 注释掉的原因是和backbone保持一致：路由不匹配就不执行
-		
-		// 如果当前设置的root和URL中的root不同
-		// 则重写URL为当前root
-		/*
-		atRoot = 
-			pathname.replace( /[^\/]$/, '$&/' ) === me.root;
-		
-		if ( !atRoot ) {
-			history.replaceState( {}, document.title, me.root );
-		}
-		*/
-		
-		me.curFragment = me.getFragment();
-		
-        // 当浏览器前进后退时触发
-        $( window ).on( 'popstate', function() {
-			
-			if ( me.curFragment === me.getFragment() ) {
-				return;
-			}
-			
-			me.curFragment = me.getFragment();
-            me.loadUrl.call( me, me.curFragment );
-        } );
-        
-        // 处理当前pushState
-        if ( opts.trigger ) {
-			me.loadUrl.call( me, me.getFragment() );
-		}
-        
-        return;
-       
-
-    },
-    
-    /**
-     * 手动到达应用程序中的某个位置 
-     *
-     * @overwrite
-     * @public
-     * @method navigate
-     * @param {string} fragment
-     * @param {object} opts
-     * @return 
-     **/
-    navigate : function( fragment, opts/*, replace*/ ) {
-        var me = this;
-        
-        if ( !opts ) {
-            opts = { trigger : true };
-        }
-        
-        fragment = this.getFragment( fragment );
-        
-        this.curFragment = fragment;
-		
-        me._setPushState( fragment );
-        
-        
-        me.cacheOptions = null;
-        
-        if ( opts.trigger ) {
-            me.loadUrl.call( me, fragment );
-        }
-    },
-    
-    /**
-     * 设置pushstate 
-     *
-     * @private
-     * @method _setPushState
-     * @param {string} fragment
-     * @return 
-     **/
-    _setPushState : function( fragment, replace ) {
-
-        fragment = this.root + fragment;
-		
-		if ( replace ) {
-			history.replaceState( {}, document.title, fragment );
-		} else {
-			history.pushState( {}, document.title, fragment );
-		}
-        
-        return this;
-        
-    },
-    
-    /**
-     * 获取当前的fragment
-     *
-     * @private
-     * @method getFragment
-     * @return 
-     **/
-    getFragment : function( fragment ) {
-       
-        return (fragment !== undefined) ? 
-			fragment : 
-			window.location.pathname
-				.replace( new RegExp( '^' + this.root ), '' );
-    }
-    
-    
-});
-
-History.Pushstate.extend = Chassis.extend;
 /**
  * @fileOverview 视图
  * 层级关系管理
@@ -2555,47 +2383,14 @@ Chassis.mixin( View.prototype, Events, {
         return this;
     },
 
-    /**
-     * 将view作为当前视图的子视图，并将view所属dom元素append父视图所属dom元素
-     * @param  {[type]} view
-     * @return {[type]}
-     */
-    append: function( view, opts ) {
-        this._addSubview( view, '', opts );
-    },
 
-    /**
-     * 将view作为当前视图的子视图，并将view所属dom元素prepend父视图所属dom元素
-     * @param  {[type]} view
-     * @return {[type]}
-     */
-    prepend: function( view, opts ) {
-        this._addSubview( view, 'PREPEND', opts );
-    },
-
-    /**
-     * 将view作为当前视图的子视图（不涉及dom元素的处理）
-     * @param  {[type]} view
-     * @return {[type]}
-     */
-    setup: function( view, opts ) {
-        this._addSubview( view, 'SETUP', opts );
-    },
 
     /**
      * 子类初始化
      */
     init: noop,
     
-    /**
-     * subview异步加载记录
-     *
-     */
-    
-    _asyncSubView : {
-        'global'  : [],
-        'subview' : {}
-    },
+
 
     /**
      * View销毁时调用，需子类实现。
@@ -2638,11 +2433,7 @@ Chassis.mixin( View.prototype, Events, {
 
         this.onBeforePageIn( params );
         
-        this._asyncSubView.global = [ { 
-                event  : 'beforepagein', 
-                params : params 
-            } 
-        ];
+        
         
     },
 
@@ -2658,11 +2449,7 @@ Chassis.mixin( View.prototype, Events, {
 
         this.onAfterPageIn( params );
         
-        this._asyncSubView.global.push({ 
-                event  : 'afterpagein', 
-                params : params 
-            } 
-        );
+        
     },
 
     /**
@@ -2743,261 +2530,7 @@ Chassis.mixin( View.prototype, Events, {
 		} else {
 			this.setElement( this.el, false );
 		}
-	},
-	
-	_removeRecycleView : function() {
-		var me = this;
-		
-		Chassis.$.each( me.children, function( k, v ) {
-			if ( !v.$el ) {
-				delete me.children[ v.cid ];
-			}
-		} );
-		
-		
-	},
-	
-	_addSubview: function( view, action, opt, async, trigger ) {
-        var me = this,
-			oldView = view,
-            pid,
-            pe,
-            viewElement,
-			_subView;
-		
-		me._removeRecycleView();
-		
-        if ( (!Chassis.isObject( view )) &&  (!Chassis.SubView[ view ]) ) {
-            me._addAsyncSubview.call( me, view, action, opt );
-            return;
-        }
-
-        // TODO 已经加载，而且还是个字符串，那么可以重用
-        // 乾坤大挪移
-        if ( !Chassis.isObject( view ) ) {
-            
-            viewElement = '<div class="__common_subview__" data=' + 
-                                view + '></div>';
-            
-            view = Chassis.commonView[ view ];
-            
-			// 被销毁了
-			if ( !view || !view.$el ) {
-
-				_subView = new Chassis.SubView[ oldView ]( opt, me );
-				Chassis.commonView[ oldView ] = _subView;
-				
-				return me._addSubview( _subView, action, opt, false, true );
-			}
-			
-            switch ( action ) {
-
-                // 不进行DOM处理
-                case 'SETUP': 
-                    break;
-                case 'PREPEND':
-                    view.$el.after(  viewElement );
-                    this.$el.prepend( view.$el );
-                    
-                    break;
-                default:
-                    view.$el.after( viewElement );
-                    this.$el.append( view.$el );
-                    break;
-            }
-            return;
-        }
-        
-		if ( view instanceof Chassis.View ) {
-			this.children[ view.cid ] = view;
-			view.parent = this;
-            
-            if ( !async ) {
-                switch ( action ) {
-
-                    // 不进行DOM处理
-                    case 'SETUP': 
-                        break;
-                    case 'PREPEND':
-                        this.$el.prepend( view.$el );
-                        break;
-                    default:
-                        this.$el.append( view.$el );
-                        break;
-                }
-                
-                view.$el.hide();
-            }
-
-			
-
-            if ( trigger ) {
-                me._triggerAsyncSubviewEvent.call( me, view );
-            }
-		} else {
-			throw new Error( 'view is not an instance of Chassis.View.' );
-		}
-	},
-    
-    _addAsyncSubview : function( view, action, opt, async ) {
-        var me = this,
-            pid,
-            pe;
-            
-        pid = Chassis.uniqueId( 'subview-placeholder-' );
-        pe = $( '<div id="' + pid + '"></div>' );
-        
-        me._asyncSubView.subview[ view ] = {
-            id : pid,
-            event : []
-             
-        };
-        
-        switch ( action ) {
-            case 'SETUP' : 
-                break;
-            case 'PREPEND' :
-                me.$el.prepend( pe );
-                break;
-            default :
-                me.$el.append( pe );
-                break;
-        }
-        
-        Chassis.View.getSubViewSource( view, function() {
-		
-			me._renderAsyncSubViewStack[ view ] = function() {
-				var placeHolder = me.$el.find( '#' + pid  ),
-					subView;
-				
-				if ( !Chassis.SubView[ view ] ) {
-					return;
-				}
-				subView = new Chassis.SubView[ view ]( opt, me );
-				Chassis.commonView[ view ] = subView;
-				switch ( action ) {
-					case 'SETUP': 
-						break;
-					case 'PREPEND':
-						placeHolder.replaceWith( subView.$el );
-						break;
-					default:
-						placeHolder.replaceWith( subView.$el );
-						break;
-				}
-				
-				me._addSubview.call( me, subView, action, opt, true, true );
-			};
-			
-			if ( me._renderAsyncSubViewStart ) {
-				
-				if ( me._renderAsyncSubViewCall === '*' ) {
-					me.renderAsyncSubView( view );
-					
-				} else {
-					(view in me._renderAsyncSubViewCall) &&
-							me.renderAsyncSubView( view );
-				}
-				
-				me._renderAsyncSubViewStack[ view ] = null;
-			}
-			
-        } );
-        
-    },
-    
-    _triggerAsyncSubviewEvent : function( view ) {
-        var me = this;
-        
-        Chassis.$.each( me._asyncSubView.global, function( key, value ) {
-            view.trigger( value.event, value.params );
-        } );
-    },
-    
-    _repairCommonSubView : function() {
-        var me = this;
-        
-        me.$el.find( '.__common_subview__' ).each(function( k, v ) {
-        
-            var subviewName = $( v ).attr( 'data' ),
-                subView = Chassis.commonView[ subviewName ],
-                cloneView = subView.$el.clone();
-            
-            cloneView.attr( 'shadow', subviewName );
-            
-            if ( subView.$el.next().attr( 'shadow' )  !== subviewName ) {
-                subView.$el.after( cloneView );
-				subView.parent = me;
-            }
-            
-            subView.$el.after( '<div class="__common_subview__" data=' + 
-                                subviewName + '></div>' );
-            $( v ).replaceWith( subView.$el );
-            
-            me.$el.find( '[shadow=' + subviewName + ']' ).remove();
-            
-        });
-    },
-	
-	_renderAsyncSubViewStack : {},
-	
-	_renderAsyncSubViewStart : false,
-	
-	_renderAsyncSubViewCall : {},
-	
-    /**
-     * render async view
-	 * 异步加载的模块并不是自动添加到视图中的
-     * @method renderAsyncView
-	 * @param  {string} [subView]     subView的name
-     */
-	renderAsyncSubView : function( subView, callback ) {
-		var me = this,
-			oldcallback;
-		
-		me._renderAsyncSubViewStart = true;
-		
-		oldcallback =  callback || function() { };
-		
-		callback = function() {
-			window.setTimeout( function() {
-				oldcallback.call( me );
-			}, 20 );
-		};
-
-		if ( !subView ) {
-			me._renderAsyncSubViewCall = '*';
-			Chassis.$.each( me._renderAsyncSubViewStack, 
-					function( key, value ) {
-						value && value.call( me );
-						me._renderAsyncSubViewStack[ key ] = null;
-					} 
-			);
-			callback.call( me );
-			return;
-		}
-		
-		if ( !Chassis.isArray( subView ) ) {
-			subView = [ subView ];
-		}
-		
-		subView = Chassis.object( subView, subView );
-		
-		if ( me._renderAsyncSubViewCall !== '*' ) {
-			me._renderAsyncSubViewCall = 
-				Chassis.mixin( {}, me._renderAsyncSubViewCall, subView );
-		}
-		
-		Chassis.$.each( me._renderAsyncSubViewStack, function( key, value ) {
-			if ( value && (key in subView) ) {
-				value.call( me );
-				me._renderAsyncSubViewStack[ key ] = null;
-			}
-		} );
-		
-		callback.call( me );
 	}
-    
 } );
 
 // 引入view.loading.js后会在view的原型增加以下方法
@@ -3096,80 +2629,8 @@ Chassis.mixin( View, {
 
     extend: Chassis.extend
 } );
-/*jshint camelcase:false,undef:false*/
 
-/**
- * @fileOverview 子视图
- */
 
-/**
- * 子视图控制器
- *
- * @class SubView
- * @namespace Chassis
- * @constructor
- * @param {object} opts
- * @param {view} parent 子视图的父级视图
- */
-
-/**
- * 当前子视图所在子页面即将切入时触发
- * @event beforeswitchin
- * @param {object} e
- */
-
-/**
- * 当前子视图所在子页面即将切入时触发
- * @event afterswitchin
- * @param {object} e
- */
-
-var SubView = Chassis.SubView = View.SubView = View.extend({
-
-	_initialize: function( opts, parent ) {
-
-		this.parent = parent;
-
-        // 自动监听SUBPAGE事件
-        this.listenTo( this, 'beforeswitchin', this.onBeforeSwitchIn );
-        this.listenTo( this, 'afterswitchin', this.onAfterSwitchIn );
-        
-        this.listenTo( this, 'beforepagein', this.onBeforePageIn );
-        this.listenTo( this, 'afterpagein', this.onAfterPageIn );
-
-		SubView.__super__._initialize.call( this, opts );
-	},
-
-    /**
-     * View所属SubPage即将显示前调用，需子类实现。
-     * @method onBeforeSwitchIn
-     * @param {object} e
-     *      e.from: 当前显示但是即将被替换的子页面
-     *      e.to: 即将显示的子页面
-     *      e.params: 路由参数
-     *          e.params.from: 路由切换时的源页面
-     *          e.params.to: 路由切换时的目标页面
-     *          e.params.params: 路由参数
-     * @override
-     */
-    onBeforeSwitchIn: noop,
-
-    /**
-     * View所属SubPage显示后前调用，需子类实现。
-     * @method onAfterSwitchIn
-     * @param {object} e
-     *      e.from: 当前显示但是即将被替换的子页面
-     *      e.to: 即将显示的子页面
-     *      e.params: 路由参数
-     *          e.params.from: 路由切换时的源页面
-     *          e.params.to: 路由切换时的目标页面
-     *          e.params.params: 路由参数
-     * @override
-     */
-    onAfterSwitchIn: noop
-
-});
-/*jshint camelcase:false*/
 
 /**
  * @fileOverview 页面视图控制器
@@ -3193,14 +2654,9 @@ var PageView = Chassis.PageView = View.PageView = View.extend({
 		this._tops = {};
 		this._logicString = this._getLogicString( opts );
 		
-		this._saveHTML( opts, action );
 		
-		this._recycle();
 		
-		Chassis.PageView.AllPageView = 
-			Chassis.PageView.AllPageView ? Chassis.PageView.AllPageView : [];
 		
-		Chassis.PageView.AllPageView.push( this );
 
 		PageView.__super__._initialize.call( this, opts );
 	},
@@ -3228,85 +2684,7 @@ var PageView = Chassis.PageView = View.PageView = View.extend({
         setTimeout( function() {
             window.scrollTo( 0, me._tops[ cls ] || 0 );
         }, 0 );
-    },
-	
-	_saveHTML : function( opts, action ) {
-	
-		var me = this;
-		
-		Chassis.PageView.AllPageViewBox = 
-			Chassis.PageView.AllPageViewBox || {};
-		
-		Chassis.PageView.AllPageViewBox[ me.$el.selector ] = 
-			$( '<div>' ).append( me.$el.clone() ).html();
-
-	},
-	
-	_recycle : function() {
-		var me = this,
-			max = 0,
-			maxView = null,
-			selector = null,
-			parent = null,
-			recycleKey = null;
-		
-		if ( !Chassis.PageView.AllPageView ) {
-			return;
-		}
-		
-		if ( Chassis.PageView.AllPageView.length < Chassis.View.MaxPageView ) {
-			return;
-		}
-		
-		Chassis.$.each( Chassis.PageView.AllPageView, function( k, v ) {
-			var len = me._getChildrenLength( v );
-			
-			if ( (len > max) || (k === 0) ) {
-				max = len;
-				maxView = v;
-				recycleKey = k;
-			}
-		} );
-		
-		
-		Chassis.PageView.AllPageView.splice( recycleKey, 1 );
-		
-		selector = maxView.$el.selector;
-		
-		parent = maxView.$el.parent();
-		
-		maxView.destroy();
-		
-		// 重新回归
-		
-		parent.append( Chassis.PageView.AllPageViewBox[ selector ] );
-		
-		// 被删除后，再重新调用时需要重新create
-		
-	},
-	
-	_getChildrenLength : function( child ) {
-		
-		var me = this, 
-			len = 0,
-			keys = Object.keys( child.children || {} );
-		
-		len = keys.length;
-		
-		Chassis.$.each( keys, function( k, v ) {
-			var _cur = child.children[ v ],
-				_keys = Object.keys( _cur.children || {} );
-				
-			if ( _keys.length ) {
-				len += me._getChildrenLength( _cur );
-			}
-		} );
-		
-		// 循环计算子节点
-		
-		
-		return len;
-	}
+    }
 });
 /*jshint camelcase:false*/
 
@@ -3314,408 +2692,8 @@ var PageView = Chassis.PageView = View.PageView = View.extend({
  * @fileOverview 子页面管理
  */
 
-/**
- * 子页面管理器
- * @class SubPageMgr
- * @constructor
- * @namespace Chassis.View
- * @param  {object} opts
- * opts.owner {view} 子页面所属视图
- * [opts.max] {int} 子页面并存上限，超过此上限将回收
- * opts.klass {view} 子页面实例对应的视图类
- * [opts.transition] {string|function} 子页面切换效果，如果是字符串则会从
- * `Chassis.FX[transition]`中调用切换方法；如果是函数则直接调用改函数来处理切换。
- * 对于自定义页面切换函数将接收以下参数：
- * fromEl: 待切出视图元素；
- * toEl: 待切入视图元素；
- * dirFn: 切换方向(0-无方向，1-向左，2-向右)；
- * transitionEnd: 切换完成后的回调，必须在自定义函数中调用；
- * [opts.dirFn] {function} 自定义切换方向(-1-默认，0-无方向，1-向左，2-向右)；
- */
-var SPM = Chassis.SubPageMgr = View.SubPageMgr = function( opts ) {
-	Chassis.mixin( this, {
-		max: 3,
 
-		/*owner,*/
 
-		/*klass,*/
-		
-		/*dirFn,*/
-		transition: 'slider'
-	}, opts );
-
-	this._init();
-};
-
-Chassis.mixin( SPM.prototype, Events, {
-
-	/**
-	 * 获取页面内的识别串，用于同一个页面中不同子页面间的识别
-	 * @param  {object} params
-	 * @return {string}
-	 */
-	getStamp: function( params ) {
-		return Chassis.$.param( params || {} );
-	},
-
-	/**
-	 * 添加新的子页面
-	 * @param  {subview} subview
-	 */
-	register: function( subview ) {
-
-		var pages = this.pagesMap;
-
-		if ( !pages[ subview.cid ] ) {
-			subview.__order__ = this._order++;
-			pages[ subview.cid ] = subview;
-
-			this.pagesList.push( subview );
-		}
-
-		return this;
-	},
-
-	/**
-	 * 查找子页面
-	 * @param  {string} key
-	 * @param  {string} val
-	 * @return {subview}
-	 * @example
-	 * spm.getBy( 'featureString', ft );
-	 */
-	getBy: function( key, val ) {
-
-		var pages = this.pagesMap,
-			subview,
-			cid;
-
-		if ( key === 'cid' ) {
-			return pages[ val ];
-		}
-
-		for ( cid in pages ) {
-			if ( pages.hasOwnProperty( cid ) ) {
-				subview = pages[ cid ];
-
-				if ( subview[ key ] === val ) {
-					return subview;
-				}
-			}
-		}
-
-		return null;
-	},
-
-	/**
-	 * 页面切换
-	 * @param  {view} from subpage
-	 * @param  {view} to subpage
-	 * @param  {object} params
-	 * params.from page
-	 * params.to page
-	 * params.params 页面切换参数
-	 *
-	 * @description 处理逻辑
-	 *
-	 * 1. 页面内部切换（即params.from === params.to，但是参数不同）
-	 *  a. 根据params生成识别串并在SPM中查找目标子页面
-	 *  b. 如果未找到则自动创建目标子页面并加入SPM
-	 *  c. 重新设置current
-	 *  d. 调用switch切换
-	 *   d1. 显示目标子页面DOM元素
-	 *   d2. 调用动画切换
-	 *   d3. 隐藏切出子页面DOM元素
-	 * 
-	 * 2. 页面间切换（即params.from !== params.to)
-	 *  a. 根据params生成识别串并在SPM中查找目标子页面
-	 *  b. 如果未找到则自动创建目标子页面并加入SPM
-	 *  c. 重新设置current
-	 *  d. 调用switch切换
-	 *   d1. 如果待切出子页面不为空（首次进入params.to时为空）则直接隐藏DOM
-	 *   d2. 显示目标子页面DOM元素
-	 */
-	_switch: function( from, to, params ) {
-		var dir = -1,
-			fromPage = params.from,
-			toPage = params.to,
-			me = this,
-			evt = {
-				from: from,
-				to: to,
-				params: params
-			};
-
-		// 派发事件
-		to.trigger( 'beforeswitchin', evt );
-
-		to.$el.show();
-
-		// pageview内部子页面切换
-		if ( fromPage === toPage ) {
-
-			if ( this.dirFn ) {
-				dir = this.dirFn( from, to );
-			}
-
-			if ( dir < 0 ) {
-				dir = this._calcDir.apply( this, arguments );
-			}
-
-
-			this._doSwitch( from, to, dir, function() {
-
-				// 隐藏已切出子页面
-				if ( from && from.$el ) {
-					from.$el.hide();
-				}
-
-				me._setCurrent( to );
-
-				to.trigger( 'afterswitchin', evt );
-
-				// 子页面回收
-				me.recycle();
-			} );
-
-		// 从其他pageview切换到当前pageview: 子页面显示无需动画效果，直接显示即可
-		} else {
-			if ( from ) {
-				from.$el.hide();
-			}
-
-			this._setCurrent( to );
-
-			to.trigger( 'afterswitchin', evt );
-
-			this.recycle();
-		}
-
-		return this;
-	},
-
-	/**
-	 * 自动判断并回收子页面，先入先出。
-	 */
-	recycle: function() {
-		var list = this.pagesList,
-			page;
-		
-		if ( !list ) {
-			return;
-		}
-		while ( list.length > this.max ) {
-			page = list.shift();
-
-			if ( page === this.current ) {
-				list.push( page );
-			} else {
-				delete this.pagesMap[ page.cid ];
-				page.destroy();
-			}
-		}
-	},
-
-	_init: function() {
-
-		// 子页面列表，key为cid
-		this.pagesMap = {};
-
-		// 子页面列表，回收时使用
-		this.pagesList = [];
-
-		// 当前可见子页面
-		this.current = null;
-
-		// 上一可见子页面
-		this.previous = null;
-
-		// 子页面序号
-		this._order = 0;
-
-		this._boundToView();
-	},
-
-	/**
-	 * 监听view的切换事件，判断是否需要处理子页面切换逻辑
-	 */
-	_boundToView: function() {
-
-		var listenTarget = this.owner.root || this.owner;
-
-		// 监听PageView的beforepagein和afterpagein事件
-		this.listenTo( listenTarget, 'beforepagein', this._beforePageIn );
-		this.listenTo( listenTarget, 'afterpagein', this._afterPageIn );
-		
-        if ( this.owner !== listenTarget ) {
-            this.listenTo( this.owner, 'beforepagein', this._beforePageIn );
-            this.listenTo( this.owner, 'afterpagein', this._afterPageIn );
-        }
-        
-        
-		this.listenTo( this.owner, 'beforedestroy', this._destroy );
-
-	},
-
-	/**
-	 * 计算子页面切换方向，可以在dirFn选项中自定义切换方向
-	 * @param {subview} 起始子页面
-     * @param {subview} 目标子页面
-     * @return {int} 方向参数（含义可扩展）：1-向左，2-向右
-	 */
-	_calcDir: function( from, to ) {
-
-		if ( !from ) {
-			return 0;
-		}
-
-		var pages = this.pagesMap,
-			fromOrder = pages[ from.cid ].__order__,
-			toOrder = pages[ to.cid ].__order__;
-
-		return fromOrder > toOrder ? 2 : 1;
-	},
-
-	/**
-	 * 处理子页面切换
-	 * @param  {subview} from
-	 * @param  {subview} to
-	 * @param  {int} dir 方向参数（含义可扩展）：1-向左，2-向右
-	 * @param  {function} transitionEnd
-	 */
-	_doSwitch: function( from, to, dir, transitionEnd ) {
-
-		var toEl = to.$el,
-			fromEl,
-			fxFn;
-
-		if ( Chassis.isFunction( this.transition ) ) {
-			fxFn = this.transition;
-		} else {
-			fxFn = Chassis.FX[ this.transition ].animate;
-		}
-
-		if ( !fxFn ) {
-			return;
-		}
-
-		if ( from ) {
-			fromEl = from.$el;
-		}
-
-		fxFn( fromEl, toEl, dir, transitionEnd );
-	},
-
-	/**
-	 * 销毁子页面管理器，通常只在子页面管理器所在owner被销毁后执行
-	 */
-	_destroy: function() {
-		this.stopListening();
-
-		this.pagesMap =
-				this.pagesList =
-				this.current =
-				this.previous =
-				this.owner = null;
-	},
-
-	_beforePageIn: function( e ) {
-		var from = e.from,
-			to = e.to,
-			params = e.params,
-			stamp = this.getStamp( params );
-
-		// 跨页面切换到子页面时，当前子页面若不是目标子页面，须提前隐藏，保证切换效果
-		if (  from !== to &&
-				this.current &&
-				stamp !== this.current.stamp ) {
-			this.current.$el.hide();
-		}
-	},
-
-	_afterPageIn: function( e ) {
-
-		var me = this,
-            params = e.params,
-			owner = me.owner,
-			stamp = me.getStamp( params ),
-			target = me.getBy( 'stamp', stamp ),
-			subViewName = me.klass,
-			kkls,
-			subpage;
-			
-		if ( !e.to.$el ) {
-			return;
-		}
-		
-		// 如果子页面不存在则自动创建
-		
-		if ( !target ) {
-            
-			me.klass = Chassis.View.getSubViewInstance( subViewName, 
-					function() {
-						me.klass = Chassis.SubView[ subViewName ];
-						
-						if ( me.klass ) {
-							me._afterPageIn.call( me, e );
-						}
-					} );
-
-			if ( !me.klass ) {
-				return;
-			}
-			
-            
-            
-			// TODO: 某些数据可能不允许自动生成subview
-			subpage = new me.klass( params || {}, owner );
-			subpage.stamp = stamp;
-
-			owner.append( subpage );
-			me.register( subpage );
-
-			target = subpage;
-		}
-
-		this._switch( this.current, target, e );
-	},
-
-	_setCurrent: function( subview ) {
-		if ( subview !== this.current ) {
-			this.previous = this.current;
-			this.current = subview;
-		}
-	}
-
-	/* TODO
-
-	/**
-	 * 从子页面管理器中移除指定页面
-	 * @return {[type]}
-	 */
-	/*
-	_remove: function( subview ) {
-		var pagesMap = this.pagesMap,
-			pagesList = this.pagesList;
-
-		if( pagesMap[ subview.cid ] ) {
-			delete pagesMap[ subview.cid ];
-
-			for( var i = 0, len = pagesList.length; i < len; i++ ) {
-				if( pagesList[ i ].cid == subview.cid ) {
-					pagesList.splice( i, 1 );
-					break;
-				}
-			}
-
-			if( this.current === subview ) {
-				//TODO
-			}
-		}
-	}
-	*/
-} );
-/*jshint camelcase:false*/
 
 /**
  * @fileOverview  全局视图控制器
@@ -4069,115 +3047,5 @@ var Loading = View.Loading = Chassis.Loading = (function() {
 })();
 
 Loading.mixToView();
-
-
- /*jshint camelcase:false*/
- /**
- * @fileOverview view loader
- */
-
-
-Chassis.mixin( View, {
-
-	/**
-	 * 获取View Instance
-	 * @overwrite
-	 *
-	 */
-	getViewInstance : function( action, request ) {
-		var 
-			me = this,
-			view;
-		
-		if ( Chassis.PageView[ action ] ) {
-			view = new Chassis.PageView[ action ]( request, action );
-			
-			return view;
-		}
-		
-		// 如果pageview没有下载，则先使用通用pageview
-		// 同时下载需要加载的pageview，加载成功后再触发对应的事件	
-		if ( !Chassis.PageView._transition_ ) {
-			
-			if ( !Chassis.PageView._TRANSITION_ ) {
-				Chassis.PageView._TRANSITION_ = 
-					Chassis.PageView.extend({});
-			}
-			
-			Chassis.PageView._transition_ = 
-				new Chassis.PageView._TRANSITION_( request, action );
-		}
-		
-		view  = Chassis.PageView._transition_;
-		
-		Chassis.View.getViewSource( action, function() {
-			view.$el.hide();
-			
-			view = me.views[ action ] = 
-				new Chassis.PageView[ action ]( request, action );
-			me.previousView = me.currentView;
-			me.currentView = view;
-			
-			view.$el.show();
-
-			view.trigger( 'beforepagein,afterpagein', {
-				from: me.previousView,
-				to: me.currentView,
-				params: request
-			} );
-		} );
-
-		return view;
-	},
-	
-	/**
-	 * 获取View source
-	 * @overwrite
-	 *
-	 */
-	getViewSource : function( action, callback ) {
-		Chassis.load( 'pageview-' + action, callback );
-	},
-	
-	/**
-	 * 获取SubView Instance
-	 * @overwrite
-	 *
-	 */
-	getSubViewInstance : function( view, callback ) {
-		if ( Chassis.isObject( view ) ) {
-			return view;
-		}
-		
-		Chassis.View.getSubViewSource( view, callback );
-	},
-	
-	/**
-	 * 获取SubView Source
-	 * @overwrite
-	 *
-	 */
-	getSubViewSource : function( action, callback ) {
-		Chassis.load( 'subview-' + action, callback );
-	},
-	
-	
-	addSubView : function() {
-	
-	},
-	
-	MaxPageView : 10
-
-} );
-
-Chassis.mixin( View.prototype, {
-	getViewInstance    : View.getViewInstance,
-	getViewSource      : View.getViewSource,
-	getSubViewInstance : View.getSubViewInstance,
-	getSubViewSource   : View.getSubViewSource
-	
-	// rewrite _addSubview
-} );
-
 
 })()

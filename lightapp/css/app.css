@@ -6,24 +6,23 @@
     position:absolute;
 
     /*撑满整个父容器*/
-    top:0;
+    top:30px;
     left:0;
     right:0;
-    bottom:0;
-
+    bottom:30px;
+	z-index:99999;
     /*最低高度，确保即使没内容，loading也可以展示，同时能遮住下方内容*/
     /*min-height:960px;*/
 
     /*阻止文本选中*/
     -webkit-user-select: none;
     -moz-user-select: none;
-}
-
-#wrapper{
-    display: block;
-    overflow-x: hidden;
+	display: block;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
 }
+
+
 
 /*所有page样式*/
 .pageview {
@@ -37,12 +36,24 @@
     top:0;
     left:0;
     right:0;
-    bottom:0;
-
+    bottom:350px;
+	z-index:99999;
     /*最低高度，确保即使没内容，loading也可以展示，同时能遮住下方内容*/
-    min-height:600px;
+    min-height:300px;
 
     /*阻止文本选中*/
     -webkit-user-select:none;
     -moz-user-select:none;
+	overflow-y:scroll;
+}
+
+#footer {
+	display:block;
+	height:30px;
+	background:#CCC;
+	position:absolute;
+	z-index:99999;
+	bottom:0;
+	left:0;
+	right:0;
 }

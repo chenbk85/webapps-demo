@@ -1,0 +1,23 @@
+/*全局视图id，以_globalview为后缀*/
+#sidenav_globalview{
+    /*默认不展示*/
+    display:block;
+
+    /*绝对定位*/
+    position:absolute;
+
+    top:0;
+	left:0;
+	right:0;
+	z-index:99999;
+
+
+
+    /*阻止文本选中*/
+    -webkit-user-select:none;
+    -moz-user-select:none;
+	
+	border:1px solid #CCC;
+	
+
+}

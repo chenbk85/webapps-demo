@@ -1,37 +1,26 @@
-
-
 window.app = window.app || {};
 
-app.router = Chassis.Router.extend( app.router );
 
 (function($) {
 
 	$.extend(app, {
-		init: function() {
+		init: function( router ) {
 			
+			router = Chassis.Router.extend( router );
+			router = new router();
 			// 设置全局载入条和局部载入条
 			Chassis.View.Loading.setup('#wrapper .global-loading','#wrapper .page-loading');
 
-			new app.router();
+			
+			new Chassis.GlobalView.sidenav({}, router);
 			Chassis.history.start();
+			
+			var height = $(window).height();
 
-			function scroll(e){
-				$(document.body).height(600);
-
-
-				setTimeout(function(){
-					window.scrollTo(0, 0);
-					$.later(function(){
-						$(document.body).height($(window).height());
-					});
-					app.isLoaded = true;
-				}, 1000); 
-
-			}
-
-			$(function(e){
-				scroll();
-			});
+			$( '#wrapper' ).height(  height - 55 );
+			$( '.pageview' ).height( height - 75 );
+			
+			
 		}
 
 	});

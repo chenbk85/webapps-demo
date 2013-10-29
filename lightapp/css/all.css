@@ -2,7 +2,5 @@
 @import url("./globalloading.css?__inline");
 @import url("./pageloading.css?__inline");
 @import url("./app.css?__inline");
-@import url("/js/common/gmu/css/widget/toolbar/toolbar.css?__inline");
-@import url("/js/common/gmu/css/skin/refresh/refresh.css?__inline");
-@import url("/js/common/gmu/css/skin/toolbar/toolbar.css?__inline");
+@import url("/globalview/sidenav/css/sidenav.css?__inline");
 {{page.css}}
