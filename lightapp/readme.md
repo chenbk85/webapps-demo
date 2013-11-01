@@ -19,7 +19,7 @@
 
 ##精简后代码量
 
-1. chassis.js ***5.5K****(UglifyJS+GZIP)
+1. chassis.js ***5.5K***(UglifyJS+GZIP)
 
 
 ##预览
