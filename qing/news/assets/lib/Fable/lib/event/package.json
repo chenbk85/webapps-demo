@@ -1,0 +1,21 @@
+{
+	"name": "event",
+	"version": "0.0.1",
+	"description": "自定义事件工具库",
+	"dependencies": {
+		"base" : ">=0.0.1",
+		"mixin" : ">=0.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xspider/event"
+    },
+	"keywords": [
+		"utils",
+		"mvc",
+		"Pattern",
+		"event"
+	],
+    "author" : "han_qiang",
+    "license" : "MIT"
+}

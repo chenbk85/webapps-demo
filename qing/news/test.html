@@ -1,0 +1,361 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	    <meta charset="utf-8">
+	    <title>Demos</title>
+	    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" />
+	    <link rel="stylesheet" type="text/css" href="./assets/css/app.css" />
+	    <script type="text/javascript" src="./assets/lib/zepto.js"></script>
+	    <script type="text/javascript" src="./assets/lib/matchMedia.js"></script>
+	    <script type="text/javascript" src="./assets/lib/throttle.js"></script>
+	    <script type="text/javascript" src="./assets/lib/event.scrollStop.js"></script>
+	    <script type="text/javascript" src="./assets/lib/event.ortchange.js"></script>
+	    <script type="text/javascript" src="./assets/js/app.js"></script>
+	    <script type="text/javascript" src="./assets/js/event.js"></script>
+	    <script type="text/javascript" src="./assets/js/eventCenter.js"></script>
+	    <script type="text/javascript" src="./assets/js/toolbar.js"></script>
+	    <script type="text/javascript" src="./assets/js/search.js"></script>
+	    <!--
+		<script type="text/javascript" src="./assets/js/router.js"></script>
+	    <script type="text/javascript" src="./assets/lib/router.js"></script>
+		-->
+	</head>
+	<body>
+		<div class="pages">
+			<section id="index_page" class="pageview">
+				<section class="app_toolbar">
+					<header class="app_header">
+						<span class="app_icon">&nbsp;</span>百度轻应用
+						<span class="app_more"></span>
+					</header>
+					<div class="item_filters">
+						<div id="J_infoFilter" class="item_filter">
+							<span>餐饮信息<i></i></span>
+
+							<div class="sub_list">
+								<ul>
+									<li><a href="">出行日记</a></li>
+									<li><a href="">活动策划</a></li>
+									<li><a href="">主题活动</a></li>
+								</ul>
+							</div>
+						</div>
+						<div id="J_areaFilter" class="item_filter">
+							<span>派送城区<i></i></span>
+
+							<div class="sub_list">
+								<ul>
+									<li><a href="">出行日记</a></li>
+									<li><a href="">活动策划</a></li>
+									<li><a href="">主题活动</a></li>
+								</ul>
+							</div>
+						</div>
+						<div id="J_timeFilter" class="item_filter">
+							<span>派送时间<i></i></span>
+
+							<div class="sub_list">
+								<ul>
+									<li><a href="">出行日记</a></li>
+									<li><a href="">活动策划</a></li>
+									<li><a href="">主题活动</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="main_wrap">
+					<!-- 头图+标题列表-->
+					<section class="dialogue_wrap">
+						<div class="dialogue">
+							<div class="img_wrap">
+								<div class="img_item">
+									<a href=""><img src="./assets/images/1.jpg" width="100%" height="232px" /></a>
+									<p class="img_desc"><a href="">客为尊美食天天送</a></p>
+								</div>
+							</div>
+							<ul class="title_list">
+								<li><a href="">超简单营养早餐火腿面包</a></li>
+								<li><a href="">暖胃早餐之草莓燕麦粥</a></li>
+								<li><a href="">超简单营养早餐火腿面包</a></li>
+								<li><a href="">超简单营养早餐火腿面包暖胃早餐之草莓燕麦粥</a></li>
+								<li><a href="">超简单营养早餐火腿面包</a></li>
+							</ul>
+						</div>
+						<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+					</section>
+
+
+					<!-- 头图+摘要列表-->
+					<section class="dialogue_wrap">
+						<div class="dialogue">
+							<div class="img_wrap">
+								<div class="img_item">
+									<a href=""><img src="./assets/images/1.jpg" width="100%" height="232px" /></a>
+									<p class="img_desc"><a href="">客为尊美食天天送</a></p>
+								</div>
+							</div>
+							<ul class="summary_list">
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+							</ul>
+						</div>
+						<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+					</section>
+
+
+					<!-- 正文预览-->
+					<section class="dialogue_wrap">
+						<article class="article_preview">
+							<header>
+								<p class="title">超简单营养早餐：火腿面包</p>
+								<p class="time">供应时间&nbsp;<span>08:00</span></p>
+							</header>
+							<div class="preview">
+								<img src="./assets/images/1.jpg" />
+								俗话说一天之计在于晨，早餐对我们也是很重要的。但是由于很多人嫌麻烦总是很随便的吃早餐，这样对身体可是有伤害的哦，下面我们来看看哪些早餐会危害到我们的身体。
+							</div>
+							<footer><a href="">阅读全文</a></footer>
+						</article>
+						<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+					</section>
+
+					<section class="dialogue_wrap ask">
+						<div class="dialogue_inner">
+							<div class="dialogue">
+								<p>我要订餐~</p>
+							</div>
+							<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+						</div>
+					</section>
+
+					<section class="dialogue_wrap answer">
+						<div class="dialogue_inner">
+							<div class="dialogue">
+								<p>欢迎使用客为尊轻应用：http://www.baidu.com</p>
+							</div>
+							<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+						</div>
+					</section>
+
+					<section class="dialogue_wrap ask">
+						<div class="dialogue_inner">
+							<div class="dialogue">
+								<p>我要订餐~</p>
+							</div>
+							<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+						</div>
+					</section>
+
+					<section class="dialogue_wrap answer">
+						<div class="dialogue_inner">
+							<div class="dialogue">
+								<p>欢迎使用客为尊轻应用：http://www.baidu.com</p>
+							</div>
+							<p class="dialogue_time" data-time="20131104115246">3小时前</p>
+						</div>
+					</section>
+				</div>
+
+				<i class="app_search_icon" id="J_searchIcon"></i>
+				<form class="app_search_form">
+					<p>
+						<span class="app_search_inputwrap"><input type="text" placeholder="输入搜索内容" class="app_search_input" disabled="true" /></span>
+						<input type="submit" value="搜索" class="app_search_submit" disabled="true" />
+					</p>
+				</form>
+			</section>
+			<section id="detail_page" class="pageview">
+				<section class="app_toolbar">
+					<header class="app_header">
+						<span class="app_back">&nbsp;</span>
+						<span class="app_more"></span>
+					</header>
+				</section>
+
+				<article class="article_detail">
+					<header>
+						<p class="title">葱香鸡蛋软饼 - 10分钟搞定美味早餐</p>
+						<p class="time"><span class="server">客为尊美食</span><span>2013-10-30&nbsp;08:00</span></p>
+					</header>
+					<div class="main">
+						<img src="./assets/images/1.jpg" />
+						俗话说一天之计在于晨，早餐对我们也是很重要的。但是由于很多人嫌麻烦总是很随便的吃早餐，这样对身体可是有伤害的哦，下面我们来看看哪些早餐会危害到我们的身体。
+					</div>
+					<footer>1234位厨友加分&nbsp;平均分4.0</footer>
+				</article>
+			</section>
+			<section id="appinfo_page" class="pageview">
+				<section class="app_toolbar">
+					<header class="app_header">
+						<span class="app_back">&nbsp;</span>轻应用简介
+					</header>
+				</section>
+
+				<div class="app_info_wrap">
+					<header>
+						<p class="logo">百度轻应用</p>
+						<span class="share">分享</span>
+					</header>
+					<div class="main">
+						轻应用是无需下载、即搜即用的全功能App，基于搜索的检索与智能分发特性，解决了移动用户需求与开发者对接的问题。
+						<div class="qr_code">
+							<p><img src="./assets/images/1.jpg" height="230px" width="230px" /></p>
+							<p class="copy">&copy;2013 baidu.com,all right reserved</p>
+							<p>请使用手机百度扫描</p>
+						</div>
+					</div>
+			</section>
+			<section id="appsetting_page" class="pageview">
+				<section class="app_toolbar">
+					<header class="app_header">
+						<span class="app_back">&nbsp;</span>设置
+					</header>
+				</section>
+
+				<div class="app_setting_wrap">
+					<ul>
+						<li class="history_setting"><a href="#history">查看历史消息记录</a></li>
+						<li class="push_setting">接受推送消息<i></i></li>
+					</ul>
+					<p class="login"><a href="">登录</a></p>
+				</div>
+			</section>
+			<section id="history_page" class="pageview">
+				<section class="app_toolbar">
+					<header class="app_header">
+						<span class="app_back">&nbsp;</span>历史消息
+					</header>
+				</section>
+				<div class="history_wrap">
+					<!-- 头图+标题列表-->
+					<section class="dialogue_wrap">
+						<p class="dialogue_time"><span>3小时前</span></p>
+						<div class="dialogue">
+							<div class="img_wrap">
+								<div class="img_item">
+									<a href=""><img src="./assets/images/1.jpg" width="100%" height="232px" /></a>
+									<p class="img_desc"><a href="">客为尊美食天天送</a></p>
+								</div>
+							</div>
+							<ul class="title_list">
+								<li><a href="">超简单营养早餐火腿面包</a></li>
+								<li><a href="">暖胃早餐之草莓燕麦粥</a></li>
+								<li><a href="">超简单营养早餐火腿面包</a></li>
+								<li><a href="">超简单营养早餐火腿面包暖胃早餐之草莓燕麦粥</a></li>
+								<li><a href="">超简单营养早餐火腿面包</a></li>
+							</ul>
+						</div>
+						
+					</section>
+
+
+					<!-- 头图+摘要列表-->
+					<section class="dialogue_wrap">
+						<p class="dialogue_time"><span>3小时前</span></p>
+						<div class="dialogue">
+							<div class="img_wrap">
+								<div class="img_item">
+									<a href=""><img src="./assets/images/1.jpg" width="100%" height="232px" /></a>
+									<p class="img_desc"><a href="">客为尊美食天天送</a></p>
+								</div>
+							</div>
+							<ul class="summary_list">
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+								<li>
+									<p class="summary_title"><a href="">美味营养的早餐 - 小米馒头 + 草莓奶昔</a></p>
+									<p class="summary_time">供应时间&nbsp;<span>08:00</span></p>
+									<p class="summary_img"><a href=""><img src="./assets/images/1.jpg" width="85px" height="53px" /></a></p>
+								</li>
+							</ul>
+						</div>
+					</section>
+
+
+					<!-- 正文预览-->
+					<section class="dialogue_wrap">
+						<p class="dialogue_time"><span>3小时前</span></p>
+						<article class="article_preview">
+							<header>
+								<p class="title">超简单营养早餐：火腿面包</p>
+								<p class="time">供应时间&nbsp;<span>08:00</span></p>
+							</header>
+							<div class="preview">
+								<img src="./assets/images/1.jpg" />
+								俗话说一天之计在于晨，早餐对我们也是很重要的。但是由于很多人嫌麻烦总是很随便的吃早餐，这样对身体可是有伤害的哦，下面我们来看看哪些早餐会危害到我们的身体。
+							</div>
+							<footer><a href="">阅读全文</a></footer>
+						</article>
+					</section>
+				</div>
+			</section>
+		</div>
+		<script>
+			var require = {
+				baseUrl : 'assets/lib/Fable/lib/',
+				shim : {
+					'underscore/underscore' : {
+						exports : '_'
+					}
+				}
+			};
+		</script>
+		<script src="assets/lib/Fable/demo/vendor/require.js"></script>
+		<script type="text/javascript">
+			require(
+				[
+					'index'
+					
+				],
+
+				function() {
+					App.init();
+				}
+			);
+		</script>
+	</body>
+</html>

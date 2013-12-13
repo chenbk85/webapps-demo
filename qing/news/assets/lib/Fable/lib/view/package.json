@@ -1,0 +1,22 @@
+{
+	"name": "view",
+	"version": "0.0.1",
+	"description": "webapp相关的view工具库",
+	"dependencies": {
+		"base" : ">=0.0.1",
+		"mixin" : ">=0.0.1",
+		"event" : ">=0.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xspider/view"
+    },
+	"keywords": [
+		"utils",
+		"mvc",
+		"Pattern",
+		"view"
+	],
+    "author" : "han_qiang",
+    "license" : "MIT"
+}

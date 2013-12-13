@@ -1,0 +1,21 @@
+{
+	"name": "fxview",
+	"version": "0.0.1",
+	"description": "webapp页面动画工具库",
+	"dependencies": {
+		"base" : ">=0.0.1",
+		"mixin" : ">=0.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xspider/fxview"
+    },
+	"keywords": [
+		"utils",
+		"mvc",
+		"Pattern",
+		"fxview"
+	],
+    "author" : "han_qiang",
+    "license" : "MIT"
+}

@@ -1,0 +1,60 @@
+#wrapper {
+	overflow-x:hidden;
+
+	margin:10px auto;
+}
+
+#viewfx {
+	width:200%;
+	overflow-x:hidden;
+	font-size:0;
+}
+
+.view {
+	display:none;
+	width:50%;
+	font-size:14px;
+	vertical-align: top;
+}
+
+#index {
+	background:#FFF9ED;
+	height:900px;
+	text-indent:28px;
+	line-height:22px;
+}
+
+#info {
+	background:#F3FAFF;
+	height:400px;
+	text-indent:28px;
+	line-height:22px;
+}
+
+#absolute {
+	display:none;
+	position:relative;
+	background:#E8F5FE;
+	top:100px;
+	left:10px;
+	width:300px;
+}
+	#absolute ul,
+	#absolute ul li {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+		#absolute ul { padding:10px;}
+		#absolute ul li { text-indent:20px;}
+
+.button {
+	padding:10px 20px;
+	background:#428bca;
+	border-radius:3px;
+	border:none;
+	box-shadow: inset 0 -4px 0 #2a6496;
+	color:#fff;
+	font-size:14px;
+	cursor:pointer;
+}

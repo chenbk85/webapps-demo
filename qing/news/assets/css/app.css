@@ -1,0 +1,534 @@
+/* 公共号模板 */
+
+/* TODO 图片未优化 */
+body {
+	color: #333;
+	background-color: #EEE;
+}
+a,
+a:visited {
+	text-decoration: none;
+	color: #333;
+}
+.pageview {
+	padding-top: 52px;
+	display: none;
+	/*position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;*/
+	min-height:99%;
+}
+/* 横屏 */
+@media screen and (orientation:landscape) {
+	/* 横屏时，toolbar不固定，pageview去掉上边距 */
+    .pageview {
+		padding-top: 0;
+	}
+}
+.app_toolbar {
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #EDEDED;
+	z-index: 999;
+}
+
+/* 横屏 */
+@media screen and (orientation:landscape){
+    .app_toolbar {
+    	position: relative;
+    }
+}
+/* 竖屏 */
+@media screen and (orientation:portrait){
+    .app_toolbar {
+    	position: fixed;
+    }
+}
+
+.app_header {
+	height: 29px;
+	line-height: 29px;
+	background-color: #F9F9F9;
+	padding: 8px 16px 8px 8px;
+}
+.app_icon,
+.app_back {
+	display: inline-block;
+	width: 30px;
+	float: left;
+	background: url(./app.png) no-repeat 0 0;
+	background-size: 50px 350px;
+}
+.app_icon {
+	padding-left: 5px;
+}
+.app_back {
+	background-position: 5px -235px;
+}
+.app_more {
+	display: inline-block;
+	height: 100%;
+	width: 20px;
+	float: right;
+	background:  url(./app.png) no-repeat -5px -29px;
+	background-size: 50px 350px;
+}
+
+.item_filters {
+	margin: 7px;
+	padding: 9px 0;
+	border: 1px solid #E0E0E0;
+	display: -webkit-box;
+	background-color: #F9F9F9;
+}
+.item_filter {
+	display: block;
+	-webkit-box-flex: 1;
+	border-left: 1px solid #E0E0E0;
+	text-align: center;
+	position: relative;
+}
+.item_filter:first-child {
+	border-left: none;
+}
+.item_filter span {
+	text-align: center;
+	line-height: 22px;
+}
+.item_filter i {
+	display: inline-block;
+	margin-left: 8px;
+	height: 22px;
+	width: 18px;
+	background:  url(./app.png) no-repeat -7px -55px;
+	background-size: 50px 350px;
+}
+
+
+
+.main_wrap {
+	margin: 54px 7px 0;
+}
+
+
+/* 横屏 */
+@media screen and (orientation:landscape){
+	/* 横屏时，toolbar不固定，内容区域去掉上边距 */
+    .main_wrap {
+		margin-top: 0;
+	}
+}
+
+
+/* 头图+标题列表 */
+.dialogue,
+.article_preview {
+	border: 1px solid #E0E0E0;
+	background-color: #FFF;
+}
+.img_wrap {
+	padding: 10px;
+	border-bottom: 1px solid #E0E0E0;
+}
+.img_item {
+	position: relative;
+	height: 232px;
+}
+.img_wrap .img_desc {
+	width: 100%;
+	line-height: 40px;
+	color: #FFF;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA7CAYAAAAn+enKAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8zMC8xMxXF/dUAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzQGstOgAAAAYUlEQVRoge3PgQ2AMAzAsLK/+Z0vmJTaFyTPzLyzyLkd8DfDdYbrDNcZrjNcZ7jOcJ3hOsN1husM1xmuM1xnuM5wneE6w3WG6wzXGa4zXGe4znCd4TrDdYbrDNcZrls3/AEj1wDzeTdxqgAAAABJRU5ErkJggg==") repeat;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding-left: 7px;
+	-webkit-box-sizing: border-box;
+}
+.img_desc a {
+	color: #FFF;
+}
+.img_desc a:visited {
+	color: #FFF;
+}
+.title_list {
+	padding: 0 10px;
+}
+.title_list li {
+	border-top: 1px solid #F5F5F5;
+}
+.title_list li:first-child {
+	border-top: none;
+}
+.title_list a {
+	display: block;
+	line-height: 40px;
+	height: 40px;
+	padding-right: 10px;
+	overflow: hidden;
+	background: url(./app.png) no-repeat right -78px;
+	background-size: 50px 350px;
+}
+.dialogue_time {
+	color: #777;
+	line-height: 30px;
+	margin: 0 0 10px 12px;
+	padding-left: 18px;
+	background: url(./app.png) no-repeat left -113px;
+	background-size: 50px 350px;
+}
+
+/* 头图+摘要列表 */
+.summary_list {
+	padding: 0 10px;
+}
+.summary_list li {
+	border-top: 1px solid #F5F5F5;
+	position: relative;
+	height: 72px;
+}
+.summary_list li:first-child {
+	border-top: none;
+}
+.summary_list li {
+	padding-right: 90px;
+}
+.summary_list .summary_title {
+	line-height: 20px;
+	padding: 5px 0;
+}
+.summary_list .summary_time {
+	color: #767676;
+}
+.summary_list .summary_img {
+	position: absolute;
+	right: 0;
+	top: 10px;
+}
+
+/* 正文预览 */
+.article_preview header {
+	padding: 9px;
+	line-height: 22px;
+	border-bottom: 1px solid #E0E0E0;
+}
+.article_preview header .time {
+	color: #767676;
+}
+.article_preview .preview {
+	padding: 10px;
+	line-height: 1.5em;
+	border-bottom: 1px solid #E0E0E0;
+}
+.article_preview .preview img {
+	max-width: 100%;
+}
+.article_preview footer {
+	line-height: 40px;
+	padding: 0 10px;
+	background: url(./app.png) no-repeat right -198px #FAFAFA;
+	background-size: 50px 350px;
+}
+.article_preview footer a {
+	display: block;
+}
+
+.app_search_icon {
+	position: fixed;
+	left: 100%;
+	bottom: 22px;
+	margin-left: -60px;
+	display: block;
+	height: 42px;
+	width: 100%;
+	background: url(./app.png) no-repeat left -150px;
+	background-size: 50px 350px;
+	z-index: 9999;
+}
+
+/* 如果用display:none将其隐藏，在iOS设备中，键盘无法将input顶到可视区域内*/
+.app_search_form {
+	opacity: 0;	
+	padding: 6px 8px;
+	border: 1px solid #E0E0E0;
+	border-width: 1px 0;
+	background-color: #FFF;
+	position: relative;
+}
+.app_search_inputwrap {
+	display: block;
+	padding-right: 68px;
+}
+.app_search_input {
+	color: #333;
+	border: 1px solid #F0EEEF;
+	padding: 2px 0 2px 5px;
+	line-height: 24px;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-webkit-appearance: none;
+	border-radius: 0;
+}
+.app_search_submit {
+	position: absolute;
+	right: 8px;
+	top: 6px;
+	background-color: #EA2F40;
+	color: #FFF;
+	line-height: 30px;
+	width: 60px;
+	-webkit-appearance: none;
+	border-radius: 0;
+}
+
+/* 详情页 */
+.article_detail {
+	margin-top: 0;
+	padding: 15px;
+}
+.article_detail .server {
+	margin-right: 17px;
+}
+.article_detail .title {
+	line-height: 1.5em;
+	font-weight: bold;
+}
+.article_detail .time {
+	color: #767676;
+	line-height: 1.5em;
+	padding: 0.5em 0;
+}
+.article_detail .main {
+	padding: 1em 0;
+	line-height: 1.5em;
+	border-top: 1px dashed #D6D6D6;
+}
+.article_detail .main img {
+	max-width: 100%;
+}
+.article_detail footer {
+	color: #767676;
+}
+
+
+/* 应用菜单 */
+.app_menu {
+	position: absolute;
+	right: 7px;
+	top: 45px;
+	border: 1px solid #F1F1F1;
+	background: #FFF;
+	box-shadow: 0 0 2px rgba(172, 172, 172, 0.4);
+	z-index: 9999;
+}
+.app_menu:after {
+	content: '◆';
+	display: inline-block;
+	position: absolute;
+	top: -9px;
+	right: 10px;
+	color: #FFF;
+	text-shadow: 0 -2px 2px rgba(200, 200, 200, 0.4);
+}
+.app_menu ul {
+	padding: 0 1em;
+}
+.app_menu li {
+	border-top: 1px solid #F1F1F1;
+	padding: 0.5em 0;
+}
+.app_menu li:first-child {
+	border-top: none;
+}
+.app_menu a {
+	display: block;
+}
+
+/* 分类子菜单 */
+.sub_list {
+	position: absolute;
+	left: 0;
+	top: 35px;
+	border: 1px solid #F1F1F1;
+	border-top: 3px solid red;
+	border-radius: 3px 3px 0 0;
+	min-width: 100%;
+	background: #FFF;
+	white-space: nowrap;
+	box-shadow: 1px 1px 2px rgba(172, 172, 172, 0.4);
+	display: none;
+}
+.sub_list ul {
+	padding: 0 1em;
+}
+.sub_list li {
+	border-top: 1px solid #F1F1F1;
+	padding: 0.5em 0;
+}
+.sub_list li:first-child {
+	border-top: none;
+}
+.sub_list a {
+	display: block;
+}
+
+
+.ask {
+	padding-right: 10px;
+}
+.answer {
+	padding-left: 10px;
+}
+.ask:after,
+.answer:after {
+	display:block;
+	clear:both;
+	content:"";
+	visibility:hidden;
+	height:0;
+}
+.ask .dialogue_inner {
+	float: right;
+}
+.ask .dialogue,
+.answer .dialogue {
+	padding: 0.5em 1em;
+	border: 1px solid #E0E0E0;
+	border-radius: 4px;
+	line-height: 1.5em;
+	position: relative;
+}
+.ask .dialogue:after {
+	content: '◆';
+	display: inline-block;
+	position: absolute;
+	top: 5px;
+	right: -9px;
+	color: #FFF;
+	text-shadow: 2px 0 2px rgba(200, 200, 200, 0.4);
+	line-height: 18px;
+	height: 18px;
+	width: 18px;
+	font-size: 18px;
+}
+
+.answer .dialogue_inner {
+	float: left;
+}
+.answer .dialogue {
+	background-color: #5EB1F5;
+	color: #FFF;
+}
+.answer .dialogue:after {
+	content: '◆';
+	display: inline-block;
+	position: absolute;
+	top: 5px;
+	left: -8px;
+	color: #5EB1F5;
+	text-shadow: -2px 0 2px rgba(200, 200, 200, 0.4);
+}
+
+
+/* 应用简介页面 */
+.app_info_wrap {
+	margin: 0 7px 0;
+	padding: 10px;
+	border: 1px solid #E0E0E0;
+	background-color: #FFF;
+	position: relative;
+}
+.app_info_wrap .share {
+	position: absolute;
+	top: 24px;
+	right: 12px;
+	display: block;
+	border: 1px solid #E0E0E0;
+	line-height: 2em;
+	padding: 0 1em;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#FBFBFB));
+}
+.app_info_wrap .logo {
+	line-height: 60px;
+	padding-left: 65px;
+	background: url(./app.png) no-repeat 0px 0px;
+}
+.app_info_wrap .main {
+	line-height: 1.5em;
+	color: #767676;
+}
+.app_info_wrap .qr_code {
+	border-top: 1px solid #E0E0E0;
+	margin-top: 0.5em;
+	padding-top: 1em;
+	text-align: center;
+	color: #333;
+}
+.app_info_wrap .copy {
+	color: #767676;
+}
+
+/* 设置页面 */
+.app_setting_wrap {
+	margin: 0 18px 0;
+	padding-top: 10px;
+}
+.app_setting_wrap a {
+	display: block;
+}
+.app_setting_wrap li {
+	border: 1px solid #E0E0E0;
+	line-height: 44px;
+	margin-bottom: 12px;
+	padding-left: 0.5em;
+	background-color: #FFF;
+}
+.app_setting_wrap .history_setting {
+	background:  url(./app.png) no-repeat right -260px #FFF;
+	background-size: 50px 350px;
+}
+.app_setting_wrap .push_setting {
+	position: relative;
+}
+.app_setting_wrap .push_setting i {
+	display: block;
+	width: 60px;
+	height: 25px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background:  url(./app.png) no-repeat 31px -308px #5DB0F4;
+	background-size: 50px 350px;
+}
+.app_setting_wrap .push_setting i.off {
+	background-color: #DFDFDF;
+	background-position: 2px -308px;
+}
+.app_setting_wrap .login a {
+	border: 1px solid #E0E0E0;
+	text-align: center;
+	background-color: #E71226;
+	color: #FFF;
+	line-height: 44px;
+	margin-top: 12px;
+}
+
+/* 历史消息页面 */
+.history_wrap {
+	margin: 0 7px 0;
+}
+.history_wrap .dialogue_time {
+	text-align: center;
+	background-image: none;
+	margin: 0;
+	padding: 1em 0 0.5em;
+}
+.history_wrap .dialogue_time span {
+	display: inline-block;
+	padding: 0 1em;
+	background-color: #DFDFDF;
+	color: #777777;
+	border-radius: 17px;
+}

@@ -1,0 +1,20 @@
+{
+	"name": "mixin",
+	"version": "0.0.1",
+	"description": "为模块提供mixin功能的工具库",
+	"dependencies": {
+		"base" : ">=0.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xspider/mixin"
+    },
+	"keywords": [
+		"utils",
+		"mvc",
+		"Pattern",
+		"mixin"
+	],
+    "author" : "han_qiang",
+    "license" : "MIT"
+}

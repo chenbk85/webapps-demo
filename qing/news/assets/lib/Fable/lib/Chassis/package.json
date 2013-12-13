@@ -1,0 +1,25 @@
+{
+	"name": "Chassis",
+	"version": "0.0.1",
+	"description": "非常轻量的VC模式(不含Model)",
+	"dependencies": {
+		"base" : "0.0.1",
+		"mixin" : "0.0.1",
+		"event" : "0.0.1",
+		"fxview" : "0.0.1",
+		"view" : "0.0.1",
+		"router" : "0.0.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xspider/Chassis"
+    },
+	"keywords": [
+		"mvc",
+		"mixin",
+		"view",
+		"Chassis"
+	],
+    "author" : "han_qiang",
+    "license" : "MIT"
+}
