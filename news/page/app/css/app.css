@@ -1,0 +1,83 @@
+
+
+#app_page_header{
+    height:40px;
+    text-align:center;
+    background:#eee;
+    font:bold 18px/40px normal;
+    border:1px outset #ddd;
+}
+
+.app-page-header-backbtn{
+    position:relative;
+    float:left;
+    display:inline-block;
+    padding-left:20px;
+}
+
+.app-page-header-backbtn span{
+    position:absolute;
+    display:inline-block;
+    left:0;
+    top:50%;
+    margin-top:-9px;
+    background-image:url("../../../img/icons-36-black.png");
+    background-position:-142px 50%;
+    background-size:776px 18px;
+    width:18px;
+    height:18px;
+}
+
+#app_page_content{
+    /*作为绝对定位的loading样式的容器，需要使用relative定位*/
+    position:relative;
+    padding-top:10px;
+}
+
+#app_page_content a{
+    display:block;
+    margin:3px 3px 0;
+    padding-left:5px;
+    background:#eee;
+    border:1px outset #ddd;
+    border-radius:4px;
+    font:normal 16px/40px Arial;
+    color:#000;
+    text-decoration:none;
+}
+
+#app_page_content *{
+    -webkit-transform:translateZ(0);
+}
+
+#app_page_content h2{
+    text-align:center;
+    font:bold 26px/50px Arial;
+    text-shadow:rgba(64, 64, 64, 0.3) 3px -3px 2px;
+}
+
+.product-view-list {
+    padding:5px 15px
+}
+.product-view-list-item {
+    width:25%;
+    height:75px;
+    padding:15px 0 0;
+    float:left
+}
+.product-view-list-item-icon {
+    margin:0 auto;
+    width:50px;
+    height:50px;
+    -webkit-background-size:225px 200px;
+    background-repeat:no-repeat
+}
+.product-view-list-item-title {
+    text-align:center;
+    font:bold 14px/26px Arial;
+    color:#5b5b5b
+}
+.product-view-list-item-icon {
+    background-image:url("http://m.baidu.com/static/news/webapp_pro/img/product_icon.png")
+}
+

@@ -1,0 +1,117 @@
+
+#index_page_content{
+    /*作为绝对定位的loading样式的容器，需要使用relative定位*/
+    position:relative;
+    padding-top:10px;
+}
+
+
+	#index_page_content .item {
+		margin-bottom:10px;
+		border-bottom:1px solid #CCC;
+		color:#666;
+		font-size:12px;
+		padding:0 5px;
+	}
+		#index_page_content .item .left {
+		
+		}
+		
+		#index_page_content .item .right {
+			float:right;
+		}
+		
+		
+		
+		
+		#index_page_nav {
+			background-color: #ebeff4;
+			border-bottom: 1px solid #b7bec7;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			padding-bottom: 12px;
+			position: relative;
+			
+		}
+		#index_page_content {
+			padding-top:10px;
+			background:#fafafa;
+		}
+		#index_page_content .item h3 {
+			line-height:22px;
+			font-size:16px;
+			font-weight:500;
+		}
+			#index_page_content .item h3 a {
+				text-decoration:none;
+				color:#000;
+			}
+			
+		#index_page_content .item .abs {
+			line-height:18px;
+			margin:5px 0;
+			
+		}
+		
+		#index_page_content .item .ts {
+			line-height:18px;
+			margin:5px 0;
+		}
+		
+	#index_page_nav ul {
+		padding:10px 0;
+	}
+	
+	#index_page_nav ul li {
+		display:inline-block;
+		width:15%;
+		text-align:center;
+		line-height:20px;
+		color:#555;
+		margin:3px 0;
+		font-size:14px;
+	}
+	
+	#index_page_nav ul li.select {
+		border:1px solid #b8bdc1;
+		background:#d6dde5;
+		color:#000;
+		border-radius:3px;
+	}
+	
+	#index_page_ad {
+		background:#af0f0f;
+		text-align:center;
+		font-size:0;
+		width:100%;
+		overflow:hidden;
+	}
+	
+	.btn-baidu {
+		border-radius: 3px 0 0 3px;
+		width: 44px;
+		background: #b21f24;
+		border: 1px solid #8e0808;
+		font-size:14px;
+	}
+	
+	.btn-product {
+		background-image: url("http://m.baidu.com/static/news/webapp_lite/img/titlebar.png?t=2");
+		background-repeat: no-repeat;
+		background-size: 55px 1100px;
+		background-color: #b21f24;
+		border: 1px solid #8e0808;
+		border-radius: 0 3px 3px 0;
+		margin-left: 0;
+		border-left: 0;
+		width: 42px;
+		height: 28px;
+		margin-top: 5px;
+		background-position: 12px 4px;
+		text-indent: -9999px;
+	}
+	
+	
+		
+
+
+
